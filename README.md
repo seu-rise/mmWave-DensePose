@@ -6,8 +6,7 @@
 [![Project Page](https://img.shields.io/badge/project-page-blue)](docs/index.html)
 [![License](https://img.shields.io/badge/license-MIT-green)](#license)
 
-[Project page source and interactive dataset samples](docs/index.html). When GitHub Pages is enabled from the
-`docs/` directory, the live page will be available at `https://<owner>.github.io/mmWave-DensePose/`.
+[Project page and interactive dataset samples](https://seu-rise.github.io/mmWave-DensePose/).
 
 ![mmWave-DensePose first figure](assets/images/scenario.png)
 
