@@ -1,0 +1,193 @@
+{
+  "motions": [
+    {
+      "id": "motion1",
+      "label": "motion1 - 50 frames",
+      "frameStart": 92,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion2",
+      "label": "motion2 - 50 frames",
+      "frameStart": 172,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion3",
+      "label": "motion3 - 50 frames",
+      "frameStart": 352,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion4",
+      "label": "motion4 - 50 frames",
+      "frameStart": 602,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion5",
+      "label": "motion5 - 50 frames",
+      "frameStart": 752,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion6",
+      "label": "motion6 - 50 frames",
+      "frameStart": 1042,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion7",
+      "label": "motion7 - 50 frames",
+      "frameStart": 662,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion8",
+      "label": "motion8 - 50 frames",
+      "frameStart": 842,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion9",
+      "label": "motion9 - 50 frames",
+      "frameStart": 1372,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion10",
+      "label": "motion10 - 50 frames",
+      "frameStart": 1542,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion11",
+      "label": "motion11 - 50 frames",
+      "frameStart": 1952,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion12",
+      "label": "motion12 - 50 frames",
+      "frameStart": 2252,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion13",
+      "label": "motion13 - 50 frames",
+      "frameStart": 2452,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion14",
+      "label": "motion14 - 50 frames",
+      "frameStart": 2672,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion15",
+      "label": "motion15 - 50 frames",
+      "frameStart": 2872,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion16",
+      "label": "motion16 - 50 frames",
+      "frameStart": 3122,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion17",
+      "label": "motion17 - 50 frames",
+      "frameStart": 3242,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion18",
+      "label": "motion18 - 50 frames",
+      "frameStart": 3512,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion19",
+      "label": "motion19 - 50 frames",
+      "frameStart": 3752,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion_free1",
+      "label": "motion_free1 - 50 frames",
+      "frameStart": 492,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    },
+    {
+      "id": "motion_free2",
+      "label": "motion_free2 - 50 frames",
+      "frameStart": 1832,
+      "frameCount": 50,
+      "framePrefix": "frame_",
+      "frameDigits": 6,
+      "frameExtension": ".json"
+    }
+  ]
+}

@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mmWave-DensePose</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <style>
+    :root {
+      --font-display: "Aptos Display", "Segoe UI", sans-serif;
+      --font-body: "Aptos", "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Consolas", monospace;
+      --surface: #f5f3ee;
+      --surface-raised: #ffffff;
+      --surface-dark: #101419;
+      --text: #171a1f;
+      --muted: #66707c;
+      --border: #d7d2c7;
+      --primary: #0b7f8f;
+      --accent: #d47a22;
+      --green: #2f8c5f;
+      --cyan: #42c6d7;
+      --ink: #12181f;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.25rem;
+      --shadow-sm: 0 8px 24px rgba(18, 24, 31, 0.08);
+      --shadow-md: 0 18px 50px rgba(18, 24, 31, 0.14);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--surface);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(90deg, rgba(18, 24, 31, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(18, 24, 31, 0.045) 1px, transparent 1px),
+        var(--surface);
+      background-size: 48px 48px;
+      font-family: var(--font-body);
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .page-shell {
+      width: min(1500px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(18, 24, 31, 0.12);
+      background: rgba(245, 243, 238, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 66px;
+      gap: var(--space-lg);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.28rem;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .nav-links a.external-link {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      padding: 34px 0 44px;
+    }
+
+    .hero-figure {
+      margin: 0;
+      justify-self: center;
+      width: min(1120px, 100%);
+      border: 1px solid rgba(18, 24, 31, 0.18);
+      background: #101419;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-figure img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
+      gap: var(--space-xl);
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-md);
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 940px;
+      font-size: 4.9rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 2.25rem;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .hero-copy {
+      margin: var(--space-lg) 0 0;
+      max-width: 820px;
+      color: #3f4852;
+      font-size: 1.12rem;
+    }
+
+    .hero-panel {
+      border: 1px solid rgba(18, 24, 31, 0.22);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metric {
+      min-height: 118px;
+      padding: var(--space-lg);
+      border-right: 1px solid rgba(18, 24, 31, 0.14);
+      border-bottom: 1px solid rgba(18, 24, 31, 0.14);
+    }
+
+    .metric:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .metric:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .metric strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(18, 24, 31, 0.12);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .dataset-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .dataset-item {
+      min-height: 112px;
+      padding: var(--space-lg);
+      border-right: 1px solid var(--border);
+    }
+
+    .dataset-item:last-child {
+      border-right: 0;
+    }
+
+    .dataset-item b {
+      display: block;
+      color: var(--ink);
+      font-size: 1.28rem;
+    }
+
+    .dataset-item span {
+      display: block;
+      margin-top: 0.35rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .visualizer {
+      overflow: hidden;
+      border: 1px solid rgba(18, 24, 31, 0.2);
+      background: var(--surface-raised);
+      box-shadow: var(--shadow-md);
+    }
+
+    .visualizer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      min-height: 66px;
+      padding: 0.72rem var(--space-lg);
+      border-bottom: 1px solid rgba(18, 24, 31, 0.14);
+      background: #fbfaf7;
+    }
+
+    .sample-select {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .toolbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .sample-select select {
+      min-width: 156px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #ffffff;
+      color: var(--text);
+      padding: 0.45rem 0.65rem;
+    }
+
+    .sample-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .sample-toggle input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--primary);
+    }
+
+    .status-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md);
+      font-family: var(--font-mono);
+      color: #4c5561;
+      font-size: 0.82rem;
+    }
+
+    .status-dot {
+      width: 0.72rem;
+      height: 0.72rem;
+      border-radius: 50%;
+      background: #98a6b1;
+      box-shadow: 0 0 0 3px rgba(152, 166, 177, 0.18);
+    }
+
+    .status-dot.is-loading {
+      background: #d47a22;
+      box-shadow: 0 0 0 3px rgba(212, 122, 34, 0.18);
+    }
+
+    .status-dot.is-ready {
+      background: #2f8c5f;
+      box-shadow: 0 0 0 3px rgba(47, 140, 95, 0.18);
+    }
+
+    .status-dot.is-error {
+      background: #bf3f3f;
+      box-shadow: 0 0 0 3px rgba(191, 63, 63, 0.18);
+    }
+
+    .sample-stage {
+      display: grid;
+      grid-template-columns: minmax(560px, 1fr) minmax(480px, 0.92fr);
+      height: min(52vh, 520px);
+      min-height: 460px;
+      overflow: hidden;
+    }
+
+    .canvas-panel {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      min-width: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        var(--surface-dark);
+      background-size: 40px 40px;
+    }
+
+    #pointCloudCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #pointCloudCanvas canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .canvas-hud {
+      position: absolute;
+      left: var(--space-md);
+      right: var(--space-md);
+      bottom: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      pointer-events: none;
+    }
+
+    .hud-block {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(7, 11, 15, 0.68);
+      color: #dce8e9;
+      padding: 0.55rem 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .image-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      min-width: 0;
+      overflow: hidden;
+      border-left: 1px solid rgba(18, 24, 31, 0.16);
+      background: #ebe7df;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 1px;
+      flex: 1;
+      height: 100%;
+      min-height: 0;
+      min-width: 0;
+      overflow: hidden;
+      background: rgba(18, 24, 31, 0.18);
+    }
+
+    .image-tile {
+      position: relative;
+      min-height: 0;
+      min-width: 0;
+      overflow: hidden;
+      background: #11161c;
+    }
+
+    .image-tile.is-rgb {
+      grid-column: 1 / -1;
+    }
+
+    .image-label {
+      position: absolute;
+      top: 0.55rem;
+      left: 0.55rem;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(6, 9, 13, 0.72);
+      color: #e7ecef;
+      padding: 0.28rem 0.46rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .image-box {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      position: absolute;
+      inset: 0.45rem;
+      width: calc(100% - 0.9rem);
+      height: calc(100% - 0.9rem);
+      max-width: calc(100% - 0.9rem);
+      max-height: calc(100% - 0.9rem);
+      object-fit: contain;
+      background: #06090d;
+    }
+
+    .playback {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 0.72rem var(--space-lg);
+      border-top: 1px solid rgba(18, 24, 31, 0.14);
+      background: #fbfaf7;
+    }
+
+    .icon-button {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(18, 24, 31, 0.22);
+      border-radius: 50%;
+      background: var(--ink);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .icon-button:hover {
+      background: #26323d;
+    }
+
+    .icon-button .play-icon {
+      width: 0;
+      height: 0;
+      margin-left: 3px;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 13px solid currentColor;
+    }
+
+    .icon-button .pause-icon {
+      display: none;
+      width: 14px;
+      height: 16px;
+      background: linear-gradient(90deg, currentColor 0 5px, transparent 5px 9px, currentColor 9px 14px);
+    }
+
+    .icon-button.is-playing .play-icon {
+      display: none;
+    }
+
+    .icon-button.is-playing .pause-icon {
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .range-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+
+    .frame-slider {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .frame-meta {
+      display: flex;
+      justify-content: flex-start;
+      gap: var(--space-md);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .fps-badge {
+      justify-self: end;
+      border: 1px solid rgba(212, 122, 34, 0.34);
+      color: #8d4b10;
+      background: rgba(212, 122, 34, 0.1);
+      padding: 0.5rem 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .note {
+      margin-top: var(--space-md);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      background: rgba(18, 24, 31, 0.18);
+      border: 1px solid rgba(18, 24, 31, 0.18);
+    }
+
+    .method-step {
+      min-height: 148px;
+      padding: var(--space-lg);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .method-step span {
+      display: block;
+      margin-bottom: var(--space-sm);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    .method-step p {
+      margin: var(--space-sm) 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .prose {
+      display: grid;
+      gap: var(--space-lg);
+      max-width: 1120px;
+    }
+
+    .prose p {
+      margin: 0;
+      color: #3f4852;
+    }
+
+    .prose ul,
+    .prose ol {
+      margin: 0;
+      padding-left: 1.3rem;
+      color: #3f4852;
+    }
+
+    .prose li + li {
+      margin-top: 0.45rem;
+    }
+
+    .status-checklist {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 1px solid rgba(18, 24, 31, 0.18);
+      background: rgba(18, 24, 31, 0.18);
+    }
+
+    .status-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin: 0;
+      padding: var(--space-md);
+      background: rgba(255, 255, 255, 0.74);
+      color: #3f4852;
+    }
+
+    .status-checklist li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 0.9rem;
+      height: 0.9rem;
+      border: 1.5px solid #66707c;
+      background: #ffffff;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 0.96rem;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(18, 24, 31, 0.14);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      background: rgba(18, 24, 31, 0.06);
+      color: var(--ink);
+    }
+
+    footer {
+      padding: 44px 0 60px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-content,
+      .sample-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .image-panel {
+        border-left: 0;
+        border-top: 1px solid rgba(18, 24, 31, 0.16);
+      }
+
+      .sample-stage {
+        height: auto;
+        min-height: 0;
+      }
+
+      .canvas-panel {
+        height: min(48vh, 460px);
+        min-height: 360px;
+      }
+
+      .image-panel {
+        height: min(46vh, 420px);
+        min-height: 320px;
+      }
+
+      .method-grid,
+      .dataset-strip,
+      .status-checklist {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .dataset-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      h1 {
+        font-size: 3.8rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 24px, 1500px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: var(--space-md) 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0 36px;
+      }
+
+      h1 {
+        font-size: 2.55rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .metric-grid,
+      .method-grid,
+      .dataset-strip,
+      .status-checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .metric,
+      .dataset-item {
+        border-right: 0;
+      }
+
+      .metric:nth-last-child(2) {
+        border-bottom: 1px solid rgba(18, 24, 31, 0.14);
+      }
+
+      .section-head,
+      .visualizer-toolbar,
+      .playback {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .toolbar-controls {
+        width: 100%;
+      }
+
+      .sample-select,
+      .sample-select select {
+        width: 100%;
+      }
+
+      .playback {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .icon-button,
+      .fps-badge {
+        justify-self: start;
+      }
+
+      .image-row {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 0.9fr);
+        overflow-x: visible;
+      }
+
+      .image-tile.is-rgb {
+        grid-column: auto;
+      }
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./js/threejs/build/three.module.js",
+        "three/addons/": "./js/threejs/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="page-shell nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="mmWave-DensePose home">
+        <img class="brand-mark" src="assets/images/logo.png" alt="" aria-hidden="true" />
+        <span>mmWave-DensePose</span>
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#samples">Samples</a>
+        <a href="#method">PAST-Net</a>
+        <a href="#status">Status</a>
+        <a id="repositoryLink" class="external-link" href="../README.md">README</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="page-shell hero" aria-labelledby="hero-title">
+      <figure class="hero-figure">
+        <img src="assets/images/scenario.png" alt="mmWave-DensePose first figure" />
+      </figure>
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow">Dense millimeter-wave radar human pose benchmark</p>
+          <h1 id="hero-title">mmWave-DensePose</h1>
+          <p class="hero-copy">
+            This is the official repository page for the paper
+            <strong>Human Pose Estimation of Millimeter-Wave Radar: Prototype, Dataset, and Method</strong>.
+            The repository will provide the code, dataset information, benchmark protocol, and pretrained
+            resources for mmWave-DensePose and PAST-Net after cleanup and release preparation.
+          </p>
+        </div>
+        <aside class="hero-panel" aria-label="Dataset metrics">
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>101</strong>
+              <span>Subjects</span>
+            </div>
+            <div class="metric">
+              <strong>570,124</strong>
+              <span>Valid synchronized frames</span>
+            </div>
+            <div class="metric">
+              <strong>19</strong>
+              <span>Ground-truth skeleton joints</span>
+            </div>
+            <div class="metric">
+              <strong>5D</strong>
+              <span>x, y, z, Doppler, SNR radar points</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="abstract" class="page-shell section" aria-labelledby="abstract-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Abstract</p>
+          <h2 id="abstract-title">Human pose estimation of millimeter-wave radar</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>
+          Three-dimensional human pose estimation (3D-HPE) is important for human-centered sensing,
+          but vision-based solutions are limited by privacy concerns, illumination changes, and occlusion.
+          Millimeter-wave (mmWave) radar provides a privacy-preserving alternative, yet existing radar
+          point clouds are often sparse and incomplete, and existing radar 3D-HPE datasets remain limited
+          in subject scale, frame volume, and motion diversity. This paper presents a mmWave radar prototype
+          for dense point-cloud sensing, a large-scale mmWave radar dense HPE (mmWave-DensePose) dataset,
+          and a Part-Aware Spatio-Temporal Network (PAST-Net) for radar-only 3D-HPE. Specifically, we design
+          a four-chip cascaded mmWave radar system to generate dense human-related point clouds with its
+          azimuth and elevation resolution being 1.30 degrees and 2.24 degrees, respectively. And the
+          constructed dataset contains 101 subjects, 19 designed motions, large amounts of free motions,
+          and 570,124 valid synchronized frames. Each frame provides a five-dimensional radar point cloud
+          and a 19-keypoint skeleton annotation. The proposed method uses only mmWave radar point clouds
+          as input and Kinect V2 skeletons as ground-truth annotations. Then PAST-Net reorganizes frame-level
+          point-cloud features into skeleton-aware part-token representations and models their temporal
+          evolution through part-wise self-attention, assisting to compensate for weak and incomplete
+          observations in local body regions. Experiments on the proposed benchmark show that PAST-Net
+          achieves an average Mean Localization Error (MLE) of 4.08 cm, reducing the error by 22.14%
+          compared with the other state-of-the-art (SOTA) baseline. Ablation results further confirm the
+          contributions of the proposed modules, including skeleton-aware spatial modeling, part-wise temporal
+          modeling, and radar-specific point attributes. These results demonstrate that the designed mmWave
+          radar prototype and the proposed method provide an effective sensing basis for privacy-preserving
+          and fine-grained 3D-HPE.
+        </p>
+      </div>
+    </section>
+
+    <section id="dataset" class="page-shell section" aria-labelledby="dataset-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Dataset</p>
+          <h2 id="dataset-title">Synchronized radar, skeleton, and image frames</h2>
+        </div>
+        <p>
+          The mmWave-DensePose dataset is constructed from synchronized radar and Kinect V2 recordings.
+          It is a dense millimeter-wave radar point-cloud benchmark for radar-only three-dimensional human
+          pose estimation.
+        </p>
+      </div>
+
+      <div class="dataset-strip" role="list">
+        <div class="dataset-item" role="listitem">
+          <b>141 sequences</b>
+          <span>Continuous motion recordings</span>
+        </div>
+        <div class="dataset-item" role="listitem">
+          <b>164 points</b>
+          <span>Mean valid radar points per frame</span>
+        </div>
+        <div class="dataset-item" role="listitem">
+          <b>Kinect V2</b>
+          <span>Ground-truth skeleton annotation source</span>
+        </div>
+        <div class="dataset-item" role="listitem">
+          <b>4.08 cm</b>
+          <span>PAST-Net average MLE in current benchmark</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples" class="page-shell section" aria-labelledby="samples-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Interactive sample viewer</p>
+          <h2 id="samples-title">Radar point cloud, skeleton, and synchronized images</h2>
+        </div>
+      </div>
+
+      <div class="visualizer" data-viewer>
+        <div class="visualizer-toolbar">
+          <div class="toolbar-controls">
+            <label class="sample-select">
+              Motion
+              <select id="motionSelect" aria-label="Select sample motion"></select>
+            </label>
+            <label class="sample-select">
+              Render
+              <select id="colorModeSelect" aria-label="Select point cloud render mode">
+                <option value="default">Default</option>
+                <option value="doppler">Doppler</option>
+                <option value="snr">SNR</option>
+              </select>
+            </label>
+            <label class="sample-select">
+              View
+              <select id="viewModeSelect" aria-label="Select point cloud view">
+                <option value="reference">Reference</option>
+                <option value="front">Front</option>
+                <option value="side">Side</option>
+                <option value="top">Top</option>
+              </select>
+            </label>
+            <label class="sample-toggle">
+              <input id="pointCloudToggle" type="checkbox" checked />
+              Radar points
+            </label>
+            <label class="sample-toggle">
+              <input id="skeletonToggle" type="checkbox" checked />
+              Ground truth skeleton
+            </label>
+          </div>
+          <div class="status-line" aria-live="polite">
+            <span id="loadStatus" class="status-dot is-loading" role="status" aria-label="Loading sample metadata" title="Loading sample metadata"></span>
+            <span id="frameStatus">Frame -- / --</span>
+            <span id="pointStatus">Points --</span>
+          </div>
+        </div>
+
+        <div class="sample-stage">
+          <div class="canvas-panel">
+            <div id="pointCloudCanvas" aria-label="Interactive Three.js radar point cloud and skeleton canvas"></div>
+            <div class="canvas-hud">
+              <div class="hud-block" id="renderHud">Default point rendering</div>
+            </div>
+          </div>
+
+          <div class="image-panel">
+            <div class="image-row">
+              <article class="image-tile is-rgb">
+                <span class="image-label">Color</span>
+                <div class="image-box"><img id="rgbImage" alt="Synchronized RGB sample frame" /></div>
+              </article>
+              <article class="image-tile">
+                <span class="image-label">Depth</span>
+                <div class="image-box"><img id="depthImage" alt="Synchronized depth sample frame" /></div>
+              </article>
+              <article class="image-tile">
+                <span class="image-label">Silhouette</span>
+                <div class="image-box"><img id="silhouetteImage" alt="Synchronized silhouette sample frame" /></div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback">
+          <button id="playButton" class="icon-button" type="button" aria-label="Play sample">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span class="pause-icon" aria-hidden="true"></span>
+            <span class="sr-only">Play or pause</span>
+          </button>
+          <div class="range-wrap">
+            <input id="frameSlider" class="frame-slider" type="range" min="0" max="0" value="0" step="1" aria-label="Frame progress" />
+            <div class="frame-meta">
+              <span id="frameName">frame_------.json</span>
+            </div>
+          </div>
+          <div class="fps-badge">Playback 6.5 FPS</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="page-shell section" aria-labelledby="method-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Method</p>
+          <h2 id="method-title">PAST-Net prediction pipeline</h2>
+        </div>
+        <p>
+          PAST-Net uses temporal radar point-cloud windows in a many-to-one prediction setting. It learns
+          structured part-token representations and regresses the target-frame 3D human pose from radar
+          input only.
+        </p>
+      </div>
+
+      <div class="method-grid">
+        <article class="method-step">
+          <span>01</span>
+          <h3>Temporal radar window</h3>
+          <p>A temporal window of radar point clouds is used as input, with the last frame as the target frame.</p>
+        </article>
+        <article class="method-step">
+          <span>02</span>
+          <h3>Point-cloud encoder</h3>
+          <p>A frame-level point-cloud encoder extracts global radar features from spatial, Doppler, and SNR attributes.</p>
+        </article>
+        <article class="method-step">
+          <span>03</span>
+          <h3>Skeleton-aware tokens</h3>
+          <p>Skeleton-aware spatial modeling converts frame features into structured part-token representations.</p>
+        </article>
+        <article class="method-step">
+          <span>04</span>
+          <h3>Part-wise attention</h3>
+          <p>Part-wise temporal modeling captures each part token's evolution across consecutive frames.</p>
+        </article>
+        <article class="method-step">
+          <span>05</span>
+          <h3>3D pose regression</h3>
+          <p>Global and part-level features are fused to regress the 19 3D keypoints of the target frame.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="status" class="page-shell section" aria-labelledby="status-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Repository Status</p>
+          <h2 id="status-title">Release in preparation</h2>
+        </div>
+        <p>The code and dataset will be uploaded after they are organized and reviewed.</p>
+      </div>
+      <ul class="status-checklist">
+        <li>Code release</li>
+        <li>Dataset release instructions</li>
+        <li>Training and evaluation scripts</li>
+        <li>Pretrained checkpoints</li>
+        <li>Data preprocessing tools</li>
+        <li>Benchmark configuration files</li>
+        <li>Citation file</li>
+      </ul>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="overview-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2 id="overview-title">Dataset and PAST-Net</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>
+          mmWave-DensePose is a dense millimeter-wave radar point-cloud benchmark for radar-only
+          three-dimensional human pose estimation. The public release focuses on two main components:
+        </p>
+        <ol>
+          <li>A large-scale radar point-cloud human pose dataset.</li>
+          <li>PAST-Net, a Part-Aware Spatio-Temporal Network for 3D human pose estimation.</li>
+        </ol>
+        <p>
+          Each synchronized frame contains a 5D radar point cloud and a 19-keypoint skeleton annotation.
+          PAST-Net uses temporal radar point-cloud windows to learn structured part-token representations
+          and regress the target-frame 3D human pose.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="highlights-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Highlights</p>
+          <h2 id="highlights-title">Main properties</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <ul>
+          <li><strong>Large-scale dataset.</strong> 101 subjects, 141 continuous sequences, and 570,124 valid synchronized frames.</li>
+          <li><strong>Rich motion coverage.</strong> 19 predefined motions and additional free-motion sequences.</li>
+          <li><strong>Radar-only 3D-HPE benchmark.</strong> The model uses only mmWave radar point clouds as input. Kinect V2 skeletons are used as ground-truth annotations.</li>
+          <li><strong>5D radar point representation.</strong> Each radar point contains spatial coordinates, Doppler information, and signal-to-noise ratio.</li>
+          <li><strong>Part-aware spatio-temporal modeling.</strong> PAST-Net reorganizes frame-level radar features into skeleton-aware part-token representations and models their temporal evolution across consecutive frames.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="format-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Dataset Table</p>
+          <h2 id="format-title">Release format summary</h2>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Item</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dataset name</td><td>mmWave-DensePose</td></tr>
+          <tr><td>Sensor input</td><td>Dense mmWave radar point cloud</td></tr>
+          <tr><td>Annotation source</td><td>Kinect V2 skeleton</td></tr>
+          <tr><td>Subjects</td><td>101</td></tr>
+          <tr><td>Motions</td><td>19 predefined motions + free motion</td></tr>
+          <tr><td>Continuous sequences</td><td>141</td></tr>
+          <tr><td>Valid synchronized frames</td><td>570,124</td></tr>
+          <tr><td>Radar point attributes</td><td>x, y, z, Doppler, SNR</td></tr>
+          <tr><td>Skeleton annotation</td><td>19 3D keypoints</td></tr>
+          <tr><td>Mean valid radar points per frame</td><td>164</td></tr>
+        </tbody>
+      </table>
+      <p class="note">The dataset release will include the data format description, download instructions, preprocessing scripts, and benchmark split information.</p>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="benchmark-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Benchmark</p>
+          <h2 id="benchmark-title">Current experimental setting</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>The benchmark supports both single-frame and multi-frame radar-based 3D human pose estimation.</p>
+        <ul>
+          <li>A five-frame temporal input window.</li>
+          <li>The last frame as the target frame.</li>
+          <li>Mean Localization Error (MLE) as the evaluation metric.</li>
+          <li>Radar point clouds as the only network input.</li>
+          <li>Kinect V2 skeletons as ground-truth annotations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="result-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Main Result</p>
+          <h2 id="result-title">PAST-Net average MLE</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>PAST-Net achieves the best average MLE among the reproduced and adapted baselines on the mmWave-DensePose benchmark.</p>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th>Average MLE</th></tr></thead>
+          <tbody><tr><td>PAST-Net</td><td>4.08 cm</td></tr></tbody>
+        </table>
+        <p>The full per-joint comparison and ablation results will be provided with the paper materials and evaluation scripts.</p>
+      </div>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="release-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">License, Contact, and Acknowledgement</p>
+          <h2 id="release-title">Release notes</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>This repository is released under the MIT License.</p>
+        <p>Dataset access instructions and terms for pretrained resources will be provided with the release materials.</p>
+        <p>Please do not redistribute any unreleased code, data, or checkpoint files.</p>
+        <p>For questions about the paper, code, or dataset release, please contact the authors or open an issue after the repository is public.</p>
+        <p>Corresponding authors and contact information will be updated after publication.</p>
+        <p>This project is based on synchronized radar point-cloud data, Kinect V2 skeleton annotation, and radar-only 3D human pose estimation. We thank the contributors and participants involved in the data collection and research development.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell">
+    mmWave-DensePose repository page. Code, dataset instructions, benchmark protocol, and pretrained resources are being prepared for release.
+  </footer>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const repositoryLink = document.getElementById('repositoryLink');
+    if (repositoryLink && window.location.hostname.endsWith('github.io')) {
+      const owner = window.location.hostname.replace(/\.github\.io$/, '');
+      const repo = window.location.pathname.split('/').filter(Boolean)[0];
+      if (owner && repo) {
+        repositoryLink.href = `https://github.com/${owner}/${repo}#readme`;
+      }
+    }
+
+    const FPS = 6.5;
+    const FRAME_INTERVAL_MS = 1000 / FPS;
+    const SAMPLE_MANIFEST_PATH = 'samples/manifest.json';
+    const DEFAULT_SAMPLE_MOTIONS = [
+      {
+        id: 'motion1',
+        label: 'motion1 - 51 frames',
+        frames: Array.from({ length: 51 }, (_, index) => {
+          const frameNumber = String(index + 91).padStart(6, '0');
+          return `samples/motion1/frame_${frameNumber}.json`;
+        }),
+      },
+      {
+        id: 'motion2',
+        label: 'motion2 - 51 frames',
+        frames: Array.from({ length: 51 }, (_, index) => {
+          const frameNumber = String(index + 91).padStart(6, '0');
+          return `samples/motion2/frame_${frameNumber}.json`;
+        }),
+      },
+    ];
+    let sampleMotions = DEFAULT_SAMPLE_MOTIONS;
+
+    const SKELETON_LINKS_19 = [
+      [3, 2], [2, 18], [18, 1], [1, 0],
+      [18, 7], [18, 4],
+      [0, 14], [0, 10],
+      [7, 8], [8, 9],
+      [4, 5], [5, 6],
+      [14, 15], [15, 16], [16, 17],
+      [10, 11], [11, 12], [12, 13],
+    ];
+
+    const VIEW_CONFIG = {
+      rotX: 104,
+      rotY: -180,
+      rotZ: 0,
+      distance: 7,
+      xlim: [-2, 2],
+      ylim: [0.15, 7.15],
+      zlim: [-0.1, 4],
+    };
+
+    const VIEW_PRESETS = {
+      reference: { rotX: 104, rotY: -180, rotZ: 0, distance: 7 },
+      front: { rotX: 90, rotY: -180, rotZ: 0, distance: 8 },
+      side: { rotX: 90, rotY: -90, rotZ: 0, distance: 8 },
+      top: { rotX: 0, rotY: -180, rotZ: 0, distance: 8 },
+    };
+
+    const DATA_CONFIG = {
+      showKeypoint: true,
+    };
+
+    const RENDER_CONFIG = {
+      camera: { fov: 45, near: 0.01, far: 5000 },
+      scene: { backgroundColor: 0x111111 },
+      lighting: {
+        ambient: { color: 0xffffff, intensity: 0.9 },
+        directional: { color: 0xffffff, intensity: 1.15, position: [3, 5, 4] },
+      },
+      points: {
+        size: 0.3,
+        opacity: 0.95,
+        alphaTest: 0.35,
+        defaultColor: '#ff8d1a',
+        fallbackColor: '#4ec3ff',
+        circleTextureSize: 64,
+      },
+      keypoints: {
+        size: 0.4,
+        glowScale: 2.0,
+        mainOpacity: 1.0,
+        mainAlphaTest: 0.02,
+        glowOpacity: 0.48,
+        glowAlphaTest: 0.01,
+        glowTextureSize: 128,
+        color: '#00fa9a',
+      },
+      bones: {
+        color: 0x8dc8ff,
+        opacity: 0.9,
+      },
+      helpers: {
+        axisScaleRatio: 0.22,
+        boundsColor: 0x00bfff,
+        boundsOpacity: 0.35,
+        groundPlaneColor: 0x1f2d3d,
+        groundPlaneOpacity: 0.22,
+        gridDivisions: 20,
+        gridColorCenter: 0x4f6f8f,
+        gridColor: 0x2f4154,
+        gridOpacity: 0.55,
+        gridZOffset: 0,
+      },
+      palette: ['#1a2a6c', '#2b83ba', '#41b6c4', '#a1dab4', '#ffffcc'],
+    };
+
+    const els = {
+      motionSelect: document.getElementById('motionSelect'),
+      colorModeSelect: document.getElementById('colorModeSelect'),
+      viewModeSelect: document.getElementById('viewModeSelect'),
+      pointCloudToggle: document.getElementById('pointCloudToggle'),
+      skeletonToggle: document.getElementById('skeletonToggle'),
+      loadStatus: document.getElementById('loadStatus'),
+      frameStatus: document.getElementById('frameStatus'),
+      pointStatus: document.getElementById('pointStatus'),
+      renderHud: document.getElementById('renderHud'),
+      canvasHost: document.getElementById('pointCloudCanvas'),
+      canvasPanel: document.querySelector('.canvas-panel'),
+      rgbImage: document.getElementById('rgbImage'),
+      depthImage: document.getElementById('depthImage'),
+      silhouetteImage: document.getElementById('silhouetteImage'),
+      playButton: document.getElementById('playButton'),
+      frameSlider: document.getElementById('frameSlider'),
+      frameName: document.getElementById('frameName'),
+    };
+
+    const state = {
+      motion: null,
+      frameIndex: 0,
+      playing: false,
+      timerId: null,
+      loading: false,
+      cache: new Map(),
+      lastFrameToken: 0,
+      colorMode: 'default',
+      showPointCloud: true,
+      showSkeleton: true,
+    };
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(RENDER_CONFIG.scene.backgroundColor);
+
+    const camera = new THREE.PerspectiveCamera(
+      RENDER_CONFIG.camera.fov,
+      1,
+      RENDER_CONFIG.camera.near,
+      RENDER_CONFIG.camera.far,
+    );
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    els.canvasHost.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.enablePan = true;
+    controls.screenSpacePanning = true;
+    controls.minDistance = 2.5;
+    controls.maxDistance = 26;
+    if ('zoomToCursor' in controls) {
+      controls.zoomToCursor = true;
+    }
+    controls.mouseButtons = {
+      LEFT: THREE.MOUSE.ROTATE,
+      MIDDLE: THREE.MOUSE.DOLLY,
+      RIGHT: THREE.MOUSE.PAN,
+    };
+
+    scene.add(new THREE.AmbientLight(
+      RENDER_CONFIG.lighting.ambient.color,
+      RENDER_CONFIG.lighting.ambient.intensity,
+    ));
+    const light = new THREE.DirectionalLight(
+      RENDER_CONFIG.lighting.directional.color,
+      RENDER_CONFIG.lighting.directional.intensity,
+    );
+    light.position.set(...RENDER_CONFIG.lighting.directional.position);
+    scene.add(light);
+
+    const pointTexture = createCircleTexture(RENDER_CONFIG.points.circleTextureSize);
+    const jointTexture = createGlowTexture(RENDER_CONFIG.keypoints.glowTextureSize);
+
+    const cloudGeometry = new THREE.BufferGeometry();
+    const cloudMaterial = new THREE.PointsMaterial({
+      size: RENDER_CONFIG.points.size,
+      map: pointTexture,
+      alphaMap: pointTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: RENDER_CONFIG.points.opacity,
+      alphaTest: RENDER_CONFIG.points.alphaTest,
+      sizeAttenuation: true,
+    });
+    const cloudMesh = new THREE.Points(cloudGeometry, cloudMaterial);
+    scene.add(cloudMesh);
+
+    const jointGeometry = new THREE.BufferGeometry();
+    const jointMaterial = new THREE.PointsMaterial({
+      size: RENDER_CONFIG.keypoints.size,
+      map: jointTexture,
+      alphaMap: jointTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: RENDER_CONFIG.keypoints.mainOpacity,
+      alphaTest: RENDER_CONFIG.keypoints.mainAlphaTest,
+      depthWrite: false,
+      sizeAttenuation: true,
+    });
+    const jointMesh = new THREE.Points(jointGeometry, jointMaterial);
+    scene.add(jointMesh);
+
+    const jointGlowMaterial = new THREE.PointsMaterial({
+      size: RENDER_CONFIG.keypoints.size * RENDER_CONFIG.keypoints.glowScale,
+      map: jointTexture,
+      alphaMap: jointTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: RENDER_CONFIG.keypoints.glowOpacity,
+      alphaTest: RENDER_CONFIG.keypoints.glowAlphaTest,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true,
+    });
+    const jointGlowMesh = new THREE.Points(jointGeometry, jointGlowMaterial);
+    scene.add(jointGlowMesh);
+
+    const boneGeometry = new THREE.BufferGeometry();
+    const boneMaterial = new THREE.LineBasicMaterial({
+      color: RENDER_CONFIG.bones.color,
+      transparent: true,
+      opacity: RENDER_CONFIG.bones.opacity,
+    });
+    const boneMesh = new THREE.LineSegments(boneGeometry, boneMaterial);
+    scene.add(boneMesh);
+
+    const axesHelper = new THREE.AxesHelper(1);
+    scene.add(axesHelper);
+
+    const groundPlane = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({
+        color: RENDER_CONFIG.helpers.groundPlaneColor,
+        transparent: true,
+        opacity: RENDER_CONFIG.helpers.groundPlaneOpacity,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      }),
+    );
+    scene.add(groundPlane);
+
+    const groundGrid = new THREE.GridHelper(
+      1,
+      RENDER_CONFIG.helpers.gridDivisions,
+      RENDER_CONFIG.helpers.gridColorCenter,
+      RENDER_CONFIG.helpers.gridColor,
+    );
+    groundGrid.rotation.x = Math.PI / 2;
+    groundGrid.position.z = RENDER_CONFIG.helpers.gridZOffset;
+    setMaterialOpacity(groundGrid.material, RENDER_CONFIG.helpers.gridOpacity);
+    scene.add(groundGrid);
+
+    const boundsLines = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1)),
+      new THREE.LineBasicMaterial({
+        color: RENDER_CONFIG.helpers.boundsColor,
+        transparent: true,
+        opacity: RENDER_CONFIG.helpers.boundsOpacity,
+      }),
+    );
+    scene.add(boundsLines);
+
+    const ro = new ResizeObserver(resizeRenderer);
+    ro.observe(els.canvasPanel);
+
+    setupControls();
+    resizeRenderer();
+    applyCameraFromViewConfig();
+    animate();
+    initializeSamples();
+
+    function setupControls() {
+      els.motionSelect.addEventListener('change', () => {
+        const next = sampleMotions.find((motion) => motion.id === els.motionSelect.value) || sampleMotions[0];
+        loadMotion(next);
+      });
+
+      els.colorModeSelect.addEventListener('change', () => {
+        state.colorMode = els.colorModeSelect.value;
+        rerenderCurrentFrame();
+      });
+
+      els.viewModeSelect.addEventListener('change', () => {
+        applyViewPreset(els.viewModeSelect.value);
+      });
+
+      els.pointCloudToggle.addEventListener('change', () => {
+        state.showPointCloud = els.pointCloudToggle.checked;
+        rerenderCurrentFrame();
+      });
+
+      els.skeletonToggle.addEventListener('change', () => {
+        state.showSkeleton = els.skeletonToggle.checked;
+        rerenderCurrentFrame();
+      });
+
+      els.playButton.addEventListener('click', () => {
+        setPlaying(!state.playing);
+      });
+
+      els.frameSlider.addEventListener('input', () => {
+        setPlaying(false);
+        setFrame(Number(els.frameSlider.value));
+      });
+    }
+
+    async function initializeSamples() {
+      sampleMotions = await loadSampleManifest();
+      populateMotionSelect(sampleMotions);
+      if (sampleMotions.length > 0) {
+        await loadMotion(sampleMotions[0]);
+      } else {
+        setLoadStatus('empty', 'No sample motions found');
+      }
+    }
+
+    async function loadSampleManifest() {
+      try {
+        const response = await fetch(SAMPLE_MANIFEST_PATH);
+        if (!response.ok) throw new Error(`Manifest ${response.status}`);
+        const manifest = await response.json();
+        const motions = normalizeManifestMotions(manifest);
+        if (motions.length === 0) throw new Error('Manifest has no valid motions');
+        return motions;
+      } catch (error) {
+        console.warn('Falling back to built-in sample motion list', error);
+        return DEFAULT_SAMPLE_MOTIONS;
+      }
+    }
+
+    function normalizeManifestMotions(manifest) {
+      if (!Array.isArray(manifest?.motions)) return [];
+      return manifest.motions
+        .map((motion) => {
+          const id = String(motion.id || '').trim();
+          if (!id) return null;
+          const frames = Array.isArray(motion.frames)
+            ? motion.frames.map((frame) => String(frame))
+            : buildManifestFramePaths(motion);
+          if (frames.length === 0) return null;
+          return {
+            id,
+            label: motion.label || `${id} - ${frames.length} frames`,
+            frames,
+          };
+        })
+        .filter(Boolean)
+        .sort((a, b) => naturalCompare(a.id, b.id));
+    }
+
+    function buildManifestFramePaths(motion) {
+      const id = String(motion.id || '').trim();
+      const frameStart = Number(motion.frameStart);
+      const frameCount = Number(motion.frameCount);
+      const frameDigits = Number(motion.frameDigits || 6);
+      const framePrefix = motion.framePrefix || 'frame_';
+      const frameExtension = motion.frameExtension || '.json';
+      if (!id || !Number.isInteger(frameStart) || !Number.isInteger(frameCount) || frameCount <= 0) return [];
+      return Array.from({ length: frameCount }, (_, index) => {
+        const frameNumber = String(frameStart + index).padStart(frameDigits, '0');
+        return `samples/${id}/${framePrefix}${frameNumber}${frameExtension}`;
+      });
+    }
+
+    function populateMotionSelect(motions) {
+      els.motionSelect.innerHTML = '';
+      for (const motion of motions) {
+        const option = document.createElement('option');
+        option.value = motion.id;
+        option.textContent = motion.label;
+        els.motionSelect.appendChild(option);
+      }
+    }
+
+    function naturalCompare(a, b) {
+      return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
+    }
+
+    function applyViewPreset(presetName) {
+      const preset = VIEW_PRESETS[presetName] || VIEW_PRESETS.reference;
+      els.viewModeSelect.value = VIEW_PRESETS[presetName] ? presetName : 'reference';
+      Object.assign(VIEW_CONFIG, preset);
+      applyCameraFromViewConfig();
+    }
+
+    async function loadMotion(motion) {
+      setPlaying(false);
+      state.motion = motion;
+      state.frameIndex = 0;
+      state.cache.clear();
+      els.frameSlider.max = String(Math.max(0, motion.frames.length - 1));
+      els.frameSlider.value = '0';
+      await setFrame(0);
+    }
+
+    function setPlaying(nextPlaying) {
+      state.playing = nextPlaying;
+      els.playButton.classList.toggle('is-playing', state.playing);
+      els.playButton.setAttribute('aria-label', state.playing ? 'Pause sample' : 'Play sample');
+
+      if (state.timerId) {
+        window.clearInterval(state.timerId);
+        state.timerId = null;
+      }
+
+      if (state.playing) {
+        state.timerId = window.setInterval(() => {
+          if (state.loading) return;
+          const nextIndex = (state.frameIndex + 1) % state.motion.frames.length;
+          setFrame(nextIndex);
+        }, FRAME_INTERVAL_MS);
+      }
+    }
+
+    async function setFrame(index) {
+      const motion = state.motion;
+      if (!motion || motion.frames.length === 0) return;
+
+      const clampedIndex = Math.max(0, Math.min(motion.frames.length - 1, index));
+      const framePath = motion.frames[clampedIndex];
+      const token = state.lastFrameToken + 1;
+      state.lastFrameToken = token;
+      state.loading = true;
+      setLoadStatus('loading', 'Loading frame');
+      els.frameSlider.value = String(clampedIndex);
+
+      try {
+        const frame = await fetchFrame(framePath);
+        if (token !== state.lastFrameToken) return;
+        state.frameIndex = clampedIndex;
+        renderFrame(frame, framePath);
+        prefetchFrame(motion.frames[(clampedIndex + 1) % motion.frames.length]);
+        prefetchFrame(motion.frames[(clampedIndex + 2) % motion.frames.length]);
+      } catch (error) {
+        console.error(error);
+        setLoadStatus('error', 'Sample load failed');
+        els.frameName.textContent = framePath.split('/').pop();
+      } finally {
+        if (token === state.lastFrameToken) {
+          state.loading = false;
+        }
+      }
+    }
+
+    function rerenderCurrentFrame() {
+      const motion = state.motion;
+      if (!motion || motion.frames.length === 0) return;
+      const clampedIndex = Math.max(0, Math.min(motion.frames.length - 1, state.frameIndex));
+      const framePath = motion.frames[clampedIndex];
+      const frame = state.cache.get(framePath);
+      if (frame) {
+        renderFrame(frame, framePath);
+      } else {
+        setFrame(clampedIndex);
+      }
+    }
+
+    async function fetchFrame(framePath) {
+      if (state.cache.has(framePath)) {
+        return state.cache.get(framePath);
+      }
+
+      const response = await fetch(framePath);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${framePath}: ${response.status}`);
+      }
+      const frame = await response.json();
+      state.cache.set(framePath, frame);
+      return frame;
+    }
+
+    function prefetchFrame(framePath) {
+      if (!framePath || state.cache.has(framePath)) return;
+      fetch(framePath)
+        .then((response) => response.ok ? response.json() : null)
+        .then((frame) => {
+          if (!frame) return;
+          state.cache.set(framePath, frame);
+        })
+        .catch(() => {});
+    }
+
+    function renderFrame(frame, framePath) {
+      const radarPoints = state.showPointCloud ? normalizeRadarPoints(frame) : [];
+      const joints = state.showSkeleton && DATA_CONFIG.showKeypoint ? normalizeJoints(frame) : [];
+      updatePointCloud(radarPoints);
+      updateSkeleton(joints);
+      updateImages(frame);
+
+      const frameNumber = frame.frame_number ?? state.frameIndex + 1;
+      setLoadStatus('ready', 'Frame ready');
+      els.frameStatus.textContent = `Frame ${state.frameIndex + 1} / ${state.motion.frames.length}`;
+      els.pointStatus.textContent = `Points ${radarPoints.length} / Joints ${joints.length}`;
+      els.frameName.textContent = `${framePath.split('/').pop()} | frame_number=${frameNumber}`;
+    }
+
+    function normalizeRadarPoints(frame) {
+      const points = frame?.radar_point_cloud?.points;
+      if (!Array.isArray(points)) return [];
+      return points
+        .map((p) => ({
+          x: Number(p.x),
+          y: Number(p.y),
+          z: Number(p.z),
+          doppler: Number(p.doppler),
+          snr: Number(p.snr),
+        }))
+        .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y) && Number.isFinite(p.z));
+    }
+
+    function normalizeJoints(frame) {
+      const joints = frame?.ground_truth_skeleton?.joints;
+      if (!Array.isArray(joints)) return [];
+      return [...joints]
+        .sort((a, b) => Number(a.joint_index) - Number(b.joint_index))
+        .map((joint) => ({
+          index: Number(joint.joint_index),
+          x: Number(joint.x),
+          y: Number(joint.y),
+          z: Number(joint.z),
+        }))
+        .filter((joint) => Number.isFinite(joint.x) && Number.isFinite(joint.y) && Number.isFinite(joint.z));
+    }
+
+    function updatePointCloud(points) {
+      if (points.length === 0) {
+        clearGeometry(cloudGeometry, true);
+        els.renderHud.textContent = `${renderModeLabel()} rendering: no visible points`;
+        return;
+      }
+
+      const activeMetric = state.colorMode === 'snr' ? 'snr' : 'doppler';
+      let minMetric = Infinity;
+      let maxMetric = -Infinity;
+      for (const point of points) {
+        const value = point[activeMetric];
+        if (!Number.isFinite(value)) continue;
+        minMetric = Math.min(minMetric, value);
+        maxMetric = Math.max(maxMetric, value);
+      }
+      if (!Number.isFinite(minMetric) || !Number.isFinite(maxMetric)) {
+        minMetric = 0;
+        maxMetric = 1;
+      }
+
+      const fallbackColor = new THREE.Color(RENDER_CONFIG.points.fallbackColor);
+      const defaultColor = new THREE.Color(RENDER_CONFIG.points.defaultColor);
+
+      const positions = new Float32Array(points.length * 3);
+      const colors = new Float32Array(points.length * 3);
+      for (let i = 0; i < points.length; i += 1) {
+        const point = points[i];
+        positions[i * 3] = point.x;
+        positions[i * 3 + 1] = point.y;
+        positions[i * 3 + 2] = point.z;
+
+        const value = point[activeMetric];
+        const color = state.colorMode === 'default' || !Number.isFinite(value)
+          ? (state.colorMode === 'default' ? defaultColor : fallbackColor)
+          : colorFromValue(value, minMetric, maxMetric);
+        colors[i * 3] = color.r;
+        colors[i * 3 + 1] = color.g;
+        colors[i * 3 + 2] = color.b;
+      }
+
+      cloudGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      cloudGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      cloudGeometry.setDrawRange(0, points.length);
+      cloudGeometry.computeBoundingSphere();
+      els.renderHud.textContent = state.colorMode === 'default'
+        ? `Default rendering: ${points.length} points`
+        : `${renderModeLabel()} range ${formatNumber(minMetric)} to ${formatNumber(maxMetric)}`;
+    }
+
+    function updateSkeleton(joints) {
+      if (joints.length === 0) {
+        clearGeometry(jointGeometry, true);
+        clearGeometry(boneGeometry, false);
+        return;
+      }
+
+      const positions = new Float32Array(joints.length * 3);
+      const colors = new Float32Array(joints.length * 3);
+      const jointColor = new THREE.Color(RENDER_CONFIG.keypoints.color);
+      for (let i = 0; i < joints.length; i += 1) {
+        positions[i * 3] = joints[i].x;
+        positions[i * 3 + 1] = joints[i].y;
+        positions[i * 3 + 2] = joints[i].z;
+        colors[i * 3] = jointColor.r;
+        colors[i * 3 + 1] = jointColor.g;
+        colors[i * 3 + 2] = jointColor.b;
+      }
+      jointGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      jointGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      jointGeometry.setDrawRange(0, joints.length);
+      jointGeometry.computeBoundingSphere();
+
+      const byIndex = new Map(joints.map((joint) => [joint.index, joint]));
+      const linePositions = [];
+      for (const [aIndex, bIndex] of SKELETON_LINKS_19) {
+        const a = byIndex.get(aIndex);
+        const b = byIndex.get(bIndex);
+        if (!a || !b) continue;
+        linePositions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+      }
+
+      if (linePositions.length === 0) {
+        clearGeometry(boneGeometry, false);
+        return;
+      }
+
+      boneGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+      boneGeometry.setDrawRange(0, linePositions.length / 3);
+      boneGeometry.computeBoundingSphere();
+    }
+
+    function updateImages(frame) {
+      setImage(els.rgbImage, frame.rgb_image);
+      setImage(els.depthImage, frame.depth_image);
+      setImage(els.silhouetteImage, frame.silhouette_image);
+    }
+
+    function setImage(imgEl, payload) {
+      if (!payload?.available || !payload.data_uri) {
+        imgEl.removeAttribute('src');
+        return;
+      }
+      imgEl.src = payload.data_uri;
+    }
+
+    function createCircleTexture(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const radius = size * 0.45;
+      ctx.clearRect(0, 0, size, size);
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    }
+
+    function createGlowTexture(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const center = size * 0.5;
+      const gradient = ctx.createRadialGradient(center, center, 0, center, center, center);
+      gradient.addColorStop(0.0, 'rgba(255,255,255,1.0)');
+      gradient.addColorStop(0.35, 'rgba(255,255,255,0.95)');
+      gradient.addColorStop(0.7, 'rgba(255,255,255,0.28)');
+      gradient.addColorStop(1.0, 'rgba(255,255,255,0.0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    }
+
+    function centerFromViewConfig(config) {
+      return new THREE.Vector3(
+        (config.xlim[0] + config.xlim[1]) * 0.5,
+        (config.ylim[0] + config.ylim[1]) * 0.5,
+        (config.zlim[0] + config.zlim[1]) * 0.5,
+      );
+    }
+
+    function updateBoundsHelper() {
+      const sx = Math.max(0.01, VIEW_CONFIG.xlim[1] - VIEW_CONFIG.xlim[0]);
+      const sy = Math.max(0.01, VIEW_CONFIG.ylim[1] - VIEW_CONFIG.ylim[0]);
+      const sz = Math.max(0.01, VIEW_CONFIG.zlim[1] - VIEW_CONFIG.zlim[0]);
+      const centerX = (VIEW_CONFIG.xlim[0] + VIEW_CONFIG.xlim[1]) * 0.5;
+      const centerY = (VIEW_CONFIG.ylim[0] + VIEW_CONFIG.ylim[1]) * 0.5;
+      const centerZ = (VIEW_CONFIG.zlim[0] + VIEW_CONFIG.zlim[1]) * 0.5;
+
+      boundsLines.scale.set(sx, sy, sz);
+      boundsLines.position.set(centerX, centerY, centerZ);
+
+      groundPlane.scale.set(sx, sy, 1);
+      groundPlane.position.set(centerX, centerY, 0);
+
+      groundGrid.scale.set(sx, 1, sy);
+      groundGrid.position.set(centerX, centerY, RENDER_CONFIG.helpers.gridZOffset);
+
+      const axisLen = Math.max(0.5, Math.max(sx, sy, sz) * RENDER_CONFIG.helpers.axisScaleRatio);
+      axesHelper.position.set(VIEW_CONFIG.xlim[0], VIEW_CONFIG.ylim[0], VIEW_CONFIG.zlim[0]);
+      axesHelper.scale.set(axisLen, axisLen, axisLen);
+    }
+
+    function applyCameraFromViewConfig() {
+      const center = centerFromViewConfig(VIEW_CONFIG);
+      const euler = new THREE.Euler(
+        THREE.MathUtils.degToRad(VIEW_CONFIG.rotX),
+        THREE.MathUtils.degToRad(VIEW_CONFIG.rotY),
+        THREE.MathUtils.degToRad(VIEW_CONFIG.rotZ),
+        'XYZ',
+      );
+      const distance = Math.max(0.1, VIEW_CONFIG.distance);
+      const offset = new THREE.Vector3(0, 0, distance).applyEuler(euler);
+      const up = new THREE.Vector3(0, 1, 0).applyEuler(euler);
+
+      camera.position.copy(center).add(offset);
+      camera.up.copy(up);
+      camera.lookAt(center);
+      controls.target.copy(center);
+
+      const maxSpan = Math.max(
+        VIEW_CONFIG.xlim[1] - VIEW_CONFIG.xlim[0],
+        VIEW_CONFIG.ylim[1] - VIEW_CONFIG.ylim[0],
+        VIEW_CONFIG.zlim[1] - VIEW_CONFIG.zlim[0],
+        1,
+      );
+      camera.near = Math.max(0.01, distance * 0.001);
+      camera.far = Math.max(100, distance + maxSpan * 8);
+      camera.updateProjectionMatrix();
+      controls.update();
+      updateBoundsHelper();
+    }
+
+    function setMaterialOpacity(material, opacity) {
+      const materials = Array.isArray(material) ? material : [material];
+      for (const item of materials) {
+        item.transparent = true;
+        item.opacity = opacity;
+      }
+    }
+
+    function colorFromValue(value, minValue, maxValue) {
+      const palette = RENDER_CONFIG.palette.map((hex) => new THREE.Color(hex));
+      const span = maxValue - minValue;
+      const t = span <= 1e-8 ? 0.5 : Math.max(0, Math.min(1, (value - minValue) / span));
+      const scaled = t * (palette.length - 1);
+      const index = Math.floor(scaled);
+      const local = scaled - index;
+      const color = palette[Math.min(index, palette.length - 1)].clone().lerp(palette[Math.min(index + 1, palette.length - 1)], local);
+      const brightness = 0.45 + t * 0.75;
+      color.multiplyScalar(brightness);
+      color.r = Math.min(1, color.r);
+      color.g = Math.min(1, color.g);
+      color.b = Math.min(1, color.b);
+      return color;
+    }
+
+    function renderModeLabel() {
+      if (state.colorMode === 'doppler') return 'Doppler';
+      if (state.colorMode === 'snr') return 'SNR';
+      return 'Default';
+    }
+
+    function setLoadStatus(status, label) {
+      els.loadStatus.className = `status-dot is-${status}`;
+      els.loadStatus.setAttribute('aria-label', label);
+      els.loadStatus.title = label;
+    }
+
+    function clearGeometry(geometry, withColor) {
+      geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(0), 3));
+      if (withColor) geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(0), 3));
+      geometry.setDrawRange(0, 0);
+      geometry.computeBoundingSphere();
+    }
+
+    function resizeRenderer() {
+      const rect = els.canvasPanel.getBoundingClientRect();
+      const width = Math.max(1, Math.floor(rect.width));
+      const height = Math.max(1, Math.floor(rect.height));
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    function formatNumber(value) {
+      return Number.isFinite(value) ? value.toFixed(1) : '--';
+    }
+  </script>
+</body>
+</html>
