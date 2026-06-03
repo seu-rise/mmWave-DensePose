@@ -3,10 +3,13 @@
 [![Project Status](https://img.shields.io/badge/status-release%20in%20preparation-orange)](#repository-status)
 [![Code](https://img.shields.io/badge/code-coming%20soon-lightgrey)](#repository-status)
 [![Dataset](https://img.shields.io/badge/dataset-coming%20soon-lightgrey)](#dataset)
-[![Project Page](https://img.shields.io/badge/project-page-blue)](docs/index.html)
+[![Project Page](https://img.shields.io/badge/project-page-blue)](https://seu-rise.github.io/mmWave-DensePose/)
 [![License](https://img.shields.io/badge/license-MIT-green)](#license)
 
-[Project page and interactive dataset samples](https://seu-rise.github.io/mmWave-DensePose/).
+## Live Demo
+
+**Project page and interactive dataset samples:**  
+https://seu-rise.github.io/mmWave-DensePose/
 
 ![mmWave-DensePose first figure](assets/images/scenario.png)
 
