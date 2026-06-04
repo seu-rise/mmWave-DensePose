@@ -448,6 +448,89 @@
       accent-color: var(--cyan);
     }
 
+    .canvas-legend {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      z-index: 3;
+      display: grid;
+      gap: 0.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(7, 11, 15, 0.7);
+      color: #dce8e9;
+      padding: 0.55rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      white-space: nowrap;
+    }
+
+    .legend-swatch {
+      width: 0.68rem;
+      height: 0.68rem;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
+    }
+
+    .legend-swatch.is-point {
+      background: #ff8d1a;
+    }
+
+    .legend-swatch.is-joint {
+      background: #00fa9a;
+    }
+
+    .legend-swatch.is-bone {
+      border-radius: 2px;
+      height: 0.18rem;
+      background: #8dc8ff;
+    }
+
+    .canvas-colorbar {
+      position: absolute;
+      right: var(--space-md);
+      bottom: var(--space-md);
+      z-index: 3;
+      display: none;
+      min-width: 190px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(7, 11, 15, 0.72);
+      color: #dce8e9;
+      padding: 0.55rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .canvas-colorbar.is-visible {
+      display: grid;
+      gap: 0.36rem;
+    }
+
+    .colorbar-ramp {
+      height: 0.55rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2b005c, #0057d9, #00d5ff, #f8f32b, #ff7a00, #b00020);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+    }
+
+    .colorbar-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
     .canvas-hud {
       position: absolute;
       left: var(--space-md);
@@ -541,6 +624,7 @@
       max-height: calc(100% - 0.9rem);
       object-fit: contain;
       background: #06090d;
+      transform: scaleX(-1);
     }
 
     .playback {
@@ -993,6 +1077,20 @@
         font-size: 0.66rem;
       }
 
+      .canvas-legend {
+        top: var(--space-sm);
+        right: var(--space-sm);
+        padding: 0.45rem 0.5rem;
+        font-size: 0.62rem;
+      }
+
+      .canvas-colorbar {
+        right: var(--space-sm);
+        bottom: calc(var(--space-sm) + 2.2rem);
+        min-width: min(170px, calc(100% - 1.5rem));
+        font-size: 0.62rem;
+      }
+
       .hud-block {
         max-width: 100%;
         font-size: 0.68rem;
@@ -1388,6 +1486,19 @@
                 Skeleton
               </label>
             </div>
+            <div class="canvas-legend" aria-label="Point cloud legend">
+              <span class="legend-item"><span class="legend-swatch is-point"></span>Points</span>
+              <span class="legend-item"><span class="legend-swatch is-joint"></span>Joints</span>
+              <span class="legend-item"><span class="legend-swatch is-bone"></span>Bones</span>
+            </div>
+            <div id="colorbarOverlay" class="canvas-colorbar" aria-label="Point cloud color scale">
+              <div id="colorbarTitle">Doppler</div>
+              <div class="colorbar-ramp"></div>
+              <div class="colorbar-meta">
+                <span id="colorbarMin">--</span>
+                <span id="colorbarMax">--</span>
+              </div>
+            </div>
             <div class="canvas-hud">
               <div class="hud-block" id="renderHud">Default point rendering</div>
             </div>
@@ -1629,24 +1740,30 @@
     ];
 
     const VIEW_CONFIG = {
-      rotX: 104,
-      rotY: -180,
+      rotX: 76,
+      rotY: 0,
       rotZ: 0,
       distance: 7,
+      targetOffsetZ: -0.95,
       xlim: [-2, 2],
       ylim: [0.15, 7.15],
       zlim: [-0.1, 4],
     };
 
     const VIEW_PRESETS = {
-      reference: { rotX: 104, rotY: -180, rotZ: 0, distance: 7 },
-      front: { rotX: 90, rotY: -180, rotZ: 0, distance: 8 },
+      reference: { rotX: 76, rotY: 0, rotZ: 0, distance: 7 },
+      front: { rotX: 90, rotY: 0, rotZ: 0, distance: 8 },
       side: { rotX: 90, rotY: -90, rotZ: 0, distance: 8 },
       top: { rotX: 0, rotY: -180, rotZ: 0, distance: 8 },
     };
 
     const DATA_CONFIG = {
       showKeypoint: true,
+    };
+
+    const COLOR_SCALE_RANGES = {
+      doppler: { min: -150, max: 150 },
+      snr: { min: 0, max: 50 },
     };
 
     const RENDER_CONFIG = {
@@ -1690,7 +1807,7 @@
         gridOpacity: 0.55,
         gridZOffset: 0,
       },
-      palette: ['#1a2a6c', '#2b83ba', '#41b6c4', '#a1dab4', '#ffffcc'],
+      palette: ['#2b005c', '#0057d9', '#00d5ff', '#f8f32b', '#ff7a00', '#b00020'],
     };
 
     const els = {
@@ -1704,6 +1821,10 @@
       frameStatus: document.getElementById('frameStatus'),
       pointStatus: document.getElementById('pointStatus'),
       renderHud: document.getElementById('renderHud'),
+      colorbarOverlay: document.getElementById('colorbarOverlay'),
+      colorbarTitle: document.getElementById('colorbarTitle'),
+      colorbarMin: document.getElementById('colorbarMin'),
+      colorbarMax: document.getElementById('colorbarMax'),
       canvasHost: document.getElementById('pointCloudCanvas'),
       canvasPanel: document.querySelector('.canvas-panel'),
       rgbImage: document.getElementById('rgbImage'),
@@ -2446,10 +2567,12 @@
       if (points.length === 0) {
         clearGeometry(cloudGeometry, true);
         els.renderHud.textContent = `${renderModeLabel()} rendering: no visible points`;
+        updateColorbar(null, null);
         return;
       }
 
       const activeMetric = state.colorMode === 'snr' ? 'snr' : 'doppler';
+      const fixedRange = COLOR_SCALE_RANGES[state.colorMode];
       let minMetric = Infinity;
       let maxMetric = -Infinity;
       for (const point of points) {
@@ -2458,7 +2581,10 @@
         minMetric = Math.min(minMetric, value);
         maxMetric = Math.max(maxMetric, value);
       }
-      if (!Number.isFinite(minMetric) || !Number.isFinite(maxMetric)) {
+      if (fixedRange) {
+        minMetric = fixedRange.min;
+        maxMetric = fixedRange.max;
+      } else if (!Number.isFinite(minMetric) || !Number.isFinite(maxMetric)) {
         minMetric = 0;
         maxMetric = 1;
       }
@@ -2490,6 +2616,7 @@
       els.renderHud.textContent = state.colorMode === 'default'
         ? `Default rendering: ${points.length} points`
         : `${renderModeLabel()} range ${formatNumber(minMetric)} to ${formatNumber(maxMetric)}`;
+      updateColorbar(minMetric, maxMetric);
     }
 
     function updateSkeleton(joints) {
@@ -2587,7 +2714,7 @@
       return new THREE.Vector3(
         (config.xlim[0] + config.xlim[1]) * 0.5,
         (config.ylim[0] + config.ylim[1]) * 0.5,
-        (config.zlim[0] + config.zlim[1]) * 0.5,
+        (config.zlim[0] + config.zlim[1]) * 0.5 + (config.targetOffsetZ || 0),
       );
     }
 
@@ -2658,19 +2785,26 @@
       const scaled = t * (palette.length - 1);
       const index = Math.floor(scaled);
       const local = scaled - index;
-      const color = palette[Math.min(index, palette.length - 1)].clone().lerp(palette[Math.min(index + 1, palette.length - 1)], local);
-      const brightness = 0.45 + t * 0.75;
-      color.multiplyScalar(brightness);
-      color.r = Math.min(1, color.r);
-      color.g = Math.min(1, color.g);
-      color.b = Math.min(1, color.b);
-      return color;
+      return palette[Math.min(index, palette.length - 1)]
+        .clone()
+        .lerp(palette[Math.min(index + 1, palette.length - 1)], local);
     }
 
     function renderModeLabel() {
       if (state.colorMode === 'doppler') return 'Doppler';
       if (state.colorMode === 'snr') return 'SNR';
       return 'Default';
+    }
+
+    function updateColorbar(minValue, maxValue) {
+      const shouldShow = state.colorMode === 'doppler' || state.colorMode === 'snr';
+      if (!els.colorbarOverlay) return;
+      els.colorbarOverlay.classList.toggle('is-visible', shouldShow);
+      if (!shouldShow) return;
+
+      els.colorbarTitle.textContent = renderModeLabel();
+      els.colorbarMin.textContent = formatNumber(minValue);
+      els.colorbarMax.textContent = formatNumber(maxValue);
     }
 
     function setLoadStatus(status, label) {
