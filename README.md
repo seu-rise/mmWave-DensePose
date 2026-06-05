@@ -116,6 +116,16 @@ PAST-Net achieves the best average MLE among the reproduced and adapted baseline
 
 The full per-joint comparison and ablation results will be provided with the paper materials and evaluation scripts.
 
+## Real-Time Application Scenario
+
+The following real-world deployment video shows real-time pose estimation for actions and subjects that are not included in the dataset. The experiment was recorded under strong illumination conditions and runs on an entry-level NVIDIA T400 GPU.
+
+<video src="docs/assets/video/scene.mp4" controls muted loop playsinline width="100%">
+  Your browser does not support the video tag.
+</video>
+
+Video file: [docs/assets/video/scene.mp4](docs/assets/video/scene.mp4)
+
 ## License
 
 This repository is released under the **MIT License**.

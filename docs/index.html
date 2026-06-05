@@ -856,6 +856,21 @@
       color: var(--ink);
     }
 
+    .application-video {
+      margin: 0;
+      border: 1px solid rgba(18, 24, 31, 0.18);
+      background: #101419;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .application-video video {
+      display: block;
+      width: 100%;
+      max-height: min(72vh, 760px);
+      background: #101419;
+    }
+
     footer {
       padding: 44px 0 60px;
       color: var(--muted);
@@ -1635,6 +1650,25 @@
         </table>
         <p>The full per-joint comparison and ablation results will be provided with the paper materials and evaluation scripts.</p>
       </div>
+    </section>
+
+    <section class="page-shell section" aria-labelledby="application-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Real-Time Application Scenario</p>
+          <h2 id="application-title">Real-world deployment on an entry-level GPU</h2>
+        </div>
+        <p>
+          This real-time deployment video shows actions and subjects that are not included in the dataset.
+          The experiment was recorded under strong illumination conditions and runs on an entry-level NVIDIA T400 GPU.
+        </p>
+      </div>
+      <figure class="application-video">
+        <video controls muted loop playsinline preload="metadata" aria-label="Real-time mmWave-DensePose application scenario">
+          <source src="assets/video/scene.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </figure>
     </section>
 
     <section class="page-shell section" aria-labelledby="release-title">
