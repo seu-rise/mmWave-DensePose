@@ -120,11 +120,13 @@ The full per-joint comparison and ablation results will be provided with the pap
 
 The following real-world deployment video shows real-time pose estimation for actions and subjects that are not included in the dataset. The experiment was recorded under strong illumination conditions and runs on an entry-level NVIDIA T400 GPU.
 
-<video src="docs/assets/video/scene.mp4" controls muted loop playsinline width="100%">
-  Your browser does not support the video tag.
-</video>
+<p align="center">
+  <a href="docs/assets/video/scene.mp4">
+    <img src="docs/assets/images/scene-poster.jpg" alt="Preview of the real-time application scenario video" width="100%">
+  </a>
+</p>
 
-Video file: [docs/assets/video/scene.mp4](docs/assets/video/scene.mp4)
+GitHub does not reliably inline-preview repository-hosted MP4 files in README pages. Click the preview image above to open or download the video directly.
 
 ## License
 
