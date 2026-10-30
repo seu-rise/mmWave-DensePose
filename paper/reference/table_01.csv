@@ -1,0 +1,4 @@
+Data stream,Source,Main content,Role in this paper
+Radar point cloud,mmWave radar,"Position, Doppler   informatio n ,  and  SNR",Network input
+Skeleton,Kinect V2,3D skeletal joints,Ground-truth annotation
+RGB image,Kinect V2,Color image,Reference

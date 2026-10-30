@@ -1,0 +1,4 @@
+epoch,step,test_loss,test_mle
+0,0,0.0030152013059705496,0.07295660674571991
+avg_inference_time_ms,0.610351
+total_frames,56596

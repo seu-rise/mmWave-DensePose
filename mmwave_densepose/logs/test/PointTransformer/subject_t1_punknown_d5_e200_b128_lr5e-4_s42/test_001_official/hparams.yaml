@@ -1,0 +1,6 @@
+auc_max_threshold: 0.15
+learning_rate: 0.0005
+max_epochs: 200
+optimizer_name: adam
+pck_threshold: 0.15
+weight_decay: 1.0e-05

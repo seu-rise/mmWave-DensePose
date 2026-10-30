@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source": "docs/guides/ENG-2474.pdf",
+  "source_sha256": "927a7a74a3e613e8a573c2a0b81cfc74c2444de0740ab2194e92155d1206fa91",
+  "figures": {
+    "1": {
+      "caption": "Illustration of a 3D-HPE scenario observed by mmWave radar and the proposed part-aware spatio-temporal network (PAST-Net) framework. The upper part shows the application scenario, where the mmWave radar senses human motion in an indoor scene and converts radar observations into dense point clouds, which provide spatial observations for radar-only 3D-HPE. The bottom part provides a schematic overview of the core structure of PAST-Net. Given a temporal window of dense radar point clouds, PAST-Net extracts frame-level point-cloud features, reorganizes them into skeleton-aware part-token representations, models the temporal evolution of body-region-guided part tokens, and regresses the 19 skeletal keypoints of the target frame. P_t: the input radar point cloud at frame t, where t = 1, 2, ..., T; T: the number of radar point-cloud frames. Y_T: the predicted skeletal pose corresponding to the target frame P_T. Δt: the temporal interval between adjacent frames. Q, K, and V: the query, key, and value matrices, respectively; FFN: feed-forward network.",
+      "page": 2
+    },
+    "2": {
+      "caption": "The radar point-cloud-generation pipeline embedded in a four-chip cascaded MIMO radar system. The system uses a 12-transmitter and 16-receiver configuration to support dense human point-cloud acquisition. The radar echoes are processed through chirp-level processing, Doppler processing, DDMA demodulation, channel calibration, target detection, angle estimation, and attribute extraction. The generated point clouds are transmitted to the host computer through Ethernet using UDP. ω₁, ω₂, and ω₁₂: the DDMA coding offset of the transmitter 1, 2, and 12, respectively; TX₁, TX₂, and TX₁₂: transmitter 1, transmitter 2, and transmitter 12, respectively;",
+      "page": 5
+    },
+    "3": {
+      "caption": "Overview of the multimodal data-acquisition system. The system consists of a dense mmWave radar, a Kinect V2 sensor, and a Python-based host computer. The subject moves within a predefined sensing area jointly covered by the two sensors.",
+      "page": 6
+    },
+    "4": {
+      "caption": "Example of one synchronized data frame after calibration and synchronization. The figure shows the frame-level data organization, including the radar observation, skeleton annotation, and visual reference. (a) Calibrated radar point cloud; (b) corresponding Kinect V2 skeleton annotation; (c) RGB image used as a visual reference. The radar point cloud and skeleton annotation share the same world coordinate system.",
+      "page": 7
+    },
+    "5": {
+      "caption": "Valid radar point-count statistics of the mmWave-DensePose dataset and representative radar point-cloud datasets. (a) Distribution of valid radar point counts per frame in the mmWave-DensePose dataset. The bars show the proportion of frames in each point-count interval, and the curve shows the cumulative frame proportion. The dashed vertical line marks the mean and median point counts, which are 164.0 and 165.0, respectively. (b) Comparison of effective radar point-count distributions across different datasets. The box indicates the interquartile range from Q₁ to Q₃, where Q₁ and Q₃ denote the first and third quartiles, respectively; the central line indicates the median, the whiskers indicate the minimum and maximum values, the brown line indicates the 5th–95th percentile range, and the diamond marks the mean value.",
+      "page": 8
+    },
+    "6": {
+      "caption": "Qualitative comparison of radar point-cloud observations across different datasets. In each subfigure, the upper panel shows the radar point cloud, and the lower panel shows the corresponding ground-truth skeleton. The visual examples are generated from the released datasets of the corresponding studies. (a) mmWave-DensePose (ours); (b) mRI; (c) mmPose-NLP; (d) MiliPoint; (e) MARS.",
+      "page": 9
+    },
+    "7": {
+      "caption": "Definition of the 19 human skeletal keypoints used in the mmWave-DensePose benchmark. The keypoint indices correspond to the per-joint labels J_k used in model prediction and experimental evaluation. J_k: the MLE of the kth keypoint (k = 0, 1, …, K - 1); K: the number of skeletal keypoints and K = 19.",
+      "page": 10
+    },
+    "8": {
+      "caption": "Network overview. g_T: the global frame-level feature of T radar point-cloud frame; SA: set abstraction; MLP: multilayer perceptron; PointNetConv: PointNet convolution.",
+      "page": 11
+    },
+    "9": {
+      "caption": "Representative target-frame examples of motions 1–19 and five free-motion samples in the mmWave-DensePose dataset. For each sample, the three panels from left to right show the radar point cloud, the corresponding ground-truth skeleton, and the synchronized RGB image used only as a visual reference.",
+      "page": 14
+    },
+    "10": {
+      "caption": "Representative target-frame examples of motions 13–19 and five free-motion samples in the mmWave-DensePose dataset. For each sample, the three panels from left to right show the radar point cloud, the corresponding ground-truth skeleton, and the synchronized RGB image used only as a visual reference.",
+      "page": 15
+    },
+    "11": {
+      "caption": "Qualitative comparison of 3D-HPE results. PAST-Net (“ours”) produces skeletal predictions that are more consistent with the ground-truth annotations, especially in weakly observed body regions such as hands and limbs.",
+      "page": 17
+    }
+  },
+  "tables": {
+    "1": {
+      "caption": "Data streams and their roles in the mmWave-DensePose dataset."
+    },
+    "2": {
+      "caption": "Statistics of the mmWave-DensePose dataset."
+    },
+    "3": {
+      "caption": "Comparison with representative mmWave radar human sensing datasets."
+    },
+    "4": {
+      "caption": "Overall comparison using multiple 3D-HPE evaluation metrics."
+    },
+    "5": {
+      "caption": "Per-joint and average MLE comparison with representative radar-based 3D-HPE methods."
+    },
+    "6": {
+      "caption": "Statistical robustness of PAST-Net and PntPoseAT across five independent training runs."
+    },
+    "7": {
+      "caption": "Comparison of single-frame and multi-frame methods under the sequence-chunk and subject-independent protocols."
+    },
+    "8": {
+      "caption": "Module-level ablation study of PAST-Net."
+    },
+    "9": {
+      "caption": "Input-feature ablation study."
+    },
+    "10": {
+      "caption": "Effect of input radar point count on the pose estimation performance of PAST-Net."
+    }
+  }
+}

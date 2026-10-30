@@ -1,0 +1,30 @@
+{
+  "model": "PCCCompletion",
+  "task": "completion",
+  "data_root": "data/mmwave_densepose",
+  "num_points": 80,
+  "num_out_points": 196,
+  "pcc_label_radius": 0.05,
+  "input_dim": 3,
+  "num_joints": 19,
+  "seq_len": 1,
+  "seed": 42,
+  "batch_size": 128,
+  "epochs": 100,
+  "learning_rate": 0.0005,
+  "weight_decay": 0.00001,
+  "optimizer": "adam",
+  "ablation": "full",
+  "checkpoint": "paper/experiments/subject-pcc-dense/checkpoints/best.ckpt",
+  "scheduler_name": "cosine",
+  "scheduler_eta_min": 0.000001,
+  "split_strategy": "subject",
+  "partition": [
+    0.8,
+    0.1,
+    0.1
+  ],
+  "split_chunk_size": null,
+  "max_timestamp_gap_ms": 300,
+  "min_valid_points": 50
+}

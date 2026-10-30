@@ -1,0 +1,845 @@
+{
+  "schema_version": 1,
+  "release_version": "1",
+  "packages": [
+    {
+      "id": "predictions-main-global-local-test_001",
+      "kind": "predictions",
+      "asset_id": "main-global-local",
+      "test_id": "test_001",
+      "filename": "mmwave-densepose-predictions-main-global-local-test_001-v1.zip",
+      "size_bytes": 2322361396,
+      "sha256": "f5a903649d12aa635f196759c2d8e89073cfaef8b4bfbde49dcff11629baa1b7",
+      "url": "https://download.scidb.cn/download?fileId=d8dbba70682ecb4d83e3974c7bee0322&path=/V1/mmwave-densepose-predictions-main-global-local-test_001-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-predictions-main-global-local-test_001-v1.zip",
+      "files": [
+        {
+          "path": "mmwave_densepose/logs/test/GlobalLocalNetwork/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official/test_dense_result.pkl",
+          "size_bytes": 59837,
+          "sha256": "b34d8768b528bea134b6fbd32dd9ddad8860c4902a219fa8b2c279fbbee745a8"
+        },
+        {
+          "path": "mmwave_densepose/logs/test/GlobalLocalNetwork/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official/test_results.pkl",
+          "size_bytes": 2322300751,
+          "sha256": "25a059d87ae0477f80315dd99749a50c73012b842dad0da69a930097bc880282"
+        }
+      ]
+    },
+    {
+      "id": "predictions-main-mm-pose-fk-test_001",
+      "kind": "predictions",
+      "asset_id": "main-mm-pose-fk",
+      "test_id": "test_001",
+      "filename": "mmwave-densepose-predictions-main-mm-pose-fk-test_001-v1.zip",
+      "size_bytes": 2322301189,
+      "sha256": "0b0f0fa3817050e94b9c6410f03e0f2a51bde2fc5f8d99d82d957f6f5fb238a4",
+      "url": "https://download.scidb.cn/download?fileId=431efb7f461a64b79bdda657f9fd942f&path=/V1/mmwave-densepose-predictions-main-mm-pose-fk-test_001-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-predictions-main-mm-pose-fk-test_001-v1.zip",
+      "files": [
+        {
+          "path": "mmwave_densepose/logs/test/MMPoseFK/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official/test_results.pkl",
+          "size_bytes": 2322300751,
+          "sha256": "5e14ccfdbd79522340937f591a04b712e3e5100d536e73b5449a7552df243bbc"
+        }
+      ]
+    },
+    {
+      "id": "predictions-main-pastnet-test_001",
+      "kind": "predictions",
+      "asset_id": "main-pastnet",
+      "test_id": "test_001",
+      "filename": "mmwave-densepose-predictions-main-pastnet-test_001-v1.zip",
+      "size_bytes": 2322301187,
+      "sha256": "9f0466712dfe28e96cd1a383499b9c18e3ef5c9cc2a9018a4ba088993cd6d6c0",
+      "url": "https://download.scidb.cn/download?fileId=0711b8e8abd2c5c47d2e864ad6ede644&path=/V1/mmwave-densepose-predictions-main-pastnet-test_001-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-predictions-main-pastnet-test_001-v1.zip",
+      "files": [
+        {
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official/test_results.pkl",
+          "size_bytes": 2322300751,
+          "sha256": "2913157768a11aa55bddc7d483676417a1590af59d580f9e56497dacce4496ce"
+        }
+      ]
+    },
+    {
+      "id": "predictions-main-pnt-pose-at-test_001",
+      "kind": "predictions",
+      "asset_id": "main-pnt-pose-at",
+      "test_id": "test_001",
+      "filename": "mmwave-densepose-predictions-main-pnt-pose-at-test_001-v1.zip",
+      "size_bytes": 2322301189,
+      "sha256": "e6d03666fb3380403624cf66e5b81f1f9f2ed62fe458c33a6f9a096d165a2565",
+      "url": "https://download.scidb.cn/download?fileId=9a01a39de8b2b6600c11f2d535d94cfd&path=/V1/mmwave-densepose-predictions-main-pnt-pose-at-test_001-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-predictions-main-pnt-pose-at-test_001-v1.zip",
+      "files": [
+        {
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_punknown_d5_e50_b128_lr1e-3_s42/test_001_official/test_results.pkl",
+          "size_bytes": 2322300751,
+          "sha256": "dd5c007f6a87d7fe0d23259f292e2643ae89c5214fef29e8ba43a3f1d890ae9b"
+        }
+      ]
+    },
+    {
+      "id": "predictions-main-pose-graph-test_001",
+      "kind": "predictions",
+      "asset_id": "main-pose-graph",
+      "test_id": "test_001",
+      "filename": "mmwave-densepose-predictions-main-pose-graph-test_001-v1.zip",
+      "size_bytes": 493353541,
+      "sha256": "2b65fa071b34bb61b52426348203165e7df85030af8b5f8a025c252d63edba17",
+      "url": "https://download.scidb.cn/download?fileId=4a054a2fd5a51c8ebf8a69399a0831e6&path=/V1/mmwave-densepose-predictions-main-pose-graph-test_001-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-predictions-main-pose-graph-test_001-v1.zip",
+      "files": [
+        {
+          "path": "mmwave_densepose/logs/test/PoseGraphNet/chunk_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official/test_results_sequence_ordered.pkl",
+          "size_bytes": 493353157,
+          "sha256": "e696bbd441a1443ce053d7373ddc07d00c19803851fd0c02b1c50ddeac190a30"
+        }
+      ]
+    },
+    {
+      "id": "weights-ablation-input-3d",
+      "kind": "weights",
+      "asset_id": "ablation-input-3d",
+      "filename": "mmwave-densepose-weights-ablation-input-3d-v1.zip",
+      "size_bytes": 88105954,
+      "sha256": "0c1d9c731feaae1fa1d1c9a8944d0942fcf66f0828918e5ee5eaabadbc6dc6b5",
+      "url": "https://download.scidb.cn/download?fileId=4f40746b22a995cc211c89179f11e8f9&path=/V1/mmwave-densepose-weights-ablation-input-3d-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-ablation-input-3d-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/ablation-input-3d/checkpoints/best.ckpt",
+          "size_bytes": 88105722,
+          "sha256": "a53ee45698fdc86d01992f26c5f07ff249d28ca49a7abbb5e1b36f70c70a2991"
+        }
+      ]
+    },
+    {
+      "id": "weights-ablation-pointnet",
+      "kind": "weights",
+      "asset_id": "ablation-pointnet",
+      "filename": "mmwave-densepose-weights-ablation-pointnet-v1.zip",
+      "size_bytes": 53477166,
+      "sha256": "eb8c3ddc3b2ad4f2080171ea49cd74d0216806300cb8d10d7203ab2d170f06d6",
+      "url": "https://download.scidb.cn/download?fileId=7b7d841d995cdb5aecd632225fef12b7&path=/V1/mmwave-densepose-weights-ablation-pointnet-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-ablation-pointnet-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/ablation-pointnet/checkpoints/best.ckpt",
+          "size_bytes": 53476934,
+          "sha256": "1040b8c8ba79f94e2afad1103a3d420d5d059fa63bdbfe54d306b0101c896d26"
+        }
+      ]
+    },
+    {
+      "id": "weights-ablation-spatial",
+      "kind": "weights",
+      "asset_id": "ablation-spatial",
+      "filename": "mmwave-densepose-weights-ablation-spatial-v1.zip",
+      "size_bytes": 87310492,
+      "sha256": "dc0c33393c8c2f114818f8ad083af161ccefe4464ec1e704371ea1d138011db6",
+      "url": "https://download.scidb.cn/download?fileId=4912ff7c6338a2d774c1771081504097&path=/V1/mmwave-densepose-weights-ablation-spatial-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-ablation-spatial-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/ablation-spatial/checkpoints/best.ckpt",
+          "size_bytes": 87310262,
+          "sha256": "c8d86f2441ca9d218c0374d774db5b991e13c6bcb608600214e71e7c95d85749"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-dgcnn",
+      "kind": "weights",
+      "asset_id": "main-dgcnn",
+      "filename": "mmwave-densepose-weights-main-dgcnn-v1.zip",
+      "size_bytes": 102735374,
+      "sha256": "e4e3e0dcd2a2f4db4ad68f4bd5cc8e8924efcffa168cf8b5f040a3a53bcdd154",
+      "url": "https://download.scidb.cn/download?fileId=e118c1460bcd9fda23ffaf289859a26c&path=/V1/mmwave-densepose-weights-main-dgcnn-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-dgcnn-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-dgcnn/checkpoints/best.ckpt",
+          "size_bytes": 102735156,
+          "sha256": "45e640ceb2777ce20ea84809509361eaf4f6c5f4131f20ccce673eade2ad4e27"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-dual-path",
+      "kind": "weights",
+      "asset_id": "main-dual-path",
+      "filename": "mmwave-densepose-weights-main-dual-path-v1.zip",
+      "size_bytes": 19277762,
+      "sha256": "c67c39db7df8410e6e450df2f717ea32e838b8dc2c853642ef95bf245d666651",
+      "url": "https://download.scidb.cn/download?fileId=1daa9ea40abf6b0651d4c7d34593c31b&path=/V1/mmwave-densepose-weights-main-dual-path-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-dual-path-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-dual-path/checkpoints/best.ckpt",
+          "size_bytes": 19277536,
+          "sha256": "f553408de67b92fabfabc4eb6ea46e4099e504d5eea5b01b8e007e907c538360"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-global-local",
+      "kind": "weights",
+      "asset_id": "main-global-local",
+      "filename": "mmwave-densepose-weights-main-global-local-v1.zip",
+      "size_bytes": 35878128,
+      "sha256": "3ec67398b9fed5f36105f6abef2f6c0b3ee40179cfd3b7bd891f3abee25de526",
+      "url": "https://download.scidb.cn/download?fileId=c66baf2088f5335edbe175e3e2f2b612&path=/V1/mmwave-densepose-weights-main-global-local-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-global-local-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-global-local/checkpoints/best.ckpt",
+          "size_bytes": 35877896,
+          "sha256": "75ef8f47c1e58d2366dd97f7b568ec036c836800b2117e23a03570a02e3777f8"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-mm-pose-fk",
+      "kind": "weights",
+      "asset_id": "main-mm-pose-fk",
+      "filename": "mmwave-densepose-weights-main-mm-pose-fk-v1.zip",
+      "size_bytes": 5386390,
+      "sha256": "d186c8400fd706127303f89b13bc66371cd393c4f960957cf2aca7120e10d56e",
+      "url": "https://download.scidb.cn/download?fileId=018c88614c09a3c5aff3d2902bfb436f&path=/V1/mmwave-densepose-weights-main-mm-pose-fk-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-mm-pose-fk-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-mm-pose-fk/checkpoints/best.ckpt",
+          "size_bytes": 5386162,
+          "sha256": "c7165a91fc7168f18695282a842fcac1291aa743f5366cdfb6eaeceacb795cd3"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-pastnet",
+      "kind": "weights",
+      "asset_id": "main-pastnet",
+      "filename": "mmwave-densepose-weights-main-pastnet-v1.zip",
+      "size_bytes": 88106456,
+      "sha256": "7cf86165992d32373f591296eb6f432b8bc251127aa8fa691007f94f7e76207d",
+      "url": "https://download.scidb.cn/download?fileId=1eccedbccfe015dc96d2cc747ba7103c&path=/V1/mmwave-densepose-weights-main-pastnet-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-pastnet-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-pastnet/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "ae2eba13cd9261ee8bcc64ea81a24d727cec2c004dffc5bf1c96440b89d0e91b"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-pcc-dense",
+      "kind": "weights",
+      "asset_id": "main-pcc-dense",
+      "filename": "mmwave-densepose-weights-main-pcc-dense-v1.zip",
+      "size_bytes": 33627374,
+      "sha256": "4530c41a0757f4395b06b44cf2fad8f10ecc15c839856d98b2d3963f815908d5",
+      "url": "https://download.scidb.cn/download?fileId=48285a7d506bdd7338a2f8428951be5e&path=/V1/mmwave-densepose-weights-main-pcc-dense-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-pcc-dense-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-pcc-dense/checkpoints/best.ckpt",
+          "size_bytes": 33627148,
+          "sha256": "4c57f764366720d702ee3b9a83d87a770cb6e4e50be676c3c0b58cbe68452447"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-pnt-pose-at",
+      "kind": "weights",
+      "asset_id": "main-pnt-pose-at",
+      "filename": "mmwave-densepose-weights-main-pnt-pose-at-v1.zip",
+      "size_bytes": 15111943,
+      "sha256": "db5f331d43a2f02ebea321fd58672c72fad726c4f8cceaaa1730b5599518a6c1",
+      "url": "https://download.scidb.cn/download?fileId=0603a54c5a829292202772f08d042420&path=/V1/mmwave-densepose-weights-main-pnt-pose-at-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-pnt-pose-at-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-pnt-pose-at/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "c5330c73498c1a2a3bff11d1b2556908deacc0318fcaec43d455cedeb99732d6"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-point-transformer",
+      "kind": "weights",
+      "asset_id": "main-point-transformer",
+      "filename": "mmwave-densepose-weights-main-point-transformer-v1.zip",
+      "size_bytes": 11046902,
+      "sha256": "66eb54e7e890c07b3c4226e0e3efb68c38eea709be3885f7c68b33ef224d0fd2",
+      "url": "https://download.scidb.cn/download?fileId=f8159ffc59ac189616e17ccb45ff5683&path=/V1/mmwave-densepose-weights-main-point-transformer-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-point-transformer-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-point-transformer/checkpoints/best.ckpt",
+          "size_bytes": 11046660,
+          "sha256": "44e778cd5b47b7a03a33fbe12c2ce87fb0f6fed2b9615cbb30e8860d2518ba32"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-pointmlp",
+      "kind": "weights",
+      "asset_id": "main-pointmlp",
+      "filename": "mmwave-densepose-weights-main-pointmlp-v1.zip",
+      "size_bytes": 100737368,
+      "sha256": "b4527283170a06b6394c577d0bb93c187e829876adffe6c0ce5e1f514c279110",
+      "url": "https://download.scidb.cn/download?fileId=8044abbf164a27c3a1d73c2dff032bbb&path=/V1/mmwave-densepose-weights-main-pointmlp-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-pointmlp-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-pointmlp/checkpoints/best.ckpt",
+          "size_bytes": 100737144,
+          "sha256": "c5123415e2744769d4c7fec866f1769eed2012d9a57ccedee8d0676db8210833"
+        }
+      ]
+    },
+    {
+      "id": "weights-main-pose-graph",
+      "kind": "weights",
+      "asset_id": "main-pose-graph",
+      "filename": "mmwave-densepose-weights-main-pose-graph-v1.zip",
+      "size_bytes": 1760592,
+      "sha256": "1bee2f536efe1a726d381a7c301ab01765b17216a843930ca08a1655d94c9ff0",
+      "url": "https://download.scidb.cn/download?fileId=945c009b4fbfbad5b4af73b5c833ae42&path=/V1/mmwave-densepose-weights-main-pose-graph-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-main-pose-graph-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/main-pose-graph/checkpoints/best.ckpt",
+          "size_bytes": 1760364,
+          "sha256": "e8160eca2a753b73cd7e3349fe1413f1da2e64141258d4674b8d12eeb1401c9c"
+        }
+      ]
+    },
+    {
+      "id": "weights-pastnet-seed50",
+      "kind": "weights",
+      "asset_id": "pastnet-seed50",
+      "filename": "mmwave-densepose-weights-pastnet-seed50-v1.zip",
+      "size_bytes": 88106460,
+      "sha256": "530c9d778566b8ba69c47c9226e3457c2262661436da7e841d2b8206024c5820",
+      "url": "https://download.scidb.cn/download?fileId=e2ea1cb7069fa742bac932aee4041b7b&path=/V1/mmwave-densepose-weights-pastnet-seed50-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pastnet-seed50-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pastnet-seed50/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "fae2d6ce0a40451a4cf923915c438e437c136e4860e9992968b8684b5ae83af2"
+        }
+      ]
+    },
+    {
+      "id": "weights-pastnet-seed66",
+      "kind": "weights",
+      "asset_id": "pastnet-seed66",
+      "filename": "mmwave-densepose-weights-pastnet-seed66-v1.zip",
+      "size_bytes": 88106460,
+      "sha256": "e6ac00b55c84931e46a064b3e57f342896e3c6f359e3a6025304e0346de50612",
+      "url": "https://download.scidb.cn/download?fileId=2a1b2ff6181ca2434e96759f22f7094f&path=/V1/mmwave-densepose-weights-pastnet-seed66-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pastnet-seed66-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pastnet-seed66/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "e23d0bf697c700cddd4d98edaa0d1f70d703a8deb4f730b1369dbb2ffad2b0ea"
+        }
+      ]
+    },
+    {
+      "id": "weights-pastnet-seed69",
+      "kind": "weights",
+      "asset_id": "pastnet-seed69",
+      "filename": "mmwave-densepose-weights-pastnet-seed69-v1.zip",
+      "size_bytes": 88106460,
+      "sha256": "8eb9b41b7b32aaa34e34191c699f9c5122b8705dc3670984f3eb6d5e064f0ed9",
+      "url": "https://download.scidb.cn/download?fileId=ce86e639c4df8a61cd7e8570600cdc59&path=/V1/mmwave-densepose-weights-pastnet-seed69-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pastnet-seed69-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pastnet-seed69/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "7b515d74636b72083efdb51301595b4c70abcd69e8b0392117170767d4f0638b"
+        }
+      ]
+    },
+    {
+      "id": "weights-pastnet-seed87",
+      "kind": "weights",
+      "asset_id": "pastnet-seed87",
+      "filename": "mmwave-densepose-weights-pastnet-seed87-v1.zip",
+      "size_bytes": 88106460,
+      "sha256": "839dafd31eaf0215b9af8d191012faca42a267514339dcaa956a6fcb996d3056",
+      "url": "https://download.scidb.cn/download?fileId=91a4978026754b0b2df560a8c1c9e1b5&path=/V1/mmwave-densepose-weights-pastnet-seed87-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pastnet-seed87-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pastnet-seed87/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "1f9ecba1fac946b2473eefe7f46f6f8f80127c5ddedded8a3942bd4cf453d458"
+        }
+      ]
+    },
+    {
+      "id": "weights-pnt-pose-at-seed50",
+      "kind": "weights",
+      "asset_id": "pnt-pose-at-seed50",
+      "filename": "mmwave-densepose-weights-pnt-pose-at-seed50-v1.zip",
+      "size_bytes": 15111947,
+      "sha256": "ce2026b15f2f96545e3d84a677a09c5f2bf26c767fb1714e68fa7b79187eaeb6",
+      "url": "https://download.scidb.cn/download?fileId=f3f6afbe25279d136af03cb9f7561b9e&path=/V1/mmwave-densepose-weights-pnt-pose-at-seed50-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pnt-pose-at-seed50-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pnt-pose-at-seed50/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "f5da0c71e3b072da50787e0283f906d6c4e463896f1ae9e6476fdb5c28d1d22d"
+        }
+      ]
+    },
+    {
+      "id": "weights-pnt-pose-at-seed66",
+      "kind": "weights",
+      "asset_id": "pnt-pose-at-seed66",
+      "filename": "mmwave-densepose-weights-pnt-pose-at-seed66-v1.zip",
+      "size_bytes": 15111947,
+      "sha256": "ac42ed1d3da020371d52ec0a26ccc074070453f97b2ef6cf5c75011d75daef25",
+      "url": "https://download.scidb.cn/download?fileId=bff1b2858a82a1a8a6e12895b41caeac&path=/V1/mmwave-densepose-weights-pnt-pose-at-seed66-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pnt-pose-at-seed66-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pnt-pose-at-seed66/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "5e77919ed220c032d4589132c32b2bc254b2de57f9b5f8845a14308df58bcdbc"
+        }
+      ]
+    },
+    {
+      "id": "weights-pnt-pose-at-seed69",
+      "kind": "weights",
+      "asset_id": "pnt-pose-at-seed69",
+      "filename": "mmwave-densepose-weights-pnt-pose-at-seed69-v1.zip",
+      "size_bytes": 15111947,
+      "sha256": "c385e7f588c62fe73a47b53d0bd36434223828ccd012097047fc90456253abca",
+      "url": "https://download.scidb.cn/download?fileId=48a64cc5feaf94fa414557a45871f51e&path=/V1/mmwave-densepose-weights-pnt-pose-at-seed69-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pnt-pose-at-seed69-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pnt-pose-at-seed69/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "e4283700958262dede5cfccaa16a9cf98e48ac5467b399eb0788f81039ea94bf"
+        }
+      ]
+    },
+    {
+      "id": "weights-pnt-pose-at-seed87",
+      "kind": "weights",
+      "asset_id": "pnt-pose-at-seed87",
+      "filename": "mmwave-densepose-weights-pnt-pose-at-seed87-v1.zip",
+      "size_bytes": 15111947,
+      "sha256": "c76d569a25b0a0e01e3572e1c751cf7a3a5f452c6ae225049611e4021f1b10f2",
+      "url": "https://download.scidb.cn/download?fileId=6b5c205effa2af59083f5897d24798cf&path=/V1/mmwave-densepose-weights-pnt-pose-at-seed87-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-pnt-pose-at-seed87-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/pnt-pose-at-seed87/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "e563d327cb9bf28139ea35be183c5a12cd4646029eccbee544c2c9e0fe50f41c"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-100",
+      "kind": "weights",
+      "asset_id": "points-100",
+      "filename": "mmwave-densepose-weights-points-100-v1.zip",
+      "size_bytes": 88106452,
+      "sha256": "ba05194281c7d1613e4fc9794a55584817a4b577b2e39e9b6a46231b8d72ec07",
+      "url": "https://download.scidb.cn/download?fileId=656b5379d543c56fac76c661cf65f722&path=/V1/mmwave-densepose-weights-points-100-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-100-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-100/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "b218a1c38da642606da26e73e692378909d6cd3cdebae12f516a9b3c12148e8a"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-125",
+      "kind": "weights",
+      "asset_id": "points-125",
+      "filename": "mmwave-densepose-weights-points-125-v1.zip",
+      "size_bytes": 88106452,
+      "sha256": "116f288dcae35c8882d365ad5ee6f76d9c5da0524a00609d98cdf2db5c2f4722",
+      "url": "https://download.scidb.cn/download?fileId=18acd1d75aefe8c9fac8bea20d48d39e&path=/V1/mmwave-densepose-weights-points-125-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-125-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-125/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "891ac92b6dfbd573f53537d3c471aa52afde6471b400235359e4c22cb7f9921d"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-150",
+      "kind": "weights",
+      "asset_id": "points-150",
+      "filename": "mmwave-densepose-weights-points-150-v1.zip",
+      "size_bytes": 88106452,
+      "sha256": "07d0e80faec762470b2920866d42293b0b9e3b29a14a2a0a70213bda4a3353ab",
+      "url": "https://download.scidb.cn/download?fileId=7545c6bb8659dacf215dbd4b3dbaa67c&path=/V1/mmwave-densepose-weights-points-150-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-150-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-150/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "4bfa6eb6bbd5abe8572ee7a186492d22ab19804082365b043f0e99e11f55a029"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-25",
+      "kind": "weights",
+      "asset_id": "points-25",
+      "filename": "mmwave-densepose-weights-points-25-v1.zip",
+      "size_bytes": 88106450,
+      "sha256": "5f42fd493d8be7cdd46b8af12ad6e152208a9edfd5c2d982c8902f8132ccbed9",
+      "url": "https://download.scidb.cn/download?fileId=2831ee528d6b7050ec1992282151f01e&path=/V1/mmwave-densepose-weights-points-25-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-25-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-25/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "bdcb7336d96621742dc6dd4cceea741334d80723ebb2af6547b7eb6faed3ee8a"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-50",
+      "kind": "weights",
+      "asset_id": "points-50",
+      "filename": "mmwave-densepose-weights-points-50-v1.zip",
+      "size_bytes": 88106450,
+      "sha256": "b89730b7156e337f0204e6096ea7cb047731666b8c55efadbf4c8a7d6e8e6753",
+      "url": "https://download.scidb.cn/download?fileId=f298be6872b5e5cbaba8ba0a1c949de6&path=/V1/mmwave-densepose-weights-points-50-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-50-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-50/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "f0eccf3c00ed2dd91aad40d2dc88e4b03bdfe44595d0ad17458e0e4c1e5be029"
+        }
+      ]
+    },
+    {
+      "id": "weights-points-75",
+      "kind": "weights",
+      "asset_id": "points-75",
+      "filename": "mmwave-densepose-weights-points-75-v1.zip",
+      "size_bytes": 88106450,
+      "sha256": "b6b1d98a84088e6dbd86fbe5a90769190c0faf09920fd3f9886116d1721e2418",
+      "url": "https://download.scidb.cn/download?fileId=4c1110b5b8a7f11a0820e789208c7e09&path=/V1/mmwave-densepose-weights-points-75-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-points-75-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/points-75/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "1a41f73f398ceaa8f876324c01977acca048b133800e7e20f80fc9985db5775f"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-dgcnn",
+      "kind": "weights",
+      "asset_id": "subject-dgcnn",
+      "filename": "mmwave-densepose-weights-subject-dgcnn-v1.zip",
+      "size_bytes": 102735380,
+      "sha256": "966634935f326b46a5342b81fe6f30099f8dff1515fe95ee7b1884b7d66f2994",
+      "url": "https://download.scidb.cn/download?fileId=ed0d1e1822a16c2df664ddf51e8b4738&path=/V1/mmwave-densepose-weights-subject-dgcnn-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-dgcnn-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-dgcnn/checkpoints/best.ckpt",
+          "size_bytes": 102735156,
+          "sha256": "63d51293ec49f96d0f3325d5b68bef15c9393c9bc6d07820d5e4595a4532e092"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-dual-path",
+      "kind": "weights",
+      "asset_id": "subject-dual-path",
+      "filename": "mmwave-densepose-weights-subject-dual-path-v1.zip",
+      "size_bytes": 19277768,
+      "sha256": "b91f15da2de4d916b684dcb8b35097ec5ece1604cc891d95b4cfcd71f7c8b449",
+      "url": "https://download.scidb.cn/download?fileId=768b045dcadb3c73427bffe2ae6ad91f&path=/V1/mmwave-densepose-weights-subject-dual-path-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-dual-path-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-dual-path/checkpoints/best.ckpt",
+          "size_bytes": 19277536,
+          "sha256": "0f7b9f02ee41fdac8bab75ef1c56719e2f98dd9beb93be592e25c115420fa23d"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-global-local",
+      "kind": "weights",
+      "asset_id": "subject-global-local",
+      "filename": "mmwave-densepose-weights-subject-global-local-v1.zip",
+      "size_bytes": 35878134,
+      "sha256": "29e907ff8bdfa891b813959091a881a1bb86920ee214587ec96c0e1253584691",
+      "url": "https://download.scidb.cn/download?fileId=ac7d77a02778d5dab6409aa0bd396f83&path=/V1/mmwave-densepose-weights-subject-global-local-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-global-local-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-global-local/checkpoints/best.ckpt",
+          "size_bytes": 35877896,
+          "sha256": "53a09f2143eb7295c72b03f323aff721bde912591be38e91d24e45ae29bfbb75"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-mm-pose-fk",
+      "kind": "weights",
+      "asset_id": "subject-mm-pose-fk",
+      "filename": "mmwave-densepose-weights-subject-mm-pose-fk-v1.zip",
+      "size_bytes": 5386396,
+      "sha256": "6cd674b380ed9e9b478fe0e771cf5ab030c4f3934bc0bfb475322ab5f981cce4",
+      "url": "https://download.scidb.cn/download?fileId=2538fec2dff6a95e1c55b065c6c64be1&path=/V1/mmwave-densepose-weights-subject-mm-pose-fk-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-mm-pose-fk-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-mm-pose-fk/checkpoints/best.ckpt",
+          "size_bytes": 5386162,
+          "sha256": "3690c22582bc880937ce27b23f680126868fde0b3adcefeb4f2b28ab765cc47a"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-pastnet",
+      "kind": "weights",
+      "asset_id": "subject-pastnet",
+      "filename": "mmwave-densepose-weights-subject-pastnet-v1.zip",
+      "size_bytes": 88106462,
+      "sha256": "3fc553283275d9a2551018a6b739da974d470be4bfd3b4fd6daa2e0d60155553",
+      "url": "https://download.scidb.cn/download?fileId=95fab47f75abb7d1c660b0a572fc9a1d&path=/V1/mmwave-densepose-weights-subject-pastnet-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-pastnet-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-pastnet/checkpoints/best.ckpt",
+          "size_bytes": 88106234,
+          "sha256": "fe8a7426fbd14459662d92236cfdf62eb057c73f8b499f98de733a1d2f66efb2"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-pcc-dense",
+      "kind": "weights",
+      "asset_id": "subject-pcc-dense",
+      "filename": "mmwave-densepose-weights-subject-pcc-dense-v1.zip",
+      "size_bytes": 33627444,
+      "sha256": "a9814f0223e746a93445adafd503019f7f3e0d81a9f6503c60b1d735a0419f9f",
+      "url": "https://download.scidb.cn/download?fileId=6a6a45f7fe2d78b2d4c857978957753e&path=/V1/mmwave-densepose-weights-subject-pcc-dense-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-pcc-dense-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-pcc-dense/checkpoints/best.ckpt",
+          "size_bytes": 33627212,
+          "sha256": "d8dd1095f12ce148f8322e12433c167eebb08580028f9971c65b37f0738279a4"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-pnt-pose-at",
+      "kind": "weights",
+      "asset_id": "subject-pnt-pose-at",
+      "filename": "mmwave-densepose-weights-subject-pnt-pose-at-v1.zip",
+      "size_bytes": 15111949,
+      "sha256": "fd65b0689c58dc4df03428172b091e44ea274311bbb51b7e4231e3b08cb4188c",
+      "url": "https://download.scidb.cn/download?fileId=93816e2f3de8f9448de7da061295c426&path=/V1/mmwave-densepose-weights-subject-pnt-pose-at-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-pnt-pose-at-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-pnt-pose-at/checkpoints/best.ckpt",
+          "size_bytes": 15111713,
+          "sha256": "6b1f435de6f8494bf99dbc70bfabad3c4fe0278bf387e34aac2281d19abcf48b"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-point-transformer",
+      "kind": "weights",
+      "asset_id": "subject-point-transformer",
+      "filename": "mmwave-densepose-weights-subject-point-transformer-v1.zip",
+      "size_bytes": 11046972,
+      "sha256": "67eb66e6f215505f8999ba58e0998e2398ded13f0176cf4b3ac23e006dbe8802",
+      "url": "https://download.scidb.cn/download?fileId=82fbb01c2349fdf3600a20323e42810c&path=/V1/mmwave-densepose-weights-subject-point-transformer-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-point-transformer-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-point-transformer/checkpoints/best.ckpt",
+          "size_bytes": 11046724,
+          "sha256": "f800bc2b9d293612fc780ca26c32fb480f0fc3eb5eec471a55463d2b44aa6474"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-pointmlp",
+      "kind": "weights",
+      "asset_id": "subject-pointmlp",
+      "filename": "mmwave-densepose-weights-subject-pointmlp-v1.zip",
+      "size_bytes": 100737374,
+      "sha256": "fa1538536e38f464cd81b94dd262770dcb6f9d735ada94747f14cbcf5a8f8e48",
+      "url": "https://download.scidb.cn/download?fileId=04f59c5f1d719410ac4cfc3847121ee3&path=/V1/mmwave-densepose-weights-subject-pointmlp-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-pointmlp-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-pointmlp/checkpoints/best.ckpt",
+          "size_bytes": 100737144,
+          "sha256": "094f68940283de969ddcdf911a2e7f82f69fbe83b0cbb0fa58b9eaea9a00b07f"
+        }
+      ]
+    },
+    {
+      "id": "weights-subject-pose-graph",
+      "kind": "weights",
+      "asset_id": "subject-pose-graph",
+      "filename": "mmwave-densepose-weights-subject-pose-graph-v1.zip",
+      "size_bytes": 1760598,
+      "sha256": "5ff67ce488396e44baa33f69f9d86a386e289bd7b0b4b08abc6de369e86c6bed",
+      "url": "https://download.scidb.cn/download?fileId=be60e25240296a99c94f20e5d8b42504&path=/V1/mmwave-densepose-weights-subject-pose-graph-v1.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-weights-subject-pose-graph-v1.zip",
+      "files": [
+        {
+          "path": "paper/experiments/subject-pose-graph/checkpoints/best.ckpt",
+          "size_bytes": 1760364,
+          "sha256": "1b25e6639e2975fbd6693823a9e21d3947a8a65fd9564fab5ccd675832b9bbfa"
+        }
+      ]
+    }
+  ],
+  "unavailable_predictions": [
+    {
+      "asset_id": "main-dgcnn",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "main-point-transformer",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "main-pointmlp",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "main-dual-path",
+      "test_id": "test_002",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "main-pcc-dense",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "ablation-pointnet",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "ablation-spatial",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "ablation-input-3d",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-25",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-50",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-75",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-100",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-125",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "points-150",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pastnet-seed50",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pastnet-seed66",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pastnet-seed69",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pastnet-seed87",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pnt-pose-at-seed50",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pnt-pose-at-seed66",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pnt-pose-at-seed69",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "pnt-pose-at-seed87",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-pastnet",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-pnt-pose-at",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-mm-pose-fk",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-dual-path",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-global-local",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-pointmlp",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-pose-graph",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-point-transformer",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    },
+    {
+      "asset_id": "subject-dgcnn",
+      "test_id": "test_001",
+      "reason": "Prediction files are not available locally."
+    }
+  ]
+}

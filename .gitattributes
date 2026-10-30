@@ -1,0 +1,3 @@
+# Preserve upstream formatting in vendored libraries.
+mmwave_densepose/web/static/vendor/** -whitespace
+paper/figures/paper-browser/vendor/** -whitespace

@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmwave-densepose"
+version = "0.1.0"
+description = "Radar-only human pose estimation and Engineering paper reproduction"
+requires-python = ">=3.10.19,<3.11"
+dependencies = [
+    "numpy==2.2.6",
+    "PyYAML==6.0.3",
+    "setuptools==80.9.0",
+    "tensorboard==2.20.0",
+]
+
+[project.optional-dependencies]
+gui = ["PyQt5==5.15.9", "PyQt5-Qt5==5.15.2", "PyQt5-sip==12.17.1", "matplotlib==3.10.7"]
+cpu = ["torch==2.6.0+cpu", "torch-geometric==2.7.0", "torch-cluster==1.6.3+pt26cpu", "torch-scatter==2.1.2+pt26cpu"]
+cu118 = ["torch==2.6.0+cu118", "torch-geometric==2.7.0", "torch-cluster==1.6.3+pt26cu118", "torch-scatter==2.1.2+pt26cu118"]
+
+[tool.uv]
+required-version = ">=0.12.12"
+conflicts = [[{ extra = "cpu" }, { extra = "cu118" }]]
+environments = [
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+no-build-package = ["torch", "torch-cluster", "torch-scatter", "numpy", "PyQt5", "PyQt5-Qt5", "PyQt5-sip"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", extra = "cpu" },
+    { index = "pytorch-cu118", extra = "cu118" },
+]
+torch-cluster = [
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcpu/torch_cluster-1.6.3%2Bpt26cpu-cp310-cp310-win_amd64.whl", extra = "cpu", marker = "sys_platform == 'win32'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcpu/torch_cluster-1.6.3%2Bpt26cpu-cp310-cp310-linux_x86_64.whl", extra = "cpu", marker = "sys_platform == 'linux'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcu118/torch_cluster-1.6.3%2Bpt26cu118-cp310-cp310-win_amd64.whl", extra = "cu118", marker = "sys_platform == 'win32'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcu118/torch_cluster-1.6.3%2Bpt26cu118-cp310-cp310-linux_x86_64.whl", extra = "cu118", marker = "sys_platform == 'linux'" },
+]
+torch-scatter = [
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcpu/torch_scatter-2.1.2%2Bpt26cpu-cp310-cp310-win_amd64.whl", extra = "cpu", marker = "sys_platform == 'win32'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcpu/torch_scatter-2.1.2%2Bpt26cpu-cp310-cp310-linux_x86_64.whl", extra = "cpu", marker = "sys_platform == 'linux'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcu118/torch_scatter-2.1.2%2Bpt26cu118-cp310-cp310-win_amd64.whl", extra = "cu118", marker = "sys_platform == 'win32'" },
+    { url = "https://data.pyg.org/whl/torch-2.6.0%2Bcu118/torch_scatter-2.1.2%2Bpt26cu118-cp310-cp310-linux_x86_64.whl", extra = "cu118", marker = "sys_platform == 'linux'" },
+]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["mmwave_densepose*"]
+exclude = ["mmwave_densepose.checkpoints*", "mmwave_densepose.logs*"]
+
+[tool.setuptools.package-data]
+"mmwave_densepose.web" = ["static/*.html", "static/*.css", "static/*.js", "static/*.png", "static/*.svg", "static/vendor/*.js", "static/vendor/*.txt", "static/vendor/loaders/*.js", "static/vendor/utils/*.js", "static/views/*.js", "static/views/*.css"]
+"mmwave_densepose.web.avatars" = ["models.json", "xbot.glb"]
+
+[tool.setuptools.exclude-package-data]
+"mmwave_densepose.web.avatars" = ["remy.glb"]
+
+[tool.ruff]
+line-length = 110

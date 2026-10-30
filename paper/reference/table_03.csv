@@ -1,0 +1,10 @@
+Dataset,Hardware device,Array configuration,Number of subjects,Number of frames,Motion
+mmPose (2020) [13],2 × TI AWR1642BOOST,2T4R,2,∼40 000,4 motions
+MARS (2021) [58],TI IWR1443BOOST,3T4R,4,40 000,10 motions
+mRI (2022) [43],TI IWR1443BOOST,3T4R,20,∼160 000,12 motions
+mmPose-NLP (2023) [17],2 × TI AWR1843,3T4R,2,∼16 000,4 motions
+HuPR (2023) [25],2 × TI IWR1843BOOST,3T4R,6,141 000,3 motions
+MiliPoint (2023) [42],TI IWR1843,3T4R,11,545 000,49 motions
+mmPose-FK (2024) [52],TI IWR6843ISK-ODS,3T4R,30,∼215 000,2 motions a
+mmPrivPose3D (2025) [59],TI IWR6843AOPEVM,3T4R,15,—,3 motions
+mmWave-DensePose (ours),Customized MIMO radar,12T16R,101,570 000,19 motions + free b

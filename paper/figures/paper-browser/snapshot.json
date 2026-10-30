@@ -1,0 +1,27 @@
+{
+  "4": {
+    "panels": 3,
+    "sha256": "2a17706b6aa851aa9e32f7ad3cabf59dea53c2ecb5e916feced679895f6f0a46",
+    "status": "available"
+  },
+  "6": {
+    "panels": 10,
+    "sha256": "c1316bff04525c7913545f32a5190f78d1fe6ed7a1ba7428c4a9bc7b863b41be",
+    "status": "available"
+  },
+  "9": {
+    "panels": 36,
+    "sha256": "58ea38932774109b789a7330c87822054fa41dc956e23568fc8c666a2bad52c0",
+    "status": "available"
+  },
+  "10": {
+    "panels": 36,
+    "sha256": "75c6e1263c7f4cb5ba8479a4e947b8151a990faaa77d62c8248e02db3a088f44",
+    "status": "available"
+  },
+  "11": {
+    "panels": 30,
+    "sha256": "3e02373d6a92af375fc9017eaada18ddb69df71ec7787d432bf3a63fa2196300",
+    "status": "available"
+  }
+}

@@ -3,304 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mmWave-DensePose</title>
-  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <title>mmWave-DensePose | Radar Human Pose Estimation</title>
+  <meta name="description" content="mmWave-DensePose: a four-chip cascaded radar prototype, a 101-subject motion dataset, and PAST-Net for radar-only 3D human pose estimation with 4.08 cm MLE." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2c8a62945ef04752b5f6a928e7ce4e02"}'></script><!-- End Cloudflare Web Analytics -->
   <style>
+
     :root {
       --font-display: "Aptos Display", "Segoe UI", sans-serif;
       --font-body: "Aptos", "Segoe UI", sans-serif;
-      --font-mono: "Cascadia Code", "Consolas", monospace;
-      --surface: #f5f3ee;
-      --surface-raised: #ffffff;
-      --surface-dark: #101419;
-      --text: #171a1f;
-      --muted: #66707c;
-      --border: #d7d2c7;
-      --primary: #0b7f8f;
-      --accent: #d47a22;
-      --green: #2f8c5f;
-      --cyan: #42c6d7;
-      --ink: #12181f;
-      --space-xs: 0.5rem;
-      --space-sm: 0.75rem;
-      --space-md: 1rem;
-      --space-lg: 1.5rem;
-      --space-xl: 2.25rem;
-      --shadow-sm: 0 8px 24px rgba(18, 24, 31, 0.08);
-      --shadow-md: 0 18px 50px rgba(18, 24, 31, 0.14);
-      --radius: 8px;
+      --font-mono: "Cascadia Code", Consolas, monospace;
+      --surface: #f6f5f2; --surface-raised: #fff; --surface-dark: #101419;
+      --text: #162630; --ink: #14232c; --muted: #5d6c73; --border: #d9dedc;
+      --primary: #12697b; --accent: #bb763c; --green: #2f8c5f; --cyan: #42c6d7;
+      --space-xs: .5rem; --space-sm: .75rem; --space-md: 1rem;
+      --space-lg: 1.5rem; --space-xl: 2.25rem; --radius: 8px;
+      --shadow-sm: 0 8px 24px rgba(18,24,31,.06);
+      --shadow-md: 0 18px 50px rgba(18,24,31,.12); --header-offset: 84px;
     }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-offset); background: var(--surface); }
+    body { margin: 0; color: var(--text); font: 17px/1.65 var(--font-body); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, select, input { font: inherit; }
+    button, a, select, input { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+    figure, p, h1, h2, h3 { margin: 0; }
+    .page-shell { width: min(1280px, calc(100% - 80px)); margin-inline: auto; }
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(246,245,242,.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav { min-height: 76px; display: flex; align-items: center; gap: 28px; }
+    .brand { display: flex; align-items: center; flex-shrink: 0; gap: 10px; font-size: 17px; font-weight: 700; letter-spacing: -.5px; }
+    .brand-mark { width: 37px; height: 37px; padding: 3px; background: #151b2a; border-radius: 8px; }
+    .nav-links { position: relative; display: flex; justify-content: flex-end; gap: 22px; margin-left: auto; font-size: 13px; white-space: nowrap; }
+    .nav-links a { padding-block: 26px; color: var(--muted); border-bottom: 2px solid transparent; }
+    .nav-links a:hover, .nav-links a.is-active { color: var(--primary); border-color: var(--primary); }
+    .nav-links a.external-link { color: var(--ink); font-weight: 700; }
+    .hero { padding-top: 48px; padding-bottom: 0; }
+    .hero-layout { display: grid; grid-template-columns: 1fr 1.16fr; gap: 44px; align-items: center; }
+    .eyebrow { color: var(--primary); font-size: 11px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font: 700 clamp(34px,3.5vw,52px)/1.08 var(--font-display); letter-spacing: -2px; }
+    .paper-title { font: 400 clamp(21px,2vw,27px)/1.35 Georgia, serif; margin-top: 20px; max-width: 520px; }
+    .authors { margin-top: 20px; font-size: 13px; line-height: 1.8; max-width: 510px; }
+    .affiliations { color: var(--muted); font-size: 12px; line-height: 1.6; margin-top: 7px; }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .resource-links a { display: inline-flex; gap: 24px; align-items: center; border: 1px solid var(--border); border-radius: 4px; padding: 8px 16px; font-size: 13px; font-weight: 600; background: #fff; }
+    .resource-links a:first-child { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .resource-links a:hover { border-color: var(--primary); }
+    .hero-result { display: flex; align-items: center; gap: 18px; margin-top: 28px; }
+    .hero-result strong { font-size: 35px; letter-spacing: -1px; line-height: 1; }
+    .hero-result strong small { font-size: 17px; font-weight: 400; letter-spacing: 0; }
+    .hero-result p { font-size: 12px; line-height: 1.6; border-left: 1px solid var(--border); padding-left: 18px; }
+    .hero-result p b { color: var(--primary); font-size: 14px; }
+    .hero-figure img { width: 100%; height: auto; border: 1px solid var(--border); background: #fff; border-radius: 6px; }
+    figcaption { font-size: 12px; color: var(--muted); line-height: 1.65; padding-top: 10px; }
+    .contributions { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .contributions h3 { font-size: 15px; margin-bottom: 7px; }
+    .contributions h3 span { color: var(--primary); font-size: 11px; margin-right: 10px; }
+    .contributions p { font-size: 14px; color: var(--muted); }
+    .section { padding-top: 80px; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 32px; }
+    h2 { font: 400 clamp(28px,3vw,38px)/1.18 Georgia, serif; letter-spacing: -.8px; }
+    .section-head > p { color: var(--muted); font-size: 15px; }
+    h3 { font-size: 17px; font-weight: 600; line-height: 1.4; }
+    .research-figure { background: #fff; border: 1px solid var(--border); padding: 20px; border-radius: 6px; }
+    .research-figure img { width: 100%; height: auto; }
+    .hardware-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .hardware-copy > p { font-size: 16px; }
+    .hardware-specs { display: grid; grid-template-columns: 1fr 1fr; margin: 24px 0 0; gap: 0 24px; }
+    .hardware-specs div { padding: 16px 0; border-top: 1px solid var(--border); }
+    .hardware-specs dt { color: var(--muted); font-size: 12px; }
+    .hardware-specs dd { margin: 4px 0 0; font-size: 23px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .dataset-strip { display: grid; grid-template-columns: repeat(4,1fr); border-block: 1px solid var(--border); margin-bottom: 24px; padding-block: 24px; }
+    .dataset-item { border-right: 1px solid var(--border); padding-left: 24px; }
+    .dataset-item:first-child { padding-left: 0; }
+    .dataset-item:last-child { border: 0; }
+    .dataset-item b { display: block; font-size: clamp(25px,3vw,36px); line-height: 1.2; letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+    .dataset-item span { display: block; font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .dataset-facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+    .dataset-facts b { color: var(--text); font-weight: 600; }
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .chart-grid figure { min-width: 0; border: 1px solid var(--border); border-radius: 6px; background: #fff; padding: 16px; }
+    .chart-grid h3 { font-size: 15px; padding: 0 4px; }
+    .radar-histogram-chart, .dataset-comparison-chart { width: 100%; height: 350px; }
+    .section-link { display: inline-block; font-size: 13px; color: var(--primary); margin-top: 18px; font-weight: 600; }
+    .dataset-resource-links { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+    .dataset-resource-links .section-link { margin-top: 0; }
+    .publication-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 4px; color: var(--primary); }
+    .publication-icon:hover { border-color: var(--primary); background: #eaf3f3; }
+    .publication-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .method-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 28px; }
+    .method-step { border-top: 2px solid var(--primary); padding-top: 16px; }
+    .method-step span { font-size: 11px; color: var(--primary); }
+    .method-step h3 { margin-block: 6px 10px; font-size: 15px; }
+    .method-step p { color: var(--muted); font-size: 13px; }
+    .result-metrics { display: grid; grid-template-columns: repeat(4,1fr); background: var(--ink); color: #fff; padding: 28px; border-radius: 6px; gap: 24px; margin-bottom: 28px; }
+    .result-metrics strong { font-size: 32px; font-weight: 600; letter-spacing: -1px; display: block; line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .result-metrics strong small { font-size: 15px; font-weight: 400; letter-spacing: 0; }
+    .result-metrics span { font-size: 12px; color: #b6c8d0; display: block; margin-top: 8px; }
+    .table-panel { min-width: 0; background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .panel-head { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); }
+    .panel-head h3 { font-size: 16px; }
+    .table-tag { font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+    .table-scroll { overflow-x: auto; }
+    .data-table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .data-table th, .data-table td { text-align: right; padding: 12px 24px; border-bottom: 1px solid #e9edeb; }
+    .data-table th { color: var(--muted); font-size: 11px; font-weight: 500; background: #fafbf9; }
+    .data-table th:first-child, .data-table td:first-child { text-align: left; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .data-table tr.ours { background: #eaf3f3; font-weight: 700; color: #10566a; }
+    .table-foot { font-size: 11px; color: var(--muted); padding: 12px 24px; border-top: 1px solid var(--border); }
+    .results-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+    .ablation { padding: 24px; }
+    .ablation-row + .ablation-row { margin-top: 23px; }
+    .ablation-label { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; margin-bottom: 8px; }
+    .ablation-track { height: 8px; background: #edf0ed; border-radius: 2px; }
+    .ablation-track span { display: block; height: 100%; background: #8da5ae; border-radius: 2px; }
+    .ablation-row:last-child .ablation-track span { background: var(--primary); }
+    .stability { margin-top: 32px; border-top: 1px solid var(--border); padding-top: 24px; font-size: 13px; color: var(--muted); }
+    .stability strong { display: block; font-size: 28px; color: var(--ink); margin-top: 8px; font-weight: 600; }
+    .application-video video { display: block; width: 100%; background: #101419; border-radius: 6px; }
+    .application-examples { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 24px; }
+    footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 80px !important; border-top: 1px solid var(--border); padding-block: 28px 40px; font-size: 12px; color: var(--muted); }
+    footer b { color: var(--ink); font-size: 14px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .footer-links a:hover { color: var(--primary); }
+    .citation-reference { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .citation-reference a { color: var(--primary); overflow-wrap: anywhere; }
+    .citation-code { margin: 0; padding: 24px; overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--ink); font: 12px/1.85 var(--font-mono); tab-size: 2; }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--surface);
-    }
-
-    html,
-    body {
-      min-width: 0;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      background:
-        linear-gradient(90deg, rgba(18, 24, 31, 0.045) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(18, 24, 31, 0.045) 1px, transparent 1px),
-        var(--surface);
-      background-size: 48px 48px;
-      font-family: var(--font-body);
-      line-height: 1.55;
-      letter-spacing: 0;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    select,
-    input {
-      font: inherit;
-    }
-
-    .page-shell {
-      width: min(1500px, calc(100% - clamp(24px, 5vw, 40px)));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(18, 24, 31, 0.12);
-      background: rgba(245, 243, 238, 0.92);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 66px;
-      gap: var(--space-lg);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.28rem;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      color: var(--muted);
-      font-size: 0.95rem;
-      min-width: 0;
-    }
-
-    .nav-links a {
-      padding: 0.35rem 0;
-      border-bottom: 2px solid transparent;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      border-color: var(--accent);
-    }
-
-    .nav-links a.external-link {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-lg);
-      padding: 34px 0 44px;
-    }
-
-    .hero-figure {
-      margin: 0;
-      justify-self: center;
-      width: min(1120px, 100%);
-      border: 1px solid rgba(18, 24, 31, 0.18);
-      background: #101419;
-      box-shadow: var(--shadow-md);
-    }
-
-    .hero-figure img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
-      gap: var(--space-xl);
-      align-items: end;
-    }
-
-    .eyebrow {
-      margin: 0 0 var(--space-md);
-      font-family: var(--font-mono);
-      color: var(--primary);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: var(--font-display);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 940px;
-      font-size: 4.9rem;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 2.25rem;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 1.08rem;
-    }
-
-    .hero-copy {
-      margin: var(--space-lg) 0 0;
-      max-width: 820px;
-      color: #3f4852;
-      font-size: 1.12rem;
-    }
-
-    .hero-panel {
-      border: 1px solid rgba(18, 24, 31, 0.22);
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .metric {
-      min-height: 118px;
-      padding: var(--space-lg);
-      border-right: 1px solid rgba(18, 24, 31, 0.14);
-      border-bottom: 1px solid rgba(18, 24, 31, 0.14);
-    }
-
-    .metric:nth-child(2n) {
-      border-right: 0;
-    }
-
-    .metric:nth-last-child(-n + 2) {
-      border-bottom: 0;
-    }
-
-    .metric strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 0.5rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .section {
-      padding: 56px 0;
-      border-top: 1px solid rgba(18, 24, 31, 0.12);
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: var(--space-lg);
-      margin-bottom: var(--space-lg);
-    }
-
-    .section-head p {
-      margin: 0;
-      max-width: 760px;
-      color: var(--muted);
-    }
-
-    .dataset-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.68);
-    }
-
-    .dataset-item {
-      min-height: 112px;
-      padding: var(--space-lg);
-      border-right: 1px solid var(--border);
-    }
-
-    .dataset-item:last-child {
-      border-right: 0;
-    }
-
-    .dataset-item b {
-      display: block;
-      color: var(--ink);
-      font-size: 1.28rem;
-    }
-
-    .dataset-item span {
-      display: block;
-      margin-top: 0.35rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .dataset-strip + .data-table {
-      margin-top: var(--space-lg);
-    }
-
-    .visualizer {
+/* Interactive viewer appearance and responsive controls. */
+.visualizer {
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(18, 24, 31, 0.2);
@@ -309,7 +142,7 @@
       max-width: 100%;
     }
 
-    .visualizer-toolbar {
+.visualizer-toolbar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -321,7 +154,7 @@
       background: #fbfaf7;
     }
 
-    .sample-select {
+.sample-select {
       display: flex;
       align-items: center;
       gap: var(--space-sm);
@@ -329,7 +162,7 @@
       font-size: 0.92rem;
     }
 
-    .toolbar-controls {
+.toolbar-controls {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -337,7 +170,7 @@
       min-width: 0;
     }
 
-    .sample-select select {
+.sample-select select {
       min-width: 156px;
       max-width: 100%;
       border: 1px solid var(--border);
@@ -347,7 +180,7 @@
       padding: 0.45rem 0.65rem;
     }
 
-    .status-line {
+.status-line {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -357,7 +190,7 @@
       font-size: 0.82rem;
     }
 
-    .status-dot {
+.status-dot {
       width: 0.72rem;
       height: 0.72rem;
       border-radius: 50%;
@@ -365,22 +198,22 @@
       box-shadow: 0 0 0 3px rgba(152, 166, 177, 0.18);
     }
 
-    .status-dot.is-loading {
+.status-dot.is-loading {
       background: #d47a22;
       box-shadow: 0 0 0 3px rgba(212, 122, 34, 0.18);
     }
 
-    .status-dot.is-ready {
+.status-dot.is-ready {
       background: #2f8c5f;
       box-shadow: 0 0 0 3px rgba(47, 140, 95, 0.18);
     }
 
-    .status-dot.is-error {
+.status-dot.is-error {
       background: #bf3f3f;
       box-shadow: 0 0 0 3px rgba(191, 63, 63, 0.18);
     }
 
-    .sample-stage {
+.sample-stage {
       display: grid;
       grid-template-columns: minmax(560px, 1fr) minmax(480px, 0.92fr);
       height: min(52vh, 520px);
@@ -388,7 +221,7 @@
       overflow: hidden;
     }
 
-    .canvas-panel {
+.canvas-panel {
       position: relative;
       height: 100%;
       min-height: 0;
@@ -401,7 +234,7 @@
       background-size: 40px 40px;
     }
 
-    #pointCloudCanvas {
+#pointCloudCanvas {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -409,13 +242,13 @@
       overflow: hidden;
     }
 
-    #pointCloudCanvas canvas {
+#pointCloudCanvas canvas {
       display: block;
       width: 100% !important;
       height: 100% !important;
     }
 
-    .canvas-controls {
+.canvas-controls {
       position: absolute;
       top: var(--space-md);
       left: var(--space-md);
@@ -425,7 +258,7 @@
       gap: 0.45rem;
     }
 
-    .canvas-toggle {
+.canvas-toggle {
       display: inline-flex;
       align-items: center;
       gap: 0.38rem;
@@ -442,14 +275,14 @@
       white-space: nowrap;
     }
 
-    .canvas-toggle input {
+.canvas-toggle input {
       width: 0.92rem;
       height: 0.92rem;
       margin: 0;
       accent-color: var(--cyan);
     }
 
-    .canvas-legend {
+.canvas-legend {
       position: absolute;
       top: var(--space-md);
       right: var(--space-md);
@@ -468,35 +301,35 @@
       pointer-events: none;
     }
 
-    .legend-item {
+.legend-item {
       display: inline-flex;
       align-items: center;
       gap: 0.42rem;
       white-space: nowrap;
     }
 
-    .legend-swatch {
+.legend-swatch {
       width: 0.68rem;
       height: 0.68rem;
       border-radius: 50%;
       box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
     }
 
-    .legend-swatch.is-point {
+.legend-swatch.is-point {
       background: #ff8d1a;
     }
 
-    .legend-swatch.is-joint {
+.legend-swatch.is-joint {
       background: #00fa9a;
     }
 
-    .legend-swatch.is-bone {
+.legend-swatch.is-bone {
       border-radius: 2px;
       height: 0.18rem;
       background: #8dc8ff;
     }
 
-    .canvas-colorbar {
+.canvas-colorbar {
       position: absolute;
       right: var(--space-md);
       bottom: var(--space-md);
@@ -514,25 +347,25 @@
       pointer-events: none;
     }
 
-    .canvas-colorbar.is-visible {
+.canvas-colorbar.is-visible {
       display: grid;
       gap: 0.36rem;
     }
 
-    .colorbar-ramp {
+.colorbar-ramp {
       height: 0.55rem;
       border-radius: 999px;
       background: linear-gradient(90deg, #2b005c, #0057d9, #00d5ff, #f8f32b, #ff7a00, #b00020);
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
     }
 
-    .colorbar-meta {
+.colorbar-meta {
       display: flex;
       justify-content: space-between;
       gap: var(--space-sm);
     }
 
-    .canvas-hud {
+.canvas-hud {
       position: absolute;
       left: var(--space-md);
       right: var(--space-md);
@@ -544,7 +377,7 @@
       pointer-events: none;
     }
 
-    .hud-block {
+.hud-block {
       border: 1px solid rgba(255, 255, 255, 0.15);
       background: rgba(7, 11, 15, 0.68);
       color: #dce8e9;
@@ -553,7 +386,7 @@
       font-size: 0.78rem;
     }
 
-    .image-panel {
+.image-panel {
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -564,7 +397,7 @@
       background: #ebe7df;
     }
 
-    .image-row {
+.image-row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-template-rows: minmax(0, 1.35fr) minmax(0, 1fr);
@@ -577,7 +410,7 @@
       background: rgba(18, 24, 31, 0.18);
     }
 
-    .image-tile {
+.image-tile {
       position: relative;
       min-height: 0;
       min-width: 0;
@@ -585,11 +418,11 @@
       background: #11161c;
     }
 
-    .image-tile.is-rgb {
+.image-tile.is-rgb {
       grid-column: 1 / -1;
     }
 
-    .image-label {
+.image-label {
       position: absolute;
       top: 0.55rem;
       left: 0.55rem;
@@ -606,7 +439,7 @@
       pointer-events: none;
     }
 
-    .image-box {
+.image-box {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -616,7 +449,7 @@
       overflow: hidden;
     }
 
-    .image-box img {
+.image-box img {
       position: absolute;
       inset: 0.45rem;
       width: calc(100% - 0.9rem);
@@ -628,7 +461,7 @@
       transform: scaleX(-1);
     }
 
-    .playback {
+.playback {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
@@ -638,7 +471,7 @@
       background: #fbfaf7;
     }
 
-    .icon-button {
+.icon-button {
       display: inline-grid;
       place-items: center;
       width: 44px;
@@ -651,11 +484,11 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .icon-button:hover {
+.icon-button:hover {
       background: #26323d;
     }
 
-    .icon-button .play-icon {
+.icon-button .play-icon {
       width: 0;
       height: 0;
       margin-left: 3px;
@@ -664,22 +497,22 @@
       border-left: 13px solid currentColor;
     }
 
-    .icon-button .pause-icon {
+.icon-button .pause-icon {
       display: none;
       width: 14px;
       height: 16px;
       background: linear-gradient(90deg, currentColor 0 5px, transparent 5px 9px, currentColor 9px 14px);
     }
 
-    .icon-button.is-playing .play-icon {
+.icon-button.is-playing .play-icon {
       display: none;
     }
 
-    .icon-button.is-playing .pause-icon {
+.icon-button.is-playing .pause-icon {
       display: block;
     }
 
-    .sr-only {
+.sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -691,19 +524,19 @@
       border: 0;
     }
 
-    .range-wrap {
+.range-wrap {
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.35rem;
       min-width: 0;
     }
 
-    .frame-slider {
+.frame-slider {
       width: 100%;
       accent-color: var(--primary);
     }
 
-    .frame-meta {
+.frame-meta {
       display: flex;
       justify-content: flex-start;
       gap: var(--space-md);
@@ -713,14 +546,14 @@
       min-width: 0;
     }
 
-    #frameName {
+#frameName {
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .fps-badge {
+.fps-badge {
       justify-self: end;
       border: 1px solid rgba(212, 122, 34, 0.34);
       color: #8d4b10;
@@ -730,325 +563,106 @@
       font-size: 0.82rem;
     }
 
-    .note {
-      margin-top: var(--space-md);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .chart-description {
-      margin: var(--space-lg) 0 var(--space-md);
-      max-width: 980px;
-      color: #3f4852;
-      font-size: 0.96rem;
-    }
-
-    .radar-histogram-panel {
-      margin: 0;
-      border: 1px solid rgba(18, 24, 31, 0.16);
-      background: #ffffff;
-      overflow: hidden;
-    }
-
-    .radar-histogram-chart {
-      width: 100%;
-      height: 620px;
-      min-height: 420px;
-    }
-
-    .method-grid {
+.back-to-top {
+      position: fixed;
+      right: calc(24px + env(safe-area-inset-right, 0px));
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      z-index: 50;
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1px;
-      background: rgba(18, 24, 31, 0.18);
-      border: 1px solid rgba(18, 24, 31, 0.18);
-    }
-
-    .method-step {
-      min-height: 148px;
-      padding: var(--space-lg);
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .method-step span {
-      display: block;
-      margin-bottom: var(--space-sm);
-      color: var(--accent);
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.78rem;
-    }
-
-    .method-step p {
-      margin: var(--space-sm) 0 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .prose {
-      display: grid;
-      gap: var(--space-lg);
-      max-width: 1120px;
-      text-align: justify;
-    }
-
-    .prose p {
-      margin: 0;
-      color: #3f4852;
-    }
-
-    .prose ul,
-    .prose ol {
-      margin: 0;
-      padding-left: 1.3rem;
-      color: #3f4852;
-    }
-
-    .prose li + li {
-      margin-top: 0.45rem;
-    }
-
-    .status-checklist {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border: 1px solid rgba(18, 24, 31, 0.18);
-      background: rgba(18, 24, 31, 0.18);
-    }
-
-    .status-checklist li {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin: 0;
-      padding: var(--space-md);
-      background: rgba(255, 255, 255, 0.74);
-      color: #3f4852;
-    }
-
-    .status-checklist li::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 0.9rem;
-      height: 0.9rem;
-      border: 1.5px solid #66707c;
-      background: #ffffff;
-    }
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(255, 255, 255, 0.74);
-      font-size: 0.96rem;
-    }
-
-    .data-table th,
-    .data-table td {
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(18, 24, 31, 0.14);
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .data-table th {
-      background: rgba(18, 24, 31, 0.06);
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(18, 24, 31, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
       color: var(--ink);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 180ms;
     }
 
-    .application-video {
-      margin: 0;
-      border: 1px solid rgba(18, 24, 31, 0.18);
-      background: #101419;
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
+.back-to-top:hover {
+      background: #ffffff;
+      color: var(--primary);
     }
 
-    .application-video video {
-      display: block;
-      width: 100%;
-      max-height: min(72vh, 760px);
-      background: #101419;
+.back-to-top:focus-visible {
+      outline: 3px solid rgba(11, 127, 143, 0.28);
+      outline-offset: 3px;
     }
 
-    footer {
-      padding: 44px 0 60px;
-      color: var(--muted);
-      font-size: 0.92rem;
+.back-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
-    @media (max-width: 1180px) {
-      .hero-content,
-      .sample-stage {
+.back-to-top svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      stroke-width: 1.8;
+    }
+
+@media (max-width: 1180px) {
+.sample-stage {
         grid-template-columns: 1fr;
       }
 
-      .image-panel {
+.image-panel {
         border-left: 0;
         border-top: 1px solid rgba(18, 24, 31, 0.16);
       }
 
-      .sample-stage {
+.sample-stage {
         height: auto;
         min-height: 0;
       }
 
-      .canvas-panel {
+.canvas-panel {
         height: min(48vh, 460px);
         min-height: 360px;
       }
 
-      .image-panel {
+.image-panel {
         height: min(46vh, 420px);
         min-height: 320px;
       }
+}
 
-      .method-grid,
-      .dataset-strip,
-      .status-checklist {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .dataset-item:nth-child(2) {
-        border-right: 0;
-      }
-
-      h1 {
-        font-size: 3.8rem;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .page-shell {
-        width: min(100% - 24px, 1500px);
-      }
-
-      body {
-        padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
-      }
-
-      .site-header {
-        position: sticky;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: var(--space-sm);
-        min-height: 0;
-        padding: 0.7rem 0;
-      }
-
-      .brand {
-        width: 100%;
-        font-size: 1.05rem;
-        line-height: 1.15;
-      }
-
-      .brand-mark {
-        width: 34px;
-        height: 34px;
-      }
-
-      .brand span {
-        min-width: 0;
-        overflow-wrap: anywhere;
-      }
-
-      .nav-links {
-        width: 100%;
-        overflow-x: auto;
-        gap: 0.95rem;
-        font-size: 0.86rem;
-        padding-bottom: 0.25rem;
-        white-space: nowrap;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .nav-links::-webkit-scrollbar {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-        gap: var(--space-md);
-        padding: 28px 0 32px;
-      }
-
-      .hero-content {
-        gap: var(--space-lg);
-      }
-
-      .hero-copy {
-        margin-top: var(--space-md);
-        font-size: 1rem;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 11vw, 2.55rem);
-        overflow-wrap: anywhere;
-      }
-
-      h2 {
-        font-size: clamp(1.5rem, 8vw, 1.8rem);
-      }
-
-      .section {
-        padding: 36px 0;
-      }
-
-      .metric-grid,
-      .method-grid,
-      .dataset-strip,
-      .status-checklist {
-        grid-template-columns: 1fr;
-      }
-
-      .metric,
-      .dataset-item {
-        border-right: 0;
-        min-height: 0;
-        padding: var(--space-md);
-      }
-
-      .metric:nth-last-child(2) {
-        border-bottom: 1px solid rgba(18, 24, 31, 0.14);
-      }
-
-      .method-step {
-        min-height: 0;
-        padding: var(--space-md);
-      }
-
-      .section-head,
-      .visualizer-toolbar,
-      .playback {
+@media (max-width: 760px) {
+.visualizer-toolbar,
+.playback {
         align-items: stretch;
         flex-direction: column;
       }
 
-      .section-head {
-        gap: var(--space-sm);
-        margin-bottom: var(--space-md);
-      }
-
-      .visualizer-toolbar {
+.visualizer-toolbar {
         gap: var(--space-sm);
         min-height: 0;
         padding: var(--space-sm);
       }
 
-      .toolbar-controls {
+.toolbar-controls {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.5rem;
       }
 
-      .sample-select {
+.sample-select {
         width: 100%;
         align-items: stretch;
         flex-direction: column;
@@ -1056,81 +670,81 @@
         font-size: 0.78rem;
       }
 
-      .sample-select select {
+.sample-select select {
         width: 100%;
         min-width: 0;
         padding: 0.38rem 0.48rem;
         font-size: 0.86rem;
       }
 
-      .status-line {
+.status-line {
         width: 100%;
         justify-content: space-between;
         gap: var(--space-sm);
         font-size: 0.74rem;
       }
 
-      .canvas-panel {
+.canvas-panel {
         height: clamp(260px, 72vw, 360px);
         min-height: 260px;
       }
 
-      .canvas-hud {
+.canvas-hud {
         left: var(--space-sm);
         right: var(--space-sm);
         bottom: var(--space-sm);
       }
 
-      .canvas-controls {
+.canvas-controls {
         top: var(--space-sm);
         left: var(--space-sm);
         right: var(--space-sm);
         gap: 0.35rem;
       }
 
-      .canvas-toggle {
+.canvas-toggle {
         min-height: 30px;
         padding: 0.34rem 0.46rem;
         font-size: 0.66rem;
       }
 
-      .canvas-legend {
+.canvas-legend {
         top: var(--space-sm);
         right: var(--space-sm);
         padding: 0.45rem 0.5rem;
         font-size: 0.62rem;
       }
 
-      .canvas-colorbar {
+.canvas-colorbar {
         right: var(--space-sm);
         bottom: calc(var(--space-sm) + 2.2rem);
         min-width: min(170px, calc(100% - 1.5rem));
         font-size: 0.62rem;
       }
 
-      .hud-block {
+.hud-block {
         max-width: 100%;
         font-size: 0.68rem;
       }
 
-      .image-panel {
+.image-panel {
         height: clamp(280px, 82vw, 400px);
         min-height: 0;
       }
 
-      .playback {
+.playback {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--space-sm);
         padding: var(--space-sm);
       }
 
-      .icon-button,
-      .fps-badge {
+.icon-button,
+.fps-badge {
         justify-self: start;
       }
 
-      .icon-button {
+.icon-button {
         position: fixed;
         right: calc(16px + env(safe-area-inset-right, 0px));
         bottom: calc(16px + env(safe-area-inset-bottom, 0px));
@@ -1145,93 +759,61 @@
         transition: opacity 160ms ease, transform 160ms ease;
       }
 
-      .visualizer.is-play-control-visible .icon-button {
+.visualizer.is-play-control-visible .icon-button {
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);
       }
 
-      .icon-button .play-icon {
+.back-to-top {
+        right: calc(21px + env(safe-area-inset-right, 0px));
+        bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+      }
+
+.icon-button .play-icon {
         border-top-width: 9px;
         border-bottom-width: 9px;
         border-left-width: 15px;
       }
 
-      .icon-button .pause-icon {
+.icon-button .pause-icon {
         width: 16px;
         height: 18px;
         background: linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px, currentColor 10px 16px);
       }
 
-      .fps-badge {
+.fps-badge {
         width: 100%;
         text-align: center;
       }
 
-      .image-row {
+.image-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: minmax(0, 1.24fr) minmax(0, 0.9fr);
         overflow-x: visible;
       }
 
-      .image-tile.is-rgb {
+.image-tile.is-rgb {
         grid-column: 1 / -1;
       }
+}
 
-      .data-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .data-table th,
-      .data-table td {
-        padding: 0.7rem 0.8rem;
-        white-space: normal;
-      }
-
-      .chart-description {
-        margin-top: var(--space-md);
-        font-size: 0.9rem;
-      }
-
-      .radar-histogram-chart {
-        height: 440px;
-        min-height: 360px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .page-shell {
-        width: min(100% - 18px, 1500px);
-      }
-
-      .hero {
-        padding-top: 22px;
-      }
-
-      .hero-panel,
-      .visualizer,
-      .dataset-strip,
-      .method-grid,
-      .status-checklist,
-      .data-table {
+@media (max-width: 480px) {
+.visualizer {
         margin-left: -1px;
         margin-right: -1px;
       }
 
-      .canvas-panel {
+.canvas-panel {
         height: clamp(230px, 70vw, 300px);
         min-height: 230px;
       }
 
-      .image-panel {
+.image-panel {
         height: clamp(260px, 92vw, 390px);
       }
 
-      .image-box img {
+.image-box img {
         inset: 0.32rem;
         width: calc(100% - 0.64rem);
         height: calc(100% - 0.64rem);
@@ -1239,19 +821,85 @@
         max-height: calc(100% - 0.64rem);
       }
 
-      .image-label {
+.image-label {
         top: 0.42rem;
         left: 0.42rem;
         font-size: 0.66rem;
       }
+}
 
-      .radar-histogram-chart {
-        height: 380px;
-        min-height: 340px;
+@media (prefers-reduced-motion: reduce) {
+.back-to-top {
+        transition: none;
       }
+}
+    .frame-meta { display: none; }
+    @media (min-width: 1025px) { .sample-stage { grid-template-columns: 1.15fr 1fr; } }
+    @media (max-width: 1150px) {
+      .nav { gap: 16px; }
+      .nav-links { gap: 14px; font-size: 12px; }
+      .brand { font-size: 15px; }
+      .hero-layout { gap: 28px; grid-template-columns: 1fr 1fr; }
+      h1 { letter-spacing: -1.5px; }
     }
+    @media (max-width: 900px) {
+      .page-shell { width: calc(100% - 48px); }
+      .nav { flex-wrap: wrap; gap: 0; padding-top: 12px; }
+      .nav-links { width: 100%; justify-content: flex-start; overflow-x: auto; gap: 24px; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { padding-block: 12px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding-top: 36px; }
+      h1 { font-size: 48px; }
+      .paper-title { max-width: 640px; }
+      .authors { max-width: 640px; }
+      .hero-figure { max-width: 720px; }
+      .contributions { gap: 24px; margin-top: 32px; }
+      .section { padding-top: 64px; }
+      .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+      .section-head > p { max-width: 680px; }
+      .hardware-layout { gap: 28px; }
+      .chart-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
+      .data-table th, .data-table td { padding-inline: 16px; }
+      .results-secondary { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page-shell { width: calc(100% - 32px); }
+      .hero { padding-top: 28px; }
+      h1 { font-size: clamp(30px,8.5vw,43px); letter-spacing: -1.4px; }
+      .paper-title { font-size: 23px; margin-top: 16px; }
+      .authors { font-size: 12px; margin-top: 16px; }
+      .hero-result { margin-top: 24px; }
+      .contributions { grid-template-columns: 1fr; gap: 20px; }
+      .contributions p { max-width: 420px; }
+      .section { padding-top: 48px; }
+      h2 { font-size: 30px; }
+      .hardware-layout { grid-template-columns: 1fr; }
+      .research-figure { padding: 12px; }
+      .dataset-strip { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+      .dataset-item { padding-left: 16px; }
+      .dataset-item:nth-child(3) { padding-left: 0; }
+      .dataset-item:nth-child(2) { border-right: 0; }
+      .dataset-item b { font-size: 29px; }
+      .chart-grid figure { padding: 12px 6px; }
+      .chart-grid h3, .chart-grid figcaption { padding-inline: 8px; }
+      .radar-histogram-chart, .dataset-comparison-chart { height: 350px; min-height: 350px; }
+      .result-metrics { grid-template-columns: 1fr 1fr; padding: 24px; }
+      .result-metrics strong { font-size: 30px; }
+      .panel-head { padding: 16px; }
+      .data-table { font-size: 12px; }
+      .data-table th, .data-table td { padding: 11px 16px; }
+      .application-examples { grid-template-columns: 1fr; gap: 20px; }
+      footer { align-items: start; flex-direction: column; margin-top: 48px !important; padding-bottom: 90px; }
+      .footer-links { gap: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script defer src="assets/js/dataset-comparison-data.js"></script>
+  <script defer src="assets/js/dataset-comparison.js"></script>
   <script type="importmap">
     {
       "imports": {
@@ -1262,181 +910,72 @@
   </script>
 </head>
 <body>
+
   <header class="site-header">
     <nav class="page-shell nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="mmWave-DensePose home">
-        <img class="brand-mark" src="assets/images/logo.png" alt="" aria-hidden="true" />
+        <img class="brand-mark" src="assets/images/software-logo-flat.svg" width="37" height="37" alt="" aria-hidden="true" />
         <span>mmWave-DensePose</span>
       </a>
       <div class="nav-links">
-        <a href="#abstract">Abstract</a>
-        <a href="#dataset">Dataset</a>
-        <a href="#samples">Samples</a>
-        <a href="#method">PAST-Net</a>
-        <a href="#status">Status</a>
-        <a id="repositoryLink" class="external-link" href="../README.md">Repository</a>
+        <a href="#overview">Overview</a><a href="#hardware">System</a><a href="#dataset">Dataset</a>
+        <a href="#samples">Samples</a><a href="#method">PAST-Net</a><a href="#result">Results</a>
+        <a href="#application">Application</a><a href="#citation">Citation</a>
+        <a id="repositoryLink" class="external-link" href="https://github.com/seu-rise/mmWave-DensePose">Code ↗</a>
       </div>
     </nav>
   </header>
-
   <main id="top">
-    <section class="page-shell hero" aria-labelledby="hero-title">
-      <figure class="hero-figure">
-        <img src="assets/images/scenario.png" alt="mmWave-DensePose first figure" />
-      </figure>
-      <div class="hero-content">
-        <div>
-          <p class="eyebrow">Dense millimeter-wave radar human pose benchmark</p>
+    <section id="overview" class="page-shell hero" aria-labelledby="hero-title">
+      <div class="hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow">Radar-only 3D human pose estimation</p>
           <h1 id="hero-title">mmWave-DensePose</h1>
-          <p class="hero-copy">
-            This is the official repository page for the paper
-            <strong>Human Pose Estimation of Millimeter-Wave Radar: Prototype, Dataset, and Method</strong>.
-            The repository will provide the code, dataset information, benchmark protocol, and pretrained
-            resources for mmWave-DensePose and PAST-Net after cleanup and release preparation.
-          </p>
-        </div>
-        <aside class="hero-panel" aria-label="Dataset metrics">
-          <div class="metric-grid">
-            <div class="metric">
-              <strong>101</strong>
-              <span>Subjects</span>
-            </div>
-            <div class="metric">
-              <strong>570,124</strong>
-              <span>Valid synchronized frames</span>
-            </div>
-            <div class="metric">
-              <strong>19</strong>
-              <span>Ground-truth skeleton joints</span>
-            </div>
-            <div class="metric">
-              <strong>5D</strong>
-              <span>x, y, z, Doppler, SNR radar points</span>
-            </div>
+          <p class="paper-title">Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method</p>
+          <p class="authors">Jiang Liu, Yan Huang, Yanjun Zhang, Chengchang Tian, Zhen Yang, Kaihang Zheng, Rui Zhou, Hui Zhang, Jixin Chen, Wei Hong</p>
+          <p class="affiliations">State Key Laboratory of Millimeter Waves, Southeast University<br>Purple Mountain Laboratories</p>
+          <div class="resource-links" aria-label="Research resources">
+            <a href="https://www.sciencedirect.com/science/article/pii/S2095809926005606">Paper <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/seu-rise/mmWave-DensePose">Code <span aria-hidden="true">↗</span></a>
+            <a href="#result">Results <span aria-hidden="true">↓</span></a>
           </div>
-        </aside>
+          <div class="hero-result"><strong>4.08 <small>cm</small></strong><p>Mean localization error<br><b>22.14% lower</b> than PntPoseAT</p></div>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/images/scenario.svg" width="960" height="659" fetchpriority="high" alt="mmWave-DensePose radar prototype, synchronized human motion dataset and radar-based 3D pose estimation" />
+          <figcaption>From dense radar sensing to part-aware 3D human pose estimation.</figcaption>
+        </figure>
+      </div>
+      <div class="contributions">
+        <article><h3><span>01</span>Radar prototype</h3><p>A four-chip cascaded FMCW radar captures dense human point clouds with 12 transmit and 16 receive channels.</p></article>
+        <article><h3><span>02</span>mmWave-DensePose dataset</h3><p>101 subjects, 19 designed motions and free motion, with synchronized radar, image and skeleton recordings.</p></article>
+        <article><h3><span>03</span>PAST-Net</h3><p>Skeleton-aware spatial tokens and part-wise temporal attention recover 19 joints from radar observations.</p></article>
       </div>
     </section>
 
-    <section id="abstract" class="page-shell section" aria-labelledby="abstract-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Abstract</p>
-          <h2 id="abstract-title">Human Pose Estimation of Millimeter-Wave Radar: Prototype, Dataset, and Method</h2>
+    <section id="hardware" class="page-shell section" aria-labelledby="hardware-title">
+      <div class="section-head"><div><p class="eyebrow">01 / System</p><h2 id="hardware-title">Dense radar sensing</h2></div><p>Four cascaded chips and Doppler-division multiple access (DDMA) bring fine angular resolution to human point-cloud sensing.</p></div>
+      <div class="hardware-layout">
+        <figure class="research-figure"><img src="assets/images/radar-prototype.png" width="1317" height="1194" loading="lazy" alt="Four-chip radar prototype and FMCW DDMA signal-processing pipeline" /><figcaption>Radar hardware and the on-board point-cloud generation pipeline.</figcaption></figure>
+        <div class="hardware-copy"><p>Simultaneous transmissions are separated in the Doppler domain. On-board range–Doppler processing, channel calibration, target detection and angle estimation produce 5D points: position, Doppler and SNR.</p>
+          <dl class="hardware-specs"><div><dt>Transmit channels</dt><dd>12</dd></div><div><dt>Receive channels</dt><dd>16</dd></div><div><dt>Range resolution</dt><dd>0.06 m</dd></div><div><dt>Velocity resolution</dt><dd>0.0225 m/s</dd></div><div><dt>Azimuth resolution</dt><dd>1.30°</dd></div><div><dt>Elevation resolution</dt><dd>2.24°</dd></div></dl>
         </div>
-      </div>
-      <div class="prose">
-        <p>
-          Three-dimensional human pose estimation (3D-HPE) is important for human-centered sensing, but vision-based solutions are limited by privacy concerns, illumination changes, and occlusion. Millimeter-wave (mmWave) radar provides a privacy-preserving alternative, yet existing radar point clouds are often sparse and incomplete, and existing radar 3D-HPE datasets remain limited in subject scale, frame volume, and motion diversity. This paper presents a mmWave radar prototype for dense point-cloud sensing, a large-scale mmWave radar dense HPE (mmWave-DensePose) dataset, and a Part-Aware Spatio-Temporal Network (PAST-Net) for radar-only 3D-HPE. Specifically, we design a four-chip cascaded mmWave radar system to generate dense human-related point clouds with its azimuth and elevation resolution being 1.30° and 2.24°, respectively. And the constructed dataset contains 101 subjects, 19 designed motions, large amounts of free motions, and 570,124 valid synchronized frames. Each valid frame contains 164 valid subject-related radar points on average, exceeding the  representative released datasets and providing clearer body-region cues for radar-based 3D-HPE.  The proposed method uses only mmWave radar point clouds as input and Kinect V2 skeletons as ground-truth annotations. Then PAST-Net reorganizes frame-level point-cloud features into skeleton-aware part-token representations and models their temporal evolution through part-wise self-attention, assisting to compensate for weak and incomplete observations in local body regions. Experiments on the proposed benchmark show that PAST-Net achieves an average Mean Localization Error (MLE) of 4.08 cm, reducing the error by 22.14% compared with the other state-of-the-art (SOTA) baseline. Ablation results further confirm the contributions of the proposed modules, including skeleton-aware spatial modeling, part-wise temporal modeling, and radar-specific point attributes. These results demonstrate that the designed mmWave radar prototype and the proposed method provide an effective sensing basis for privacy-preserving and fine-grained 3D-HPE.
-        </p>
-      </div>
-    </section>
-
-    <section class="page-shell section" aria-labelledby="overview-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Overview</p>
-          <h2 id="overview-title">mmWave-DensePose dataset and PAST-Net</h2>
-        </div>
-      </div>
-      <div class="prose">
-        <p>
-          mmWave-DensePose is a dense millimeter-wave radar point-cloud benchmark for radar-only
-          3D human pose estimation. The public release focuses on two main components:
-        </p>
-        <ol>
-          <li>A large-scale dataset with high-quality dense radar point clouds for human pose estimation.</li>
-          <li>PAST-Net, a Part-Aware Spatio-Temporal Network for 3D human pose estimation.</li>
-        </ol>
-        <p>
-          Each synchronized frame contains a 5D radar point cloud and a 19-keypoint skeleton annotation.
-          PAST-Net uses temporal radar point-cloud windows to learn structured part-token representations
-          and regress the target-frame 3D human pose.
-        </p>
-      </div>
-    </section>
-
-    <section class="page-shell section" aria-labelledby="highlights-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Highlights</p>
-          <h2 id="highlights-title">Main properties</h2>
-        </div>
-      </div>
-      <div class="prose">
-        <ul>
-          <li><strong>Large-scale dataset.</strong> 101 subjects, 141 continuous sequences, and 570,124 valid synchronized frames.</li>
-          <li><strong>Rich motion coverage.</strong> 19 predefined motions and additional free-motion sequences.</li>
-          <li><strong>Radar-only 3D-HPE benchmark.</strong> The model uses only mmWave radar point clouds as input. Kinect V2 skeletons are used as ground-truth annotations.</li>
-          <li><strong>5D radar point representation.</strong> Each radar point contains spatial coordinates, Doppler information, and signal-to-noise ratio.</li>
-          <li><strong>Part-aware spatio-temporal modeling.</strong> PAST-Net reorganizes frame-level radar features into skeleton-aware part-token representations and models their temporal evolution across consecutive frames.</li>
-        </ul>
       </div>
     </section>
 
     <section id="dataset" class="page-shell section" aria-labelledby="dataset-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Dataset</p>
-          <h2 id="dataset-title">Synchronized dataset statistics</h2>
-        </div>
-        <p>
-          Aggregated information from all synchronized data is listed below in the current release format,
-          covering sequence scale, frame volume, motion coverage, point-cloud density, and annotation fields.
-        </p>
+      <div class="section-head"><div><p class="eyebrow">02 / Dataset</p><h2 id="dataset-title">Human motion, densely captured</h2></div><p>141 continuous sequences span 19 designed motions and free motion. Radar point clouds are synchronized with Kinect V2 images and 19-joint pose annotations.</p></div>
+      <div class="dataset-strip" role="list"><div class="dataset-item" role="listitem"><b>101</b><span>Subjects</span></div><div class="dataset-item" role="listitem"><b>141</b><span>Continuous sequences</span></div><div class="dataset-item" role="listitem"><b>570,124</b><span>Valid synchronized frames</span></div><div class="dataset-item" role="listitem"><b>164</b><span>Mean valid radar points / frame</span></div></div>
+      <div class="dataset-facts"><span><b>Radar</b> · x, y, z, Doppler, SNR</span><span><b>Pose</b> · 19 3D joints</span><span><b>Images</b> · Color, depth, silhouette</span></div>
+      <div class="chart-grid">
+        <figure><h3>Radar point density</h3><div id="radarPointHistogram" class="radar-histogram-chart" aria-label="Distribution of radar point counts per frame"></div><figcaption>Point counts over 570,124 frames, in 10-point intervals. The line shows the cumulative frame proportion.</figcaption></figure>
+        <figure><h3>Point density across datasets</h3><div id="datasetPointComparison" class="dataset-comparison-chart" role="img" aria-label="Radar point count distributions across five datasets"></div><figcaption>Boxes: median and interquartile range. Whiskers: min–max. Brown marks: P5–P95. Diamonds: mean.</figcaption></figure>
       </div>
-
-      <div class="dataset-strip" role="list">
-        <div class="dataset-item" role="listitem">
-          <b>141 sequences</b>
-          <span>Continuous motion recordings</span>
-        </div>
-        <div class="dataset-item" role="listitem">
-          <b>164 points</b>
-          <span>Mean valid radar points per frame</span>
-        </div>
-        <div class="dataset-item" role="listitem">
-          <b>570,124 frames</b>
-          <span>Valid synchronized frames</span>
-        </div>
-        <div class="dataset-item" role="listitem">
-          <b>19 + free motions</b>
-          <span>Predefined motions plus additional free-motion sequences</span>
-        </div>
-      </div>
-
-      <table class="data-table">
-        <thead>
-          <tr><th>Item</th><th>Description</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Dataset name</td><td>mmWave-DensePose</td></tr>
-          <tr><td>Sensor input</td><td>Dense mmWave radar point cloud</td></tr>
-          <tr><td>Annotation source</td><td>Kinect V2 skeleton</td></tr>
-          <tr><td>Subjects</td><td>101</td></tr>
-          <tr><td>Radar point attributes</td><td>x, y, z, Doppler, SNR</td></tr>
-          <tr><td>Skeleton annotation</td><td>19 3D keypoints</td></tr>
-        </tbody>
-      </table>
-      <p class="chart-description">
-        The distribution summarizes radar point counts across 570,124 valid synchronized frames using
-        10-point intervals. Bars show the frame proportion in each interval, while the line reports the
-        cumulative frame proportion.
-      </p>
-      <figure class="radar-histogram-panel">
-        <div id="radarPointHistogram" class="radar-histogram-chart" aria-label="Distribution of radar point counts per frame"></div>
-      </figure>
-      <p class="note">The dataset release will include the data format description, download instructions, preprocessing scripts, and benchmark split information.</p>
+      <div class="dataset-resource-links"><a class="section-link" href="https://github.com/seu-rise/mmWave-DensePose#dataset">Dataset guide ↗</a><a class="publication-icon" href="https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10" target="_blank" rel="noopener noreferrer" aria-label="Download dataset, weights and predictions on ScienceDB" title="Dataset, weights and predictions on ScienceDB"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="9" cy="5.5" rx="6" ry="2.5"/><path d="M3 5.5v12c0 1.4 2.7 2.5 6 2.5 1.2 0 2.3-.1 3.2-.4M3 11.5C3 12.9 5.7 14 9 14c1.2 0 2.3-.1 3.2-.4M15 5.5v4M15.5 18.5 22 12m-5 0h5v5"/></svg></a></div>
     </section>
 
     <section id="samples" class="page-shell section" aria-labelledby="samples-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Interactive sample viewer</p>
-          <h2 id="samples-title">Visualization of selected samples from each motion</h2>
-        </div>
-      </div>
-
+      <div class="section-head"><div><p class="eyebrow">03 / Interactive samples</p><h2 id="samples-title">Explore the motion</h2></div><p>Synchronized radar points, skeletons and images from each motion in mmWave-DensePose.</p></div>
       <div class="visualizer" data-viewer>
         <div class="visualizer-toolbar">
           <div class="toolbar-controls">
@@ -1533,145 +1072,199 @@
           <div class="fps-badge">Playback 6.5 FPS</div>
         </div>
       </div>
-
     </section>
 
     <section id="method" class="page-shell section" aria-labelledby="method-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Method</p>
-          <h2 id="method-title">PAST-Net prediction pipeline</h2>
-        </div>
-        <p>
-          PAST-Net uses temporal radar point-cloud windows in a many-to-one prediction setting. It learns
-          structured part-token representations and regresses the target-frame 3D human pose from radar
-          input only.
-        </p>
-      </div>
+      <div class="section-head"><div><p class="eyebrow">04 / Method</p><h2 id="method-title">Part-Aware Spatio-Temporal Network</h2></div><p>PAST-Net reorganizes radar features into skeleton-aware part tokens and models their temporal evolution to predict the target-frame 3D pose.</p></div>
+      <figure class="research-figure"><img src="assets/images/pastnet-architecture.png" width="2027" height="776" loading="lazy" alt="PAST-Net feature encoder, skeleton-aware spatial tokens, part-wise temporal attention and 3D pose regression architecture" /><figcaption>Temporal radar point clouds enter the network; 19 target-frame 3D joint positions form the output.</figcaption></figure>
+      <div class="method-grid"><article class="method-step"><span>01</span><h3>Frame-level features</h3><p>A point-cloud encoder extracts each frame’s global representation from 5D radar attributes.</p></article><article class="method-step"><span>02</span><h3>Skeleton-aware tokens</h3><p>Spatial modeling organizes frame features around human body parts.</p></article><article class="method-step"><span>03</span><h3>Part-wise attention</h3><p>Temporal self-attention follows each part across consecutive observations.</p></article><article class="method-step"><span>04</span><h3>3D pose regression</h3><p>Global and part-level features fuse to locate all 19 joints in the target frame.</p></article></div>
+    </section>
 
-      <div class="method-grid">
-        <article class="method-step">
-          <span>01</span>
-          <h3>Temporal radar window</h3>
-          <p>A temporal window of radar point clouds is used as input, with the last frame as the target frame.</p>
-        </article>
-        <article class="method-step">
-          <span>02</span>
-          <h3>Frame-Level Feature Extraction</h3>
-          <p>A frame-level point-cloud encoder extracts global radar features from spatial, Doppler, and SNR attributes.</p>
-        </article>
-        <article class="method-step">
-          <span>03</span>
-          <h3>Skeleton-Aware Spatial Modeling</h3>
-          <p>Skeleton-aware spatial modeling converts frame features into structured part-token representations.</p>
-        </article>
-        <article class="method-step">
-          <span>04</span>
-          <h3>Part-Wise Temporal Modeling</h3>
-          <p>Part-wise temporal modeling captures each part token's evolution across consecutive frames.</p>
-        </article>
-        <article class="method-step">
-          <span>05</span>
-          <h3>3D Keypoint Regression</h3>
-          <p>Global and part-level features are fused to regress the 19 3D keypoints of the target frame.</p>
-        </article>
+    <section id="result" class="page-shell section" aria-labelledby="result-title">
+      <div class="section-head"><div><p class="eyebrow">05 / Results</p><h2 id="result-title">Fine-grained pose accuracy</h2></div><p>PAST-Net achieves the lowest mean localization error across all 19 joints and reduces overall MLE by 22.14% relative to PntPoseAT.</p></div>
+      <div class="result-metrics" aria-label="PAST-Net main benchmark results"><div><strong>4.08 <small>cm</small></strong><span>MLE ↓</span></div><div><strong>3.17 <small>cm</small></strong><span>PA-MPJPE ↓</span></div><div><strong>98.69 <small>%</small></strong><span>PCK @ 150 mm ↑</span></div><div><strong>73.35 <small>%</small></strong><span>AUC @ 150 mm ↑</span></div></div>
+      <div class="table-panel"><div class="panel-head"><h3>Sequence-chunk benchmark</h3><span class="table-tag">Table 4</span></div><div class="table-scroll" tabindex="0" role="region" aria-label="Main benchmark comparison"><table class="data-table"><thead><tr><th scope="col">Method</th><th scope="col">MLE ↓ cm</th><th scope="col">PA-MPJPE ↓ cm</th><th scope="col">PCK ↑ %</th><th scope="col">AUC ↑ %</th></tr></thead><tbody><tr><td>DGCNN</td><td>7.30</td><td>5.29</td><td>92.33</td><td>55.50</td></tr>
+<tr><td>PointTransformer</td><td>7.17</td><td>5.21</td><td>92.85</td><td>55.51</td></tr>
+<tr><td>PointMLP</td><td>5.60</td><td>4.07</td><td>96.45</td><td>64.39</td></tr>
+<tr><td>mmPose-FK <small>(17 joints)</small></td><td>5.57</td><td>4.21</td><td>97.07</td><td>63.92</td></tr>
+<tr><td>Dual-Path CNN–BiLSTM</td><td>8.19</td><td>5.46</td><td>90.79</td><td>49.91</td></tr>
+<tr><td>PntPoseAT</td><td>5.24</td><td>3.98</td><td>97.59</td><td>65.96</td></tr>
+<tr><td>PoseGraphNet</td><td>6.70</td><td>5.17</td><td>94.23</td><td>57.77</td></tr>
+<tr><td>Global–Local Network</td><td>9.18</td><td>6.09</td><td>87.26</td><td>44.48</td></tr>
+<tr class="ours"><td>PAST-Net</td><td>4.08</td><td>3.17</td><td>98.69</td><td>73.35</td></tr></tbody></table></div><p class="table-foot">PCK and AUC use a 150 mm distance threshold. mmPose-FK evaluates 17 joints.</p></div>
+      <div class="results-secondary">
+        <div class="table-panel"><div class="panel-head"><h3>Subject-independent benchmark</h3><span class="table-tag">Table 7</span></div><div class="table-scroll" tabindex="0" role="region" aria-label="Subject-independent comparison"><table class="data-table"><thead><tr><th scope="col">Method</th><th scope="col">MLE ↓ cm</th></tr></thead><tbody><tr class="ours"><td>PAST-Net</td><td>4.53</td></tr>
+<tr><td>PointMLP</td><td>5.31</td></tr>
+<tr><td>PoseGraphNet</td><td>5.99</td></tr>
+<tr><td>PntPoseAT</td><td>6.18</td></tr>
+<tr><td>mmPose-FK</td><td>6.30</td></tr>
+<tr><td>PointTransformer</td><td>6.52</td></tr>
+<tr><td>DGCNN</td><td>6.60</td></tr>
+<tr><td>Dual-Path CNN–BiLSTM</td><td>9.38</td></tr>
+<tr><td>Global–Local Network</td><td>10.73</td></tr></tbody></table></div></div>
+        <div class="table-panel"><div class="panel-head"><h3>Spatial and temporal modeling</h3><span class="table-tag">Table 8</span></div><div class="ablation">
+          <div class="ablation-row"><div class="ablation-label"><span>Baseline</span><b>5.17 cm</b></div><div class="ablation-track"><span style="width:100%"></span></div></div>
+          <div class="ablation-row"><div class="ablation-label"><span>+ Skeleton-aware spatial modeling</span><b>4.39 cm</b></div><div class="ablation-track"><span style="width:84.91%"></span></div></div>
+          <div class="ablation-row"><div class="ablation-label"><span>+ Part-wise temporal modeling</span><b>4.08 cm</b></div><div class="ablation-track"><span style="width:78.92%"></span></div></div>
+          <div class="stability"><span class="table-tag">Table 6 / Five-run stability</span><strong>4.08 ± 0.02 cm</strong><p>Mean MLE ± standard deviation across five runs.</p></div>
+        </div></div>
       </div>
     </section>
 
-    <section id="status" class="page-shell section" aria-labelledby="status-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Repository Status</p>
-          <h2 id="status-title">Release in preparation</h2>
-        </div>
-        <p>The code and dataset will be uploaded after they are organized and reviewed.</p>
-      </div>
-      <ul class="status-checklist">
-        <li>Code release</li>
-        <li>Dataset release instructions</li>
-        <li>Training and evaluation scripts</li>
-        <li>Pretrained checkpoints</li>
-        <li>Data processing and visualization tools</li>
-        <li>Benchmark configuration files</li>
-        <li>Citation file</li>
-      </ul>
-    </section>
-
-    <section class="page-shell section" aria-labelledby="benchmark-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Benchmark</p>
-          <h2 id="benchmark-title">Current experimental setting</h2>
-        </div>
-      </div>
-      <div class="prose">
-        <p>The benchmark supports both single-frame and multi-frame radar-based 3D human pose estimation.</p>
-        <ul>
-          <li>A five-frame temporal input window.</li>
-          <li>The last frame as the target frame.</li>
-          <li>Mean Localization Error (MLE) as the evaluation metric.</li>
-          <li>Radar point clouds as the only network input.</li>
-          <li>Kinect V2 skeletons as ground-truth annotations.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="page-shell section" aria-labelledby="result-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Main Result</p>
-          <h2 id="result-title">PAST-Net average MLE</h2>
-        </div>
-      </div>
-      <div class="prose">
-        <p>PAST-Net achieves the best average MLE among the reproduced and adapted baselines on the mmWave-DensePose benchmark.</p>
-        <table class="data-table">
-          <thead><tr><th>Method</th><th>Average MLE</th></tr></thead>
-          <tbody><tr><td>PAST-Net</td><td>4.08 cm</td></tr></tbody>
-        </table>
-        <p>The full per-joint comparison and ablation results will be provided with the paper materials and evaluation scripts.</p>
-      </div>
-    </section>
-
-    <section class="page-shell section" aria-labelledby="application-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Real-Time Application Scenario</p>
-          <h2 id="application-title">Real-world deployment on an entry-level GPU</h2>
-        </div>
-        <p>
-          This real-time deployment video shows actions and subjects that are not included in the dataset.
-          The experiment was recorded under strong illumination conditions and runs on an entry-level NVIDIA T400 GPU.
-        </p>
-      </div>
+    <section id="application" class="page-shell section" aria-labelledby="application-title">
+      <div class="section-head"><div><p class="eyebrow">06 / Application</p><h2 id="application-title">Real-time radar pose estimation</h2></div><p>Deployment on an NVIDIA T400 GPU tracks human motion in real time, including unseen subjects and motions, occlusion and strong illumination.</p></div>
       <figure class="application-video">
-        <video controls muted loop playsinline preload="metadata" aria-label="Real-time mmWave-DensePose application scenario">
+        <video controls muted loop playsinline preload="metadata" poster="assets/images/scene-poster.jpg" aria-label="Real-time mmWave-DensePose application scenario">
           <source src="assets/video/scene.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </figure>
+      <div class="application-examples" aria-label="Additional application examples">
+        <figure class="application-video">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene1-poster.jpg" aria-label="Application example 1">
+            <source src="assets/video/scene1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Example 1</figcaption>
+        </figure>
+        <figure class="application-video">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene2-poster.jpg" aria-label="Application example 2">
+            <source src="assets/video/scene2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Example 2</figcaption>
+        </figure>
+        <figure class="application-video">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene3-poster.jpg" aria-label="Application example 3">
+            <source src="assets/video/scene3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Example 3</figcaption>
+        </figure>
+      </div>
     </section>
-
-    <section class="page-shell section" aria-labelledby="release-title">
+    <section id="citation" class="page-shell section" aria-labelledby="citation-title">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">License, Contact, and Acknowledgement</p>
-          <h2 id="release-title">Release notes</h2>
-        </div>
+        <div><p class="eyebrow">07 / Citation</p><h2 id="citation-title">Cite this work</h2></div>
+        <div class="citation-reference">Liu J, Huang Y, Zhang Y, Tian C, Yang Z, Zheng K, Zhou R, Zhang H, Chen J, Hong W. Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method. <em>Engineering</em>. 2026. <a href="https://doi.org/10.1016/j.eng.2026.10.001">doi:10.1016/j.eng.2026.10.001</a>.</div>
       </div>
-      <div class="prose">
-        <p>This repository is released under the MIT License.</p>
-        <p>Dataset access instructions and terms for pretrained resources will be provided with the release materials.</p>
-        <p>For questions about the paper, code, or dataset release, please contact the authors or open an issue after the repository is public.</p>
-        <p>Corresponding authors and contact information will be updated after publication.</p>
-        <p>We thank the contributors and participants involved in the data collection and research development.</p>
-      </div>
+      <pre class="citation-code" tabindex="0" aria-label="BibTeX citation"><code>@article{liu2026mmwavedensepose,
+  author  = {Liu, Jiang and Huang, Yan and Zhang, Yanjun and Tian, Chengchang and
+             Yang, Zhen and Zheng, Kaihang and Zhou, Rui and Zhang, Hui and
+             Chen, Jixin and Hong, Wei},
+  title   = {{Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method}},
+  journal = {Engineering},
+  year    = {2026},
+  doi     = {10.1016/j.eng.2026.10.001},
+  url     = {https://www.sciencedirect.com/science/article/pii/S2095809926005606}
+}</code></pre>
     </section>
   </main>
+  <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10.5 12 3.5l7 7M12 4v16.5" /></svg></a>
+  <footer class="page-shell"><div><b>mmWave-DensePose</b><br>Prototype, dataset and method for radar-only human pose estimation.</div><div class="footer-links"><a href="https://www.sciencedirect.com/science/article/pii/S2095809926005606">Paper ↗</a><a href="#citation">Citation ↑</a><a href="https://github.com/seu-rise/mmWave-DensePose">Code ↗</a><a href="https://github.com/seu-rise/mmWave-DensePose#dataset">Dataset guide ↗</a></div></footer>
 
-  <footer class="page-shell">
-    mmWave-DensePose repository page. Code, dataset instructions, benchmark protocol, and pretrained resources are being prepared for release.
-  </footer>
+  <script>
+    (() => {
+      const navigation = document.querySelector('.nav-links');
+      const header = document.querySelector('.site-header');
+      const backToTopLink = document.querySelector('.back-to-top');
+      if (!navigation || !header || !backToTopLink) return;
+
+      const sectionLinks = [...navigation.querySelectorAll('a[href^="#"]')]
+        .map((link) => {
+          const section = document.querySelector(link.getAttribute('href'));
+          return section ? { link, section } : null;
+        })
+        .filter(Boolean);
+      if (sectionLinks.length === 0) return;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let activeSectionId = '';
+      let updateQueued = false;
+
+      const keepActiveLinkVisible = (link) => {
+        const linkLeft = link.offsetLeft;
+        const linkRight = linkLeft + link.offsetWidth;
+        const visibleLeft = navigation.scrollLeft;
+        const visibleRight = visibleLeft + navigation.clientWidth;
+        if (linkLeft >= visibleLeft && linkRight <= visibleRight) return;
+
+        navigation.scrollTo({
+          left: linkLeft - (navigation.clientWidth - link.offsetWidth) / 2,
+          behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+        });
+      };
+
+      const setActiveSection = (sectionId) => {
+        if (sectionId === activeSectionId) {
+          const activeEntry = sectionLinks.find(({ section }) => section.id === activeSectionId);
+          if (activeEntry) keepActiveLinkVisible(activeEntry.link);
+          return;
+        }
+        activeSectionId = sectionId;
+
+        for (const { link, section } of sectionLinks) {
+          const isActive = section.id === activeSectionId;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+            keepActiveLinkVisible(link);
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        }
+      };
+
+      const updateActiveSection = () => {
+        updateQueued = false;
+        const activationLine = header.getBoundingClientRect().height + 24;
+        let currentSectionId = '';
+
+        for (const { section } of sectionLinks) {
+          if (section.getBoundingClientRect().top > activationLine) break;
+          currentSectionId = section.id;
+        }
+
+        const isAtPageEnd = window.scrollY + window.innerHeight
+          >= document.documentElement.scrollHeight - 2;
+        if (isAtPageEnd) {
+          currentSectionId = sectionLinks[sectionLinks.length - 1].section.id;
+        }
+
+        setActiveSection(currentSectionId);
+        backToTopLink.classList.toggle(
+          'is-visible',
+          window.scrollY > Math.max(480, window.innerHeight * 0.75),
+        );
+      };
+
+      const queueActiveSectionUpdate = () => {
+        if (updateQueued) return;
+        updateQueued = true;
+        window.requestAnimationFrame(updateActiveSection);
+      };
+
+      const alignInitialSection = () => {
+        const hashTarget = sectionLinks.find(({ section }) => `#${section.id}` === window.location.hash);
+        if (hashTarget) hashTarget.section.scrollIntoView();
+        queueActiveSectionUpdate();
+      };
+
+      const syncHeaderOffset = () => {
+        const headerOffset = Math.ceil(header.getBoundingClientRect().height) + 16;
+        document.documentElement.style.setProperty('--header-offset', `${headerOffset}px`);
+        queueActiveSectionUpdate();
+      };
+
+      window.addEventListener('scroll', queueActiveSectionUpdate, { passive: true });
+      window.addEventListener('resize', syncHeaderOffset);
+      window.addEventListener('hashchange', queueActiveSectionUpdate);
+      window.addEventListener('load', alignInitialSection, { once: true });
+      const headerObserver = new ResizeObserver(syncHeaderOffset);
+      headerObserver.observe(header);
+      syncHeaderOffset();
+    })();
+  </script>
 
   <script type="module">
     import * as THREE from 'three';

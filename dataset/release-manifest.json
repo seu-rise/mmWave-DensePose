@@ -1,0 +1,667 @@
+{
+  "schema_version": 3,
+  "dataset_kind": "full_multimodal",
+  "dataset": "mmWave-DensePose",
+  "dataset_version": "2.0",
+  "status": "published",
+  "install_root": "data/mmwave_densepose",
+  "archive_layout": [
+    "manifest.json",
+    "raw/",
+    "keypoint/",
+    "keypoint_muti/",
+    "dense/"
+  ],
+  "expected_sequence_count": 141,
+  "expected_sequence_bytes": 172970990931,
+  "image_source": "raw_face_anonymized",
+  "dataset_manifest_sha256": "da64f978438879892acd83bb13789c19753a7d21b63255cb829386db53ed96f6",
+  "archives": [
+    {
+      "id": "metadata",
+      "kind": "metadata",
+      "files": [
+        "manifest.json",
+        "dense/dense_1_index_20260728_162643_049882.pkl",
+        "dense/dense_1_index_20260806_033229_915750.pkl",
+        "keypoint/keypoint_index.pkl",
+        "keypoint/keypoint_index_20260730_181808_758776.pkl",
+        "keypoint/keypoint_index_20260803_051001_476629.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index_20260729_160657_044981.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index_20260730_134840_459842.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index_20260731_145352_328897.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index_20260801_222359_932524.pkl",
+        "keypoint_muti/keypoint_muti_tmax5_index_20260803_050212_245005.pkl",
+        "raw/manifest.json"
+      ],
+      "filename": "mmwave-densepose-full-v2-metadata.zip",
+      "size_bytes": 69570629,
+      "sha256": "acf05d82eabf2657e172dc1719226d3e2547c4eaa1cdc4e3295a65787db64138",
+      "url": "https://download.scidb.cn/download?fileId=4b46c3f1352451a57b3e64f2d2a3894f&path=/V1/mmwave-densepose-full-v2-metadata.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-metadata.zip"
+    },
+    {
+      "id": "raw-001",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_100_4132.pkl",
+        "raw/sequence_101_4133.pkl",
+        "raw/sequence_102_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-001.zip",
+      "size_bytes": 3713589729,
+      "sha256": "ccda1bb6ec308dbe68fdc1e4d3e294a660643bb3ffb8aab10ed958f629293dc5",
+      "url": "https://download.scidb.cn/download?fileId=74681f7c5d18f7be00c038bb2736c7d4&path=/V1/mmwave-densepose-full-v2-raw-001.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-001.zip"
+    },
+    {
+      "id": "raw-002",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_103_4132.pkl",
+        "raw/sequence_104_4132.pkl",
+        "raw/sequence_105_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-002.zip",
+      "size_bytes": 3530333621,
+      "sha256": "0dc3a8612f2edc43bbbd8b8e29dd730e88558a3f057eb3415fbab359e6a78df7",
+      "url": "https://download.scidb.cn/download?fileId=e5a6303576b85a01e8e99fc438e310d6&path=/V1/mmwave-densepose-full-v2-raw-002.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-002.zip"
+    },
+    {
+      "id": "raw-003",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_106_4132.pkl",
+        "raw/sequence_107_4131.pkl",
+        "raw/sequence_108_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-003.zip",
+      "size_bytes": 3364684188,
+      "sha256": "26146d1f7f50bebe3625e739e9d4923e0450c71d310ec44f3ad346fd7504057d",
+      "url": "https://download.scidb.cn/download?fileId=7cc469d7659bef1973edcaed2dce9790&path=/V1/mmwave-densepose-full-v2-raw-003.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-003.zip"
+    },
+    {
+      "id": "raw-004",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_109_4129.pkl",
+        "raw/sequence_110_4133.pkl",
+        "raw/sequence_111_4126.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-004.zip",
+      "size_bytes": 3727959414,
+      "sha256": "1ee56e8f9d30c3373031ec433787a1122d91c843bcf180df96f33fda9c99706e",
+      "url": "https://download.scidb.cn/download?fileId=c0ea3825113fdbcd3bb30e45f74004da&path=/V1/mmwave-densepose-full-v2-raw-004.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-004.zip"
+    },
+    {
+      "id": "raw-005",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_112_4129.pkl",
+        "raw/sequence_113_4132.pkl",
+        "raw/sequence_114_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-005.zip",
+      "size_bytes": 3779602064,
+      "sha256": "ec76e82754cfb6de099108bf7a2b395d4474e753a34ef8695d3320888c75757b",
+      "url": "https://download.scidb.cn/download?fileId=7d30165298c6aaf649a5ddaa55a789cd&path=/V1/mmwave-densepose-full-v2-raw-005.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-005.zip"
+    },
+    {
+      "id": "raw-006",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_115_4132.pkl",
+        "raw/sequence_116_4131.pkl",
+        "raw/sequence_117_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-006.zip",
+      "size_bytes": 3742630970,
+      "sha256": "8748d60da4a8cf482552349c305b3a16000964969f7272dc79fba3493774610d",
+      "url": "https://download.scidb.cn/download?fileId=2355bba6bb7f84941b70bbbe144eed1d&path=/V1/mmwave-densepose-full-v2-raw-006.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-006.zip"
+    },
+    {
+      "id": "raw-007",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_118_4129.pkl",
+        "raw/sequence_119_4134.pkl",
+        "raw/sequence_120_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-007.zip",
+      "size_bytes": 3355788773,
+      "sha256": "15669f512c13ccd4bc0fcc5ae1152b2d1b65bf50e00936d06778abbdbd84229d",
+      "url": "https://download.scidb.cn/download?fileId=dd9d93eb14b410c16d49497adf6ff511&path=/V1/mmwave-densepose-full-v2-raw-007.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-007.zip"
+    },
+    {
+      "id": "raw-008",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_121_4118.pkl",
+        "raw/sequence_122_4131.pkl",
+        "raw/sequence_123_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-008.zip",
+      "size_bytes": 3394003156,
+      "sha256": "90352a7061d9212ded57defcac116ec23269bafe68a7fb65c25701a5656ed43d",
+      "url": "https://download.scidb.cn/download?fileId=84733cbb81ad2ab0a5d6d3ed79f6ea8f&path=/V1/mmwave-densepose-full-v2-raw-008.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-008.zip"
+    },
+    {
+      "id": "raw-009",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_124_4131.pkl",
+        "raw/sequence_125_4133.pkl",
+        "raw/sequence_126_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-009.zip",
+      "size_bytes": 3720735999,
+      "sha256": "266da88413445597f62f95528dbb780bde33aef671e26136531b6422acd6a7e5",
+      "url": "https://download.scidb.cn/download?fileId=1284f99ad60a2b4492ab9fb3b33cfc48&path=/V1/mmwave-densepose-full-v2-raw-009.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-009.zip"
+    },
+    {
+      "id": "raw-010",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_127_4132.pkl",
+        "raw/sequence_128_4127.pkl",
+        "raw/sequence_129_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-010.zip",
+      "size_bytes": 3929994120,
+      "sha256": "947a82d1b63c4562d15c0bfa5184439d8d73264d5a964801f72e7487db9d86ea",
+      "url": "https://download.scidb.cn/download?fileId=2a759e097b6d93798d762969c6d87ef7&path=/V1/mmwave-densepose-full-v2-raw-010.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-010.zip"
+    },
+    {
+      "id": "raw-011",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_130_4132.pkl",
+        "raw/sequence_131_4132.pkl",
+        "raw/sequence_132_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-011.zip",
+      "size_bytes": 3779651805,
+      "sha256": "f1b4146a8023a258b2d8a43df8db23a2a90918210232f5060fe2745c1fd3a5d6",
+      "url": "https://download.scidb.cn/download?fileId=33a974103515123972f297321c947ca5&path=/V1/mmwave-densepose-full-v2-raw-011.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-011.zip"
+    },
+    {
+      "id": "raw-012",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_133_4132.pkl",
+        "raw/sequence_134_4131.pkl",
+        "raw/sequence_135_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-012.zip",
+      "size_bytes": 3794297115,
+      "sha256": "065b5f5c91e7229a24bcd8dec9bacad338ebbcd48a5a8eceedc2a6b90ec96e5a",
+      "url": "https://download.scidb.cn/download?fileId=d0489dc0e8b7b715522221ed3ab56a3e&path=/V1/mmwave-densepose-full-v2-raw-012.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-012.zip"
+    },
+    {
+      "id": "raw-013",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_136_4132.pkl",
+        "raw/sequence_137_4130.pkl",
+        "raw/sequence_138_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-013.zip",
+      "size_bytes": 3745264872,
+      "sha256": "a5cd98e6d24aad6385a32c57be62804f4ff515a0c6758d370a5a24e7a7003c22",
+      "url": "https://download.scidb.cn/download?fileId=475fc5a6ede120592709e31304a8a564&path=/V1/mmwave-densepose-full-v2-raw-013.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-013.zip"
+    },
+    {
+      "id": "raw-014",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_139_4115.pkl",
+        "raw/sequence_140_4131.pkl",
+        "raw/sequence_141_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-014.zip",
+      "size_bytes": 3919676989,
+      "sha256": "601591437b48ad2da3264e61c0f7629d5d1f25cecfdff864762fe92ddd71f164",
+      "url": "https://download.scidb.cn/download?fileId=63b0ee34ee2673605a2cc86c455cc21c&path=/V1/mmwave-densepose-full-v2-raw-014.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-014.zip"
+    },
+    {
+      "id": "raw-015",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_142_4132.pkl",
+        "raw/sequence_143_4145.pkl",
+        "raw/sequence_144_4133.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-015.zip",
+      "size_bytes": 3327269123,
+      "sha256": "f2b39c62412a3ebbc01c0891da8662d7778ac07ee703459d505e05631798c18b",
+      "url": "https://download.scidb.cn/download?fileId=5a2569202caf708dd6093aaeecba9658&path=/V1/mmwave-densepose-full-v2-raw-015.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-015.zip"
+    },
+    {
+      "id": "raw-016",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_145_4128.pkl",
+        "raw/sequence_146_4129.pkl",
+        "raw/sequence_147_4126.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-016.zip",
+      "size_bytes": 3378762740,
+      "sha256": "975393c29de4df8aa7f8906311b7a17c69e26d6e94c1d6f5bfa1df22bc626a74",
+      "url": "https://download.scidb.cn/download?fileId=a0334197be6c2ae04f0d66d25781baf9&path=/V1/mmwave-densepose-full-v2-raw-016.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-016.zip"
+    },
+    {
+      "id": "raw-017",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_148_4132.pkl",
+        "raw/sequence_149_4132.pkl",
+        "raw/sequence_150_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-017.zip",
+      "size_bytes": 3321222109,
+      "sha256": "702c45726859492ed20940b1dd01f5cad882e0ed29a98da93a7917987ec19649",
+      "url": "https://download.scidb.cn/download?fileId=d227eaee3a5ea5243f75e942145e1973&path=/V1/mmwave-densepose-full-v2-raw-017.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-017.zip"
+    },
+    {
+      "id": "raw-018",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_151_4129.pkl",
+        "raw/sequence_152_4132.pkl",
+        "raw/sequence_153_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-018.zip",
+      "size_bytes": 3833502113,
+      "sha256": "00904e6146e78288d9048e477312ec0e23fc4bf2d6e2f4544fb6756c31a49f8d",
+      "url": "https://download.scidb.cn/download?fileId=5356678e15d32dc7607b61941a3f4071&path=/V1/mmwave-densepose-full-v2-raw-018.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-018.zip"
+    },
+    {
+      "id": "raw-019",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_154_4133.pkl",
+        "raw/sequence_155_4121.pkl",
+        "raw/sequence_156_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-019.zip",
+      "size_bytes": 3667897993,
+      "sha256": "af6db1170fae63375329499520b49bc584ab1e2ffaed2db3e4b5492c7653d4dd",
+      "url": "https://download.scidb.cn/download?fileId=7dede6a8cadf44d2eb51837bcdf3637a&path=/V1/mmwave-densepose-full-v2-raw-019.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-019.zip"
+    },
+    {
+      "id": "raw-020",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_157_4132.pkl",
+        "raw/sequence_158_4132.pkl",
+        "raw/sequence_159_4128.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-020.zip",
+      "size_bytes": 3551624358,
+      "sha256": "7043796e40c4730bfd8c8f8334ab9a3fdf7f379b9f7fb5bd0e788448c88081ba",
+      "url": "https://download.scidb.cn/download?fileId=fd161392d4ddac7fc513a78fa34e1f0f&path=/V1/mmwave-densepose-full-v2-raw-020.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-020.zip"
+    },
+    {
+      "id": "raw-021",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_160_4127.pkl",
+        "raw/sequence_161_4131.pkl",
+        "raw/sequence_162_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-021.zip",
+      "size_bytes": 3602358637,
+      "sha256": "cbef5dffa0cf3e0d45599833cf7518d3a38c0020578ce3806a55516e82574828",
+      "url": "https://download.scidb.cn/download?fileId=719033671c392976abbe0c4c71c7b813&path=/V1/mmwave-densepose-full-v2-raw-021.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-021.zip"
+    },
+    {
+      "id": "raw-022",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_163_4132.pkl",
+        "raw/sequence_164_4132.pkl",
+        "raw/sequence_165_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-022.zip",
+      "size_bytes": 3757179198,
+      "sha256": "e0828fc3c0fde4c7bdeda3c88ecbcdd0d2f1ace34b9234646d2af77fe759d58e",
+      "url": "https://download.scidb.cn/download?fileId=0088f122e115da990afc54c9a859eb81&path=/V1/mmwave-densepose-full-v2-raw-022.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-022.zip"
+    },
+    {
+      "id": "raw-023",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_166_4132.pkl",
+        "raw/sequence_167_4092.pkl",
+        "raw/sequence_168_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-023.zip",
+      "size_bytes": 3429348741,
+      "sha256": "12a13ef50e4ae14dcd947de59b86aaef7f32d134fa28a51d1716883eb2c2c1d3",
+      "url": "https://download.scidb.cn/download?fileId=15e1b038de3a14732764fc9de75b2bc3&path=/V1/mmwave-densepose-full-v2-raw-023.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-023.zip"
+    },
+    {
+      "id": "raw-024",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_1_4132.pkl",
+        "raw/sequence_29_4132.pkl",
+        "raw/sequence_30_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-024.zip",
+      "size_bytes": 3867148284,
+      "sha256": "d939183a9544a69f2d945a3a451d28fc47c877acea55e03e35a9095c1226e465",
+      "url": "https://download.scidb.cn/download?fileId=d69302e3165ded7ad9d5fe8bb13f91be&path=/V1/mmwave-densepose-full-v2-raw-024.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-024.zip"
+    },
+    {
+      "id": "raw-025",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_31_4131.pkl",
+        "raw/sequence_32_4132.pkl",
+        "raw/sequence_33_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-025.zip",
+      "size_bytes": 3813798076,
+      "sha256": "b101314f3fba32b3b0cd51410f04680bb801a73753f3cfc4a054d86df9163609",
+      "url": "https://download.scidb.cn/download?fileId=d82f0630a1a6070d5d9b1d0702e21813&path=/V1/mmwave-densepose-full-v2-raw-025.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-025.zip"
+    },
+    {
+      "id": "raw-026",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_34_4132.pkl",
+        "raw/sequence_35_4133.pkl",
+        "raw/sequence_36_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-026.zip",
+      "size_bytes": 3863211898,
+      "sha256": "f03a9941f6b88cffcdd10888f340213e84e090b7647f412150e6ba7e4ecff5a0",
+      "url": "https://download.scidb.cn/download?fileId=8a081f98e5aa394c8e8b85a623ad4c89&path=/V1/mmwave-densepose-full-v2-raw-026.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-026.zip"
+    },
+    {
+      "id": "raw-027",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_37_4126.pkl",
+        "raw/sequence_38_4128.pkl",
+        "raw/sequence_39_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-027.zip",
+      "size_bytes": 4090011418,
+      "sha256": "f25964f8e54fd1285ce61ec82c9d6dd6edd13450a6ddb9deb78c7574d09a9c8d",
+      "url": "https://download.scidb.cn/download?fileId=225fa07ac71e94f5b57f6178ad59420d&path=/V1/mmwave-densepose-full-v2-raw-027.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-027.zip"
+    },
+    {
+      "id": "raw-028",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_40_4132.pkl",
+        "raw/sequence_41_4131.pkl",
+        "raw/sequence_42_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-028.zip",
+      "size_bytes": 4235385542,
+      "sha256": "7a5d8d8ab201727b63de531adc196ed4a6270f4c77aee175b333b3c614146347",
+      "url": "https://download.scidb.cn/download?fileId=d15cee2b23afa4e3d5349fb696a1ad20&path=/V1/mmwave-densepose-full-v2-raw-028.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-028.zip"
+    },
+    {
+      "id": "raw-029",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_43_4121.pkl",
+        "raw/sequence_44_4129.pkl",
+        "raw/sequence_45_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-029.zip",
+      "size_bytes": 4253333100,
+      "sha256": "6a6931f34f268add4d003a7cba7bdb931d3f15b671d35dc23599ab35cfa68c93",
+      "url": "https://download.scidb.cn/download?fileId=2da88e0e80cb9676461817c267d4c239&path=/V1/mmwave-densepose-full-v2-raw-029.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-029.zip"
+    },
+    {
+      "id": "raw-030",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_46_4129.pkl",
+        "raw/sequence_47_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-030.zip",
+      "size_bytes": 2864588316,
+      "sha256": "e21ef4edd57541b2bcfe3ed9fb6974edab306326219af8e26f8f1471be8e7380",
+      "url": "https://download.scidb.cn/download?fileId=6277374639d637d1959531a975387750&path=/V1/mmwave-densepose-full-v2-raw-030.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-030.zip"
+    },
+    {
+      "id": "raw-031",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_48_4131.pkl",
+        "raw/sequence_49_4128.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-031.zip",
+      "size_bytes": 3013875363,
+      "sha256": "e4908e17a270f6ca69fd5b1cb75dd81839d8563be0d8ef1dcc986cb5b3bc39bc",
+      "url": "https://download.scidb.cn/download?fileId=1bcd38a5781f53ddbbd7d439670c2ac3&path=/V1/mmwave-densepose-full-v2-raw-031.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-031.zip"
+    },
+    {
+      "id": "raw-032",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_50_4131.pkl",
+        "raw/sequence_51_4117.pkl",
+        "raw/sequence_52_4130.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-032.zip",
+      "size_bytes": 4247060217,
+      "sha256": "a5806b9137922292d4d0f7d6c5b980d2286628c8eaf48db57e7500914c55f898",
+      "url": "https://download.scidb.cn/download?fileId=58815bd9a8961ad82f8b6c58342a38b2&path=/V1/mmwave-densepose-full-v2-raw-032.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-032.zip"
+    },
+    {
+      "id": "raw-033",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_53_4131.pkl",
+        "raw/sequence_54_4118.pkl",
+        "raw/sequence_55_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-033.zip",
+      "size_bytes": 3663245619,
+      "sha256": "4a830278fd0d5c44277df3eddcb821296d44be4783591b84c33ce784b12ab98a",
+      "url": "https://download.scidb.cn/download?fileId=b0555091b435cbb98e8002f1230cb553&path=/V1/mmwave-densepose-full-v2-raw-033.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-033.zip"
+    },
+    {
+      "id": "raw-034",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_56_4129.pkl",
+        "raw/sequence_57_4129.pkl",
+        "raw/sequence_58_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-034.zip",
+      "size_bytes": 3403853992,
+      "sha256": "678703ba728cad6164b4249f4add5754555f813e88f1fda8ec40f5339287f1b1",
+      "url": "https://download.scidb.cn/download?fileId=70bfb388a9b51af6ddbc9969ffe31af4&path=/V1/mmwave-densepose-full-v2-raw-034.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-034.zip"
+    },
+    {
+      "id": "raw-035",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_59_4130.pkl",
+        "raw/sequence_60_4129.pkl",
+        "raw/sequence_61_4126.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-035.zip",
+      "size_bytes": 3507421303,
+      "sha256": "ece030d2591b0962226eaff6afa342289ffd33798803bf40313da2e18cec6471",
+      "url": "https://download.scidb.cn/download?fileId=3164bce1c40190d41a4237771b76ad2b&path=/V1/mmwave-densepose-full-v2-raw-035.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-035.zip"
+    },
+    {
+      "id": "raw-036",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_62_4131.pkl",
+        "raw/sequence_63_4132.pkl",
+        "raw/sequence_64_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-036.zip",
+      "size_bytes": 3658850903,
+      "sha256": "25cce275d2b384d6f53b0180893fc2930cf16dc87210886fe53b17fa61c8c2ac",
+      "url": "https://download.scidb.cn/download?fileId=5722c2e03a43bc63001d48a830b9b3b4&path=/V1/mmwave-densepose-full-v2-raw-036.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-036.zip"
+    },
+    {
+      "id": "raw-037",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_65_4129.pkl",
+        "raw/sequence_66_4129.pkl",
+        "raw/sequence_67_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-037.zip",
+      "size_bytes": 3713341011,
+      "sha256": "1bb5cf9ced1d5adac0e5be588dd51e3f436680065c88e6bf2b2e66fd4c1fe3d4",
+      "url": "https://download.scidb.cn/download?fileId=7bafe8dfa076dae255ecd818bf364a3b&path=/V1/mmwave-densepose-full-v2-raw-037.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-037.zip"
+    },
+    {
+      "id": "raw-038",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_68_4131.pkl",
+        "raw/sequence_69_4132.pkl",
+        "raw/sequence_70_4131.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-038.zip",
+      "size_bytes": 3583097803,
+      "sha256": "987c1bd23a6b2dd3bd7b38a92dc6f75401a528e6e6fbc5c0cd956893c3a42395",
+      "url": "https://download.scidb.cn/download?fileId=9dc6dc548928c8eec64bdcd38eaf6ca1&path=/V1/mmwave-densepose-full-v2-raw-038.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-038.zip"
+    },
+    {
+      "id": "raw-039",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_71_4131.pkl",
+        "raw/sequence_72_4133.pkl",
+        "raw/sequence_73_4130.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-039.zip",
+      "size_bytes": 3696774872,
+      "sha256": "110396292ed67f205e8345c4662d808de89062bcda64d117c50f1c9072309848",
+      "url": "https://download.scidb.cn/download?fileId=01df02e61baf129da54cc72c87de059b&path=/V1/mmwave-densepose-full-v2-raw-039.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-039.zip"
+    },
+    {
+      "id": "raw-040",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_74_4132.pkl",
+        "raw/sequence_75_4131.pkl",
+        "raw/sequence_76_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-040.zip",
+      "size_bytes": 3725262129,
+      "sha256": "afa84872c22d179c6e52600b44c162a2fe9759da9502bdc41cb59d313e316c4c",
+      "url": "https://download.scidb.cn/download?fileId=dda942659aeb3121990c4a1c6b5fcace&path=/V1/mmwave-densepose-full-v2-raw-040.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-040.zip"
+    },
+    {
+      "id": "raw-041",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_77_4119.pkl",
+        "raw/sequence_78_4130.pkl",
+        "raw/sequence_79_4098.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-041.zip",
+      "size_bytes": 3540372418,
+      "sha256": "d149cff6922cfec887f2ffa48ed2029547fb63c6c0adf4407348fd5d3f2b8382",
+      "url": "https://download.scidb.cn/download?fileId=d401cfa480c43627743e61ae25f3eedb&path=/V1/mmwave-densepose-full-v2-raw-041.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-041.zip"
+    },
+    {
+      "id": "raw-042",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_80_4131.pkl",
+        "raw/sequence_81_4132.pkl",
+        "raw/sequence_82_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-042.zip",
+      "size_bytes": 3305316635,
+      "sha256": "58b32bf7eecfd26e1a21a52270aa306f921106e3ade52f121734a36fe948fdc5",
+      "url": "https://download.scidb.cn/download?fileId=9f6e14eb54bd4e957d98332ea62c1e05&path=/V1/mmwave-densepose-full-v2-raw-042.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-042.zip"
+    },
+    {
+      "id": "raw-043",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_83_4131.pkl",
+        "raw/sequence_84_4132.pkl",
+        "raw/sequence_85_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-043.zip",
+      "size_bytes": 3306635713,
+      "sha256": "da98023ec0ef5c73182fad9bf9acdd180e6bf7d5ea779b6d334497484b54994e",
+      "url": "https://download.scidb.cn/download?fileId=3f6cc185d68597c7bb4f00671d684eb4&path=/V1/mmwave-densepose-full-v2-raw-043.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-043.zip"
+    },
+    {
+      "id": "raw-044",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_86_4131.pkl",
+        "raw/sequence_87_4132.pkl",
+        "raw/sequence_88_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-044.zip",
+      "size_bytes": 3399939513,
+      "sha256": "946ff064ea64790016d96a46db5d5a4652bdd76d08760977643f271061f98a46",
+      "url": "https://download.scidb.cn/download?fileId=dc7eef55a8d80636475a4bfaa86069f5&path=/V1/mmwave-densepose-full-v2-raw-044.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-044.zip"
+    },
+    {
+      "id": "raw-045",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_89_4132.pkl",
+        "raw/sequence_90_4128.pkl",
+        "raw/sequence_91_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-045.zip",
+      "size_bytes": 3432107060,
+      "sha256": "1417ec02ad1360d3002d456180cd59d3277bee12be201f7aaad8049dd87f2c00",
+      "url": "https://download.scidb.cn/download?fileId=58d6abf5ea6b1fd8d995e88f2ae9e502&path=/V1/mmwave-densepose-full-v2-raw-045.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-045.zip"
+    },
+    {
+      "id": "raw-046",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_92_4132.pkl",
+        "raw/sequence_93_4132.pkl",
+        "raw/sequence_94_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-046.zip",
+      "size_bytes": 3460606831,
+      "sha256": "61415753e5cbafbbb9a0748dd3f8cdab302a10d9ae0c3e15e12821c953ff18b9",
+      "url": "https://download.scidb.cn/download?fileId=8a88b44c03fdfe79c1a0b82ae369470e&path=/V1/mmwave-densepose-full-v2-raw-046.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-046.zip"
+    },
+    {
+      "id": "raw-047",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_95_4129.pkl",
+        "raw/sequence_96_4131.pkl",
+        "raw/sequence_97_4127.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-047.zip",
+      "size_bytes": 3560577356,
+      "sha256": "5e558b618e78701385be2a2fbb5a38f65327db9d659b52e782fd96d4c02277cc",
+      "url": "https://download.scidb.cn/download?fileId=d4c3ea80a6ed02cf67824631d00d5d2f&path=/V1/mmwave-densepose-full-v2-raw-047.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-047.zip"
+    },
+    {
+      "id": "raw-048",
+      "kind": "raw",
+      "files": [
+        "raw/sequence_98_4108.pkl",
+        "raw/sequence_99_4132.pkl"
+      ],
+      "filename": "mmwave-densepose-full-v2-raw-048.zip",
+      "size_bytes": 2397820596,
+      "sha256": "e424d9970321b07d3deb9c589ae7464f5592fc4a1f8b23699fbe82ed541bd966",
+      "url": "https://download.scidb.cn/download?fileId=8a580cfead87766e42bb9a15ef21c549&path=/V1/mmwave-densepose-full-v2-raw-048.zip&username=jiangliu@seu.edu.cn&fileName=mmwave-densepose-full-v2-raw-048.zip"
+    }
+  ],
+  "download_provider": "ScienceDB",
+  "publication_note": "Maintainer-provided production ScienceDB download URLs."
+}

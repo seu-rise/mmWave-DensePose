@@ -1,0 +1,1026 @@
+{
+  "format_version": 1,
+  "schema_version": 2,
+  "log_root": "mmwave_densepose/logs",
+  "assets": [
+    {
+      "id": "main-dgcnn",
+      "model": "DGCNN",
+      "paper_name": "DGCNN",
+      "path": "paper/experiments/main-dgcnn/checkpoints/best.ckpt",
+      "config": "paper/configs/main-dgcnn.json",
+      "seed": 42,
+      "split_manifest": "single_intra_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 102735156,
+      "sha256": "45e640ceb2777ce20ea84809509361eaf4f6c5f4131f20ccce673eade2ad4e27",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/DGCNN/intra_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/DGCNN/intra_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "intra_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-point-transformer",
+      "model": "PointTransformer",
+      "paper_name": "PointTransformer",
+      "path": "paper/experiments/main-point-transformer/checkpoints/best.ckpt",
+      "config": "paper/configs/main-point-transformer.json",
+      "seed": 42,
+      "split_manifest": "single_intra_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 11046660,
+      "sha256": "44e778cd5b47b7a03a33fbe12c2ce87fb0f6fed2b9615cbb30e8860d2518ba32",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PointTransformer/unknown_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PointTransformer/unknown_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "unknown_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-pointmlp",
+      "model": "PointMLP",
+      "paper_name": "PointMLP",
+      "path": "paper/experiments/main-pointmlp/checkpoints/best.ckpt",
+      "config": "paper/configs/main-pointmlp.json",
+      "seed": 42,
+      "split_manifest": "single_intra_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 100737144,
+      "sha256": "c5123415e2744769d4c7fec866f1769eed2012d9a57ccedee8d0676db8210833",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PointMLP/unknown_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PointMLP/unknown_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "unknown_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-mm-pose-fk",
+      "model": "MMPoseFK",
+      "paper_name": "mmPose-FK",
+      "path": "paper/experiments/main-mm-pose-fk/checkpoints/best.ckpt",
+      "config": "paper/configs/main-mm-pose-fk.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 5386162,
+      "sha256": "c7165a91fc7168f18695282a842fcac1291aa743f5366cdfb6eaeceacb795cd3",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/MMPoseFK/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/MMPoseFK/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-dual-path",
+      "model": "DualPathCNNBiLSTM",
+      "paper_name": "Dual-Path CNN-BiLSTM",
+      "path": "paper/experiments/main-dual-path/checkpoints/best.ckpt",
+      "config": "paper/configs/main-dual-path.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 4,
+      "size_bytes": 19277536,
+      "sha256": "f553408de67b92fabfabc4eb6ea46e4099e504d5eea5b01b8e007e907c538360",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/DualPathCNNBiLSTM/chunk_t5_punknown_d4_e150_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_002",
+          "path": "mmwave_densepose/logs/test/DualPathCNNBiLSTM/chunk_t5_punknown_d4_e150_b128_lr5e-4_s42/test_002_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d4_e150_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-pnt-pose-at",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/main-pnt-pose-at/checkpoints/best.ckpt",
+      "config": "paper/configs/main-pnt-pose-at.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "c5330c73498c1a2a3bff11d1b2556908deacc0318fcaec43d455cedeb99732d6",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/chunk_t5_punknown_d5_e50_b128_lr1e-3_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_punknown_d5_e50_b128_lr1e-3_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d5_e50_b128_lr1e-3_s42",
+      "paper_tables": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-pose-graph",
+      "model": "PoseGraphNet",
+      "paper_name": "PoseGraphNet",
+      "path": "paper/experiments/main-pose-graph/checkpoints/best.ckpt",
+      "config": "paper/configs/main-pose-graph.json",
+      "seed": 42,
+      "split_manifest": "single_intra_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 1760364,
+      "sha256": "e8160eca2a753b73cd7e3349fe1413f1da2e64141258d4674b8d12eeb1401c9c",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PoseGraphNet/chunk_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PoseGraphNet/chunk_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-global-local",
+      "model": "GlobalLocalNetwork",
+      "paper_name": "Global-Local Network",
+      "path": "paper/experiments/main-global-local/checkpoints/best.ckpt",
+      "config": "paper/configs/main-global-local.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 35877896,
+      "sha256": "75ef8f47c1e58d2366dd97f7b568ec036c836800b2117e23a03570a02e3777f8",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/GlobalLocalNetwork/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/GlobalLocalNetwork/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "main-pcc-dense",
+      "model": "PCCCompletion",
+      "paper_name": "PCC dense completion",
+      "path": "paper/experiments/main-pcc-dense/checkpoints/best.ckpt",
+      "config": "paper/configs/main-pcc-dense.json",
+      "seed": 42,
+      "split_manifest": "single_chunk_s42",
+      "num_points": 80,
+      "input_dim": 3,
+      "size_bytes": 33627148,
+      "sha256": "4c57f764366720d702ee3b9a83d87a770cb6e4e50be676c3c0b58cbe68452447",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PCCCompletion/chunk_t1_p80_d3_o196_e100_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PCCCompletion/chunk_t1_p80_d3_o196_e100_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t1_p80_d3_o196_e100_b128_lr5e-4_s42",
+      "paper_tables": [],
+      "paper_dependency_tables": [
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "id": "main-pastnet",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/main-pastnet/checkpoints/best.ckpt",
+      "config": "paper/configs/main-pastnet.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "ae2eba13cd9261ee8bcc64ea81a24d727cec2c004dffc5bf1c96440b89d0e91b",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "ablation-pointnet",
+      "model": "PointNet2Baseline",
+      "paper_name": "baseline",
+      "path": "paper/experiments/ablation-pointnet/checkpoints/best.ckpt",
+      "config": "paper/configs/ablation-pointnet.json",
+      "seed": 42,
+      "split_manifest": "single_intra_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 53476934,
+      "sha256": "1040b8c8ba79f94e2afad1103a3d420d5d059fa63bdbfe54d306b0101c896d26",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PointNet2Baseline/unknown_t5_punknown_d5_e200_b128_lr5e-4_s42_baseline_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PointNet2Baseline/unknown_t5_punknown_d5_e200_b128_lr5e-4_s42_baseline/test_001_official"
+        }
+      ],
+      "training_run_id": "unknown_t5_punknown_d5_e200_b128_lr5e-4_s42_baseline",
+      "paper_tables": [
+        8
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "ablation-spatial",
+      "model": "PASTNet",
+      "paper_name": "Skeleton-aware spatial only",
+      "path": "paper/experiments/ablation-spatial/checkpoints/best.ckpt",
+      "config": "paper/configs/ablation-spatial.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 87310262,
+      "sha256": "c8d86f2441ca9d218c0374d774db5b991e13c6bcb608600214e71e7c95d85749",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_spatial-only_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_spatial-only/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d5_e200_b128_lr5e-4_s42_spatial-only",
+      "paper_tables": [
+        8
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "ablation-input-3d",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 3D input",
+      "path": "paper/experiments/ablation-input-3d/checkpoints/best.ckpt",
+      "config": "paper/configs/ablation-input-3d.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 300,
+      "input_dim": 3,
+      "size_bytes": 88105722,
+      "sha256": "a53ee45698fdc86d01992f26c5f07ff249d28ca49a7abbb5e1b36f70c70a2991",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_punknown_d3_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_punknown_d3_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_punknown_d3_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        9
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-25",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 25 points",
+      "path": "paper/experiments/points-25/checkpoints/best.ckpt",
+      "config": "paper/configs/points-25.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 25,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "bdcb7336d96621742dc6dd4cceea741334d80723ebb2af6547b7eb6faed3ee8a",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p25_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p25_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p25_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-50",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 50 points",
+      "path": "paper/experiments/points-50/checkpoints/best.ckpt",
+      "config": "paper/configs/points-50.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 50,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "f0eccf3c00ed2dd91aad40d2dc88e4b03bdfe44595d0ad17458e0e4c1e5be029",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p50_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p50_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p50_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-75",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 75 points",
+      "path": "paper/experiments/points-75/checkpoints/best.ckpt",
+      "config": "paper/configs/points-75.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 75,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "1a41f73f398ceaa8f876324c01977acca048b133800e7e20f80fc9985db5775f",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p75_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p75_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p75_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-100",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 100 points",
+      "path": "paper/experiments/points-100/checkpoints/best.ckpt",
+      "config": "paper/configs/points-100.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 100,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "b218a1c38da642606da26e73e692378909d6cd3cdebae12f516a9b3c12148e8a",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p100_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p100_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p100_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-125",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 125 points",
+      "path": "paper/experiments/points-125/checkpoints/best.ckpt",
+      "config": "paper/configs/points-125.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 125,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "891ac92b6dfbd573f53537d3c471aa52afde6471b400235359e4c22cb7f9921d",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p125_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p125_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p125_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "points-150",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net 150 points",
+      "path": "paper/experiments/points-150/checkpoints/best.ckpt",
+      "config": "paper/configs/points-150.json",
+      "seed": 42,
+      "split_manifest": "chunk_s42",
+      "num_points": 150,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "4bfa6eb6bbd5abe8572ee7a186492d22ab19804082365b043f0e99e11f55a029",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p150_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p150_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p150_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        10
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pastnet-seed50",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/pastnet-seed50/checkpoints/best.ckpt",
+      "config": "paper/configs/pastnet-seed50.json",
+      "seed": 50,
+      "split_manifest": "chunk_s50",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "fae2d6ce0a40451a4cf923915c438e437c136e4860e9992968b8684b5ae83af2",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s50_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s50/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e200_b128_lr5e-4_s50",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pastnet-seed66",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/pastnet-seed66/checkpoints/best.ckpt",
+      "config": "paper/configs/pastnet-seed66.json",
+      "seed": 66,
+      "split_manifest": "chunk_s66",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "e23d0bf697c700cddd4d98edaa0d1f70d703a8deb4f730b1369dbb2ffad2b0ea",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s66_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s66/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e200_b128_lr5e-4_s66",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pastnet-seed69",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/pastnet-seed69/checkpoints/best.ckpt",
+      "config": "paper/configs/pastnet-seed69.json",
+      "seed": 69,
+      "split_manifest": "chunk_s69",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "7b515d74636b72083efdb51301595b4c70abcd69e8b0392117170767d4f0638b",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s69_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s69/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e200_b128_lr5e-4_s69",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pastnet-seed87",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/pastnet-seed87/checkpoints/best.ckpt",
+      "config": "paper/configs/pastnet-seed87.json",
+      "seed": 87,
+      "split_manifest": "chunk_s87",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "1f9ecba1fac946b2473eefe7f46f6f8f80127c5ddedded8a3942bd4cf453d458",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s87_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/chunk_t5_p300_d5_e200_b128_lr5e-4_s87/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e200_b128_lr5e-4_s87",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pnt-pose-at-seed50",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/pnt-pose-at-seed50/checkpoints/best.ckpt",
+      "config": "paper/configs/pnt-pose-at-seed50.json",
+      "seed": 50,
+      "split_manifest": "chunk_s50",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "f5da0c71e3b072da50787e0283f906d6c4e463896f1ae9e6476fdb5c28d1d22d",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s50_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s50/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e50_b128_lr1e-3_s50",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pnt-pose-at-seed66",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/pnt-pose-at-seed66/checkpoints/best.ckpt",
+      "config": "paper/configs/pnt-pose-at-seed66.json",
+      "seed": 66,
+      "split_manifest": "chunk_s66",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "5e77919ed220c032d4589132c32b2bc254b2de57f9b5f8845a14308df58bcdbc",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s66_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s66/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e50_b128_lr1e-3_s66",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pnt-pose-at-seed69",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/pnt-pose-at-seed69/checkpoints/best.ckpt",
+      "config": "paper/configs/pnt-pose-at-seed69.json",
+      "seed": 69,
+      "split_manifest": "chunk_s69",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "e4283700958262dede5cfccaa16a9cf98e48ac5467b399eb0788f81039ea94bf",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s69_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s69/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e50_b128_lr1e-3_s69",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "pnt-pose-at-seed87",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/pnt-pose-at-seed87/checkpoints/best.ckpt",
+      "config": "paper/configs/pnt-pose-at-seed87.json",
+      "seed": 87,
+      "split_manifest": "chunk_s87",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "e563d327cb9bf28139ea35be183c5a12cd4646029eccbee544c2c9e0fe50f41c",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s87_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/chunk_t5_p300_d5_e50_b128_lr1e-3_s87/test_001_official"
+        }
+      ],
+      "training_run_id": "chunk_t5_p300_d5_e50_b128_lr1e-3_s87",
+      "paper_tables": [
+        6
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-pastnet",
+      "model": "PASTNet",
+      "paper_name": "PAST-Net",
+      "path": "paper/experiments/subject-pastnet/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-pastnet.json",
+      "seed": 42,
+      "split_manifest": "subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 88106234,
+      "sha256": "fe8a7426fbd14459662d92236cfdf62eb057c73f8b499f98de733a1d2f66efb2",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PASTNet/subject_t5_p300_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PASTNet/subject_t5_p300_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t5_p300_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-pnt-pose-at",
+      "model": "PntPoseAT",
+      "paper_name": "PntPoseAT",
+      "path": "paper/experiments/subject-pnt-pose-at/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-pnt-pose-at.json",
+      "seed": 42,
+      "split_manifest": "subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 15111713,
+      "sha256": "6b1f435de6f8494bf99dbc70bfabad3c4fe0278bf387e34aac2281d19abcf48b",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PntPoseAT/subject_t5_p300_d5_e50_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PntPoseAT/subject_t5_p300_d5_e50_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t5_p300_d5_e50_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-mm-pose-fk",
+      "model": "MMPoseFK",
+      "paper_name": "mmPose-FK",
+      "path": "paper/experiments/subject-mm-pose-fk/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-mm-pose-fk.json",
+      "seed": 42,
+      "split_manifest": "subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 5386162,
+      "sha256": "3690c22582bc880937ce27b23f680126868fde0b3adcefeb4f2b28ab765cc47a",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/MMPoseFK/subject_t5_p300_d5_e100_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/MMPoseFK/subject_t5_p300_d5_e100_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t5_p300_d5_e100_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-dual-path",
+      "model": "DualPathCNNBiLSTM",
+      "paper_name": "Dual-Path CNN-BiLSTM",
+      "path": "paper/experiments/subject-dual-path/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-dual-path.json",
+      "seed": 42,
+      "split_manifest": "subject_s42",
+      "num_points": 300,
+      "input_dim": 4,
+      "size_bytes": 19277536,
+      "sha256": "0f7b9f02ee41fdac8bab75ef1c56719e2f98dd9beb93be592e25c115420fa23d",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/DualPathCNNBiLSTM/subject_t5_p300_d4_e150_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/DualPathCNNBiLSTM/subject_t5_p300_d4_e150_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t5_p300_d4_e150_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-global-local",
+      "model": "GlobalLocalNetwork",
+      "paper_name": "Global-Local Network",
+      "path": "paper/experiments/subject-global-local/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-global-local.json",
+      "seed": 42,
+      "split_manifest": "subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 35877896,
+      "sha256": "53a09f2143eb7295c72b03f323aff721bde912591be38e91d24e45ae29bfbb75",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/GlobalLocalNetwork/subject_t5_p300_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/GlobalLocalNetwork/subject_t5_p300_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t5_p300_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-pcc-dense",
+      "model": "PCCCompletion",
+      "paper_name": "PCC dense completion",
+      "path": "paper/experiments/subject-pcc-dense/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-pcc-dense.json",
+      "seed": 42,
+      "split_manifest": "single_subject_s42",
+      "num_points": 80,
+      "input_dim": 3,
+      "size_bytes": 33627212,
+      "sha256": "d8dd1095f12ce148f8322e12433c167eebb08580028f9971c65b37f0738279a4",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PCCCompletion/subject_t1_p80_d3_o196_e100_b128_lr5e-4_s42_official",
+      "evaluations": [],
+      "training_run_id": "subject_t1_p80_d3_o196_e100_b128_lr5e-4_s42",
+      "paper_tables": [],
+      "paper_dependency_tables": [
+        7
+      ]
+    },
+    {
+      "id": "subject-pointmlp",
+      "model": "PointMLP",
+      "paper_name": "PointMLP",
+      "path": "paper/experiments/subject-pointmlp/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-pointmlp.json",
+      "seed": 42,
+      "split_manifest": "single_subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 100737144,
+      "sha256": "094f68940283de969ddcdf911a2e7f82f69fbe83b0cbb0fa58b9eaea9a00b07f",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PointMLP/subject_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PointMLP/subject_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-pose-graph",
+      "model": "PoseGraphNet",
+      "paper_name": "PoseGraphNet",
+      "path": "paper/experiments/subject-pose-graph/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-pose-graph.json",
+      "seed": 42,
+      "split_manifest": "single_subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 1760364,
+      "sha256": "1b25e6639e2975fbd6693823a9e21d3947a8a65fd9564fab5ccd675832b9bbfa",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PoseGraphNet/subject_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PoseGraphNet/subject_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-point-transformer",
+      "model": "PointTransformer",
+      "paper_name": "PointTransformer",
+      "path": "paper/experiments/subject-point-transformer/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-point-transformer.json",
+      "seed": 42,
+      "split_manifest": "single_subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 11046724,
+      "sha256": "f800bc2b9d293612fc780ca26c32fb480f0fc3eb5eec471a55463d2b44aa6474",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/PointTransformer/subject_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/PointTransformer/subject_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    },
+    {
+      "id": "subject-dgcnn",
+      "model": "DGCNN",
+      "paper_name": "DGCNN",
+      "path": "paper/experiments/subject-dgcnn/checkpoints/best.ckpt",
+      "config": "paper/configs/subject-dgcnn.json",
+      "seed": 42,
+      "split_manifest": "single_subject_s42",
+      "num_points": 300,
+      "input_dim": 5,
+      "size_bytes": 102735156,
+      "sha256": "63d51293ec49f96d0f3325d5b68bef15c9393c9bc6d07820d5e4595a4532e092",
+      "url": null,
+      "status": "prepared_and_strictly_loaded",
+      "training_log": "mmwave_densepose/logs/train/DGCNN/subject_t1_punknown_d5_e200_b128_lr5e-4_s42_official",
+      "evaluations": [
+        {
+          "test_id": "test_001",
+          "path": "mmwave_densepose/logs/test/DGCNN/subject_t1_punknown_d5_e200_b128_lr5e-4_s42/test_001_official"
+        }
+      ],
+      "training_run_id": "subject_t1_punknown_d5_e200_b128_lr5e-4_s42",
+      "paper_tables": [
+        7
+      ],
+      "paper_dependency_tables": []
+    }
+  ]
+}

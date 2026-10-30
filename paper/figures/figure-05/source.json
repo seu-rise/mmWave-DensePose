@@ -1,0 +1,174 @@
+{
+  "figure": "5",
+  "renderer": "Apache ECharts",
+  "data_policy": "Frozen aggregate payloads copied from original plotting HTML; no dataset scan or live calculation.",
+  "sources": {
+    "a": {
+      "html": "scripts/utils/Dataset_Statistics/dataset_overview_stats/figures/radar_point_count_interval_histogram.html",
+      "sha256": "768d86fafa2bd2ff02b6fee07903065731a3b5b31a6701409a6212e162456033",
+      "csv": {
+        "path": "scripts/utils/Dataset_Statistics/dataset_overview_stats/radar_point_count_distribution/outputs/radar_point_count_interval_distribution.csv",
+        "sha256": "2ed14e14038173dc01f8c4997d20e2916afc0a95ab4551583bf0049177ffc705"
+      }
+    },
+    "b": {
+      "html": "scripts/utils/Dataset_Statistics/dataset_overview_stats/figures/radar_point_count_boxplot.html",
+      "sha256": "b2e2dfe18fc0aab34d56839e9a60cbc50e007998b7d983d6b1e8ed13029c0ab4"
+    }
+  },
+  "reference_images": [
+    "Engineering/Dataset_Statistics_a.png",
+    "Engineering/Dataset_Statistics_b.png"
+  ],
+  "echarts": {
+    "source": "scripts/javascript/echarts.min.js",
+    "sha256": "1156429a16a38cb8604dcc6518c19406d4226142d908f8edd2e3531443c54d19",
+    "bytes": 1024740,
+    "version": "5.4.3"
+  },
+  "axes": {
+    "a": {
+      "x": {
+        "name": "Radar points per frame",
+        "type": "category",
+        "labels": [
+          "50~60",
+          "60~70",
+          "70~80",
+          "80~90",
+          "90~100",
+          "100~110",
+          "110~120",
+          "120~130",
+          "130~140",
+          "140~150",
+          "150~160",
+          "160~170",
+          "170~180",
+          "180~190",
+          "190~200",
+          "200~210",
+          "210~220",
+          "220~230",
+          "230~240",
+          "240~250",
+          "250~260",
+          "260~270",
+          "270~280",
+          "280~290",
+          "290~300",
+          "300~310",
+          "310~320",
+          "320~330",
+          "330~340",
+          "340~350",
+          "350~360",
+          "360~370",
+          "370~380",
+          "380~390",
+          "390~400",
+          "400~410",
+          "410~420",
+          "420~430"
+        ],
+        "tick_indices": [
+          0,
+          5,
+          10,
+          15,
+          20,
+          25,
+          30,
+          35
+        ]
+      },
+      "left_y": {
+        "name": "Frame proportion (%)",
+        "type": "linear",
+        "min": 0,
+        "max": 9.2,
+        "ticks": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          9.2
+        ]
+      },
+      "right_y": {
+        "name": "Cumulative proportion (%)",
+        "type": "linear",
+        "min": 0,
+        "max": 100,
+        "ticks": [
+          0,
+          20,
+          40,
+          60,
+          80,
+          100
+        ]
+      },
+      "mean": 163.99508527969354,
+      "median": 165.0,
+      "mean_bin": "160~170"
+    },
+    "b": {
+      "x": {
+        "name": "Dataset",
+        "type": "category",
+        "data_order": [
+          "Ours",
+          "MARS",
+          "mRI",
+          "MiliPoint",
+          "mmPose-NLP"
+        ],
+        "display_labels": [
+          "Ours",
+          "MARS",
+          "mRI",
+          "MiliPoint",
+          "mmPoseNLP"
+        ]
+      },
+      "y": {
+        "name": "Radar points / frame",
+        "type": "linear",
+        "min": 0,
+        "max": 460,
+        "ticks": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          460
+        ]
+      },
+      "box": "min,q1,median,q3,max",
+      "extra_series": [
+        "P5–P95",
+        "Mean"
+      ]
+    }
+  },
+  "presentation": {
+    "background": "white",
+    "axis_names": "Times New Roman bold",
+    "ticks": "sans serif",
+    "histogram_bars": "blue gradient",
+    "cumulative_line": "orange",
+    "boxplot_legend": false,
+    "tooltips": false,
+    "animation": false,
+    "editing": false
+  },
+  "reference_image_differences_from_html_defaults": [
+    "Paper histogram uses blue bars, not original HTML teal default.",
+    "Paper histogram x tick labels are every fifth bin without forcing the last category label.",
+    "Paper boxplot omits the editor legend and uses the display label mmPoseNLP."
+  ],
+  "license_text_origin": "Existing local Apache-2.0 license text; bundle headers unchanged."
+}

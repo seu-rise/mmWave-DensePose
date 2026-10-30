@@ -1,0 +1,14 @@
+.ui-title-group,.ui-entry-group,.ui-inline-actions{display:inline-flex;align-items:center;gap:6px;min-width:0}
+.ui-title-group>h1,.ui-title-group>h2,.ui-title-group>h3{margin:0;min-width:0}
+.ui-help-icon,.ui-sciencedb-link{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 22px;width:22px!important;height:22px!important;min-height:22px!important;padding:0!important;border:0!important;border-radius:4px;background:transparent!important;color:#90a7be;line-height:1;vertical-align:middle;cursor:pointer;text-decoration:none}
+.ui-sciencedb-link{color:#66c9f4}
+.ui-help-icon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.ui-sciencedb-link svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.ui-help-icon:hover,.ui-sciencedb-link:hover,.ui-help-icon[aria-pressed=true]{background:#22374a!important;color:#8ddcff}
+.ui-help-icon:focus-visible,.ui-sciencedb-link:focus-visible{outline:2px solid #4ec3ff;outline-offset:2px}
+.ui-context-tooltip{position:fixed;inset:auto;margin:0;z-index:10000;width:max-content;max-width:min(280px,calc(100vw - 24px));padding:10px 12px;border:1px solid #40556d;border-radius:5px;background:#101b2b;color:#dce8f6;box-shadow:0 8px 28px #0006;font:inherit;font-size:12px;line-height:1.6;text-align:left;overflow-wrap:anywhere;pointer-events:none}
+.ui-context-tooltip[hidden]{display:none!important}
+.ui-context-tooltip::backdrop{background:transparent;pointer-events:none}
+.paper-asset-title{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px;min-width:0}
+.dataset-page-heading .ui-entry-group{flex-shrink:0}
+.dataset-dialog-head .ui-title-group{gap:6px}

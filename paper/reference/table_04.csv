@@ -1,0 +1,11 @@
+Method,Evaluation metrics,,,
+,MLE (MPJPE) (cm)  ↓,PA-MPJPE (cm)  ↓,PCK@150mm (%)  ↑,AUC@150mm (%)  ↑
+DGCNN  (2019)  [62],7.30,5.29,92.33,55.50
+PointTransformer   (2021)  [60],7.17,5.21,92.85,55.51
+PointMLP  (2022)  [61],5.60,4.07,96.45,64.39
+mmPose-FK   (2024)  [52] a,5.57,4.21,97.07,63.92
+Dual-Path CNN–BiLSTM   (2025)  [21],8.19,5.46,90.79,49.91
+PntPoseAT   (2025)  [53],5.24,3.98,97.59,65.96
+PoseGraphNet   (2026)  [51],6.70,5.17,94.23,57.77
+Global–Local Network  (2026)  [30],9.18,6.09,87.26,44.48
+PAST-Net (ours),4.08,3.17,98.69,73.35

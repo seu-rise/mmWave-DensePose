@@ -1,0 +1,950 @@
+{
+  "1": {
+    "id": 1,
+    "renderer": "image",
+    "asset": "assets/figure-01.png",
+    "source": {
+      "file": "framework_overview_notation_fixed.png",
+      "sha256": "ed3c76c92bdfda821fb8d3051da31cb8bb5c1b117b06e3cff2bfe0f573878e53"
+    }
+  },
+  "2": {
+    "id": 2,
+    "renderer": "image",
+    "asset": "assets/figure-02.png",
+    "source": {
+      "file": "ddma_point_cloud_pipeline_notation_fixed.png",
+      "sha256": "2ea7360b59d48fe116918e5f1f8bf9eec92a93cf23b864286a94af202c5e0053"
+    }
+  },
+  "3": {
+    "id": 3,
+    "renderer": "image",
+    "asset": "assets/figure-03.png",
+    "source": {
+      "file": "acquisition_system.png",
+      "sha256": "113db0e127fc5909d6a2bd0e06cbec69e15a3c9c038737a7946b5b818af9b0fe"
+    }
+  },
+  "7": {
+    "id": 7,
+    "renderer": "image",
+    "asset": "assets/figure-07.png",
+    "source": {
+      "file": "keypoint_definition.png",
+      "sha256": "b1e53a6de8e023aa5d8bea48bf1bd9e410f69d7444ad07b3c59b613d92143628"
+    }
+  },
+  "8": {
+    "id": 8,
+    "renderer": "image",
+    "asset": "assets/figure-08.png",
+    "source": {
+      "file": "Network_notation_fixed.png",
+      "sha256": "4fc2443bf05d27fabe9f3c7cc36fa402ba8cc988f1fc7ffba6c33248721491e6"
+    }
+  },
+  "4": {
+    "id": 4,
+    "renderer": "threejs",
+    "source": {
+      "file": "synchronized_sample_frame_a.png",
+      "sha256": "cf56e6cf00cf335b29702dfa2645289f9db8d8a27fe1206e9f1f2968e5081cf6"
+    },
+    "data": "../paper-data/figure-04.json",
+    "fallback": [
+      {
+        "asset": "assets/figure-04-radar.png",
+        "label": "Radar point cloud",
+        "source": "synchronized_sample_frame_a.png",
+        "sha256": "cf56e6cf00cf335b29702dfa2645289f9db8d8a27fe1206e9f1f2968e5081cf6"
+      },
+      {
+        "asset": "assets/figure-04-gt.png",
+        "label": "Ground truth",
+        "source": "synchronized_sample_frame_b.png",
+        "sha256": "f70fecd8fd137f5f582bd948690b3b4aaf56a2fee69152de7f8e2bb3aeee4c4c"
+      },
+      {
+        "asset": "assets/figure-04-rgb.jpg",
+        "label": "RGB",
+        "source": "synchronized_sample_frame_c.jpg",
+        "sha256": "5c012674f871daedf97b31dc19e26470dd55a1d33de006f4226376a888202b5c"
+      }
+    ],
+    "source_frame": {
+      "file": "sequence_36_4132.pkl",
+      "frame_index": 144,
+      "frame_number": 145
+    },
+    "panels": [
+      {
+        "id": "figure04-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "figure04-gt",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "",
+        "sample": "",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure04-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Frame 145",
+        "kind": "image"
+      }
+    ]
+  },
+  "6": {
+    "id": 6,
+    "renderer": "threejs",
+    "source": {
+      "file": "dataset_point_count_comparison.png",
+      "sha256": "ee011476cc1d047b1087b4fe0d8786c5e3f34ce69cfe4d0dcf8fa82befb6a5ee"
+    },
+    "data": "../paper-data/figure-06.json",
+    "panels": [
+      {
+        "id": "ours-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "mmWave-DensePose (Ours)",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "mRI-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "mRI",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "mmPoseNLP-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "mmPose-NLP",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "MiliPoint-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "MiliPoint",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "MARS-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "MARS",
+        "sample": "",
+        "kind": "radar"
+      },
+      {
+        "id": "ours-skeleton",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "mmWave-DensePose (Ours)",
+        "sample": "",
+        "kind": "skeleton"
+      },
+      {
+        "id": "mRI-skeleton",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "mRI",
+        "sample": "",
+        "kind": "skeleton"
+      },
+      {
+        "id": "mmPoseNLP-skeleton",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "mmPose-NLP",
+        "sample": "",
+        "kind": "skeleton"
+      },
+      {
+        "id": "MiliPoint-skeleton",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "MiliPoint",
+        "sample": "",
+        "kind": "skeleton"
+      },
+      {
+        "id": "MARS-skeleton",
+        "label": "Ground-Truth Skeleton",
+        "dataset": "MARS",
+        "sample": "",
+        "kind": "skeleton"
+      }
+    ]
+  },
+  "9": {
+    "id": 9,
+    "renderer": "threejs",
+    "source": {
+      "file": "samples_motions_1_12.png",
+      "sha256": "ca53a6e46bbe9c70ca378381fdf8928db59e12fcd68af6ba701dc914bcb5524a"
+    },
+    "data": "../paper-data/figure-09.json",
+    "panels": [
+      {
+        "id": "figure09-s1-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 1",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s1-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 1",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s1-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 1",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s2-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 2",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s2-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 2",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s2-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 2",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s3-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 3",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s3-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 3",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s3-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 3",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s4-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 4",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s4-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 4",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s4-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 4",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s5-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 5",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s5-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 5",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s5-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 5",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s6-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 6",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s6-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 6",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s6-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 6",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s7-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 7",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s7-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 7",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s7-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 7",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s8-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 8",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s8-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 8",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s8-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 8",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s9-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 9",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s9-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 9",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s9-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 9",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s10-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 10",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s10-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 10",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s10-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 10",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s11-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 11",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s11-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 11",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s11-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 11",
+        "kind": "image"
+      },
+      {
+        "id": "figure09-s12-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 12",
+        "kind": "radar"
+      },
+      {
+        "id": "figure09-s12-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 12",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure09-s12-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 12",
+        "kind": "image"
+      }
+    ]
+  },
+  "10": {
+    "id": 10,
+    "renderer": "threejs",
+    "source": {
+      "file": "samples_motions_13_19_free.png",
+      "sha256": "82a531dccd4f387a83289fa1c3aace737fb6741e0b07905dd2711220d7e673a4"
+    },
+    "data": "../paper-data/figure-10.json",
+    "panels": [
+      {
+        "id": "figure10-s1-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 13",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s1-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 13",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s1-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 13",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s2-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 14",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s2-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 14",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s2-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 14",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s3-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 15",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s3-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 15",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s3-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 15",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s4-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 16",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s4-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 16",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s4-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 16",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s5-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 17",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s5-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 17",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s5-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 17",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s6-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 18",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s6-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 18",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s6-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 18",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s7-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Motion 19",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s7-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Motion 19",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s7-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Motion 19",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s8-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Free-motion Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s8-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Free-motion Sample 1",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s8-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Free-motion Sample 1",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s9-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Free-motion Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s9-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Free-motion Sample 2",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s9-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Free-motion Sample 2",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s10-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Free-motion Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s10-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Free-motion Sample 3",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s10-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Free-motion Sample 3",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s11-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Free-motion Sample 4",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s11-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Free-motion Sample 4",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s11-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Free-motion Sample 4",
+        "kind": "image"
+      },
+      {
+        "id": "figure10-s12-radar",
+        "label": "Radar Point Cloud",
+        "dataset": "",
+        "sample": "Free-motion Sample 5",
+        "kind": "radar"
+      },
+      {
+        "id": "figure10-s12-gt",
+        "label": "Ground-Truth Keypoints",
+        "dataset": "",
+        "sample": "Free-motion Sample 5",
+        "kind": "skeleton"
+      },
+      {
+        "id": "figure10-s12-rgb",
+        "label": "RGB",
+        "dataset": "",
+        "sample": "Free-motion Sample 5",
+        "kind": "image"
+      }
+    ]
+  },
+  "11": {
+    "id": 11,
+    "renderer": "threejs",
+    "source": {
+      "file": "qualitative_results.png",
+      "sha256": "59ef584fb6c98dc45f0c37b36a5a2bb785f9d61dbd1012c14ea15f51ff9bcc05"
+    },
+    "data": "../paper-data/figure-11.json",
+    "panels": [
+      {
+        "id": "s1-frame-1",
+        "label": "Frame 1",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "s1-frame-2",
+        "label": "Frame 2",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "s1-frame-3",
+        "label": "Frame 3",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "s1-frame-4",
+        "label": "Frame 4",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "s1-frame-5",
+        "label": "Frame 5",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "radar"
+      },
+      {
+        "id": "s1-PartTokenFormer",
+        "label": "Ours",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "comparison"
+      },
+      {
+        "id": "s1-mmPoseFK",
+        "label": "mmPose-FK",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "comparison"
+      },
+      {
+        "id": "s1-PCCN",
+        "label": "Global-Local Network",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "comparison"
+      },
+      {
+        "id": "s1-PntPoseAT",
+        "label": "PntPoseAT",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "comparison"
+      },
+      {
+        "id": "s1-PoseGraphNet",
+        "label": "PoseGraphNet",
+        "dataset": "",
+        "sample": "Sample 1",
+        "kind": "comparison"
+      },
+      {
+        "id": "s2-frame-1",
+        "label": "Frame 1",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "s2-frame-2",
+        "label": "Frame 2",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "s2-frame-3",
+        "label": "Frame 3",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "s2-frame-4",
+        "label": "Frame 4",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "s2-frame-5",
+        "label": "Frame 5",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "radar"
+      },
+      {
+        "id": "s2-PartTokenFormer",
+        "label": "Ours",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "comparison"
+      },
+      {
+        "id": "s2-mmPoseFK",
+        "label": "mmPose-FK",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "comparison"
+      },
+      {
+        "id": "s2-PCCN",
+        "label": "Global-Local Network",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "comparison"
+      },
+      {
+        "id": "s2-PntPoseAT",
+        "label": "PntPoseAT",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "comparison"
+      },
+      {
+        "id": "s2-PoseGraphNet",
+        "label": "PoseGraphNet",
+        "dataset": "",
+        "sample": "Sample 2",
+        "kind": "comparison"
+      },
+      {
+        "id": "s3-frame-1",
+        "label": "Frame 1",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "s3-frame-2",
+        "label": "Frame 2",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "s3-frame-3",
+        "label": "Frame 3",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "s3-frame-4",
+        "label": "Frame 4",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "s3-frame-5",
+        "label": "Frame 5",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "radar"
+      },
+      {
+        "id": "s3-PartTokenFormer",
+        "label": "Ours",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "comparison"
+      },
+      {
+        "id": "s3-mmPoseFK",
+        "label": "mmPose-FK",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "comparison"
+      },
+      {
+        "id": "s3-PCCN",
+        "label": "Global-Local Network",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "comparison"
+      },
+      {
+        "id": "s3-PntPoseAT",
+        "label": "PntPoseAT",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "comparison"
+      },
+      {
+        "id": "s3-PoseGraphNet",
+        "label": "PoseGraphNet",
+        "dataset": "",
+        "sample": "Sample 3",
+        "kind": "comparison"
+      }
+    ]
+  },
+  "5": {
+    "id": 5,
+    "renderer": "echarts",
+    "asset": "../figure-05/index.html",
+    "source": "../figure-05/source.json",
+    "panels": [
+      {
+        "id": "a",
+        "label": "(a)",
+        "kind": "chart"
+      },
+      {
+        "id": "b",
+        "label": "(b)",
+        "kind": "chart"
+      }
+    ]
+  }
+}

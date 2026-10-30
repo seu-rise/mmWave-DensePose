@@ -1,0 +1,9 @@
+Item,Value
+Number of subjects,101
+Motion coverage,19 predefined motions + free motion
+Number of sequences,141
+Mean frames per sequence,4043.43
+Valid synchronized frames,570 124
+Mean valid radar points per frame,164
+Radar point attributes,"X , Y , Z ,Doppler  i nforamtion ,  and   SNR"
+Skeleton annotation,19 × 3

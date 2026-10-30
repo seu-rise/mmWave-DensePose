@@ -1,0 +1,4 @@
+epoch,step,test_cd,test_loss
+0,0,0.1060708686709404,0.1060708686709404
+avg_inference_time_ms,10.472754
+total_frames,81219

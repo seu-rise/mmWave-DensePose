@@ -1,0 +1,13 @@
+auc_max_threshold: 0.15
+learning_rate: 0.001
+many_to_many: false
+max_epochs: 50
+optimizer_name: adam
+pck_threshold: 0.15
+scheduler_gamma: 0.1
+scheduler_name: step
+scheduler_step_size: 30
+sequence_loss_weight: 1.0
+target_loss_weight: 1.0
+temporal_loss_weight: 0.0
+weight_decay: 1.0e-05

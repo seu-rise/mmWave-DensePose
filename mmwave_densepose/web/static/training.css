@@ -1,0 +1,209 @@
+.training-area{height:100%;min-height:0;display:flex;flex-direction:column;color:var(--text,#d5e2f1);font-size:13px;line-height:1.6}
+.training-page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:17px;flex:none}
+.training-page-head h1{font-size:21px;line-height:1.6;font-weight:600;margin:0}
+.training-eyebrow{font:10px/1.2 "Cascadia Code",Consolas,monospace;letter-spacing:1.6px;color:#7b94b3;margin-bottom:5px}
+.training-subtabs{display:flex;gap:6px;margin-bottom:16px;border-bottom:1px solid #303b51;flex:none}
+.training-subtabs button{padding:9px 16px;background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:#91a5be;font-size:13px;line-height:1.6}
+.training-subtabs button.active{color:#4ec3ff;border-bottom-color:#4ec3ff}
+.training-demo-notice{flex:none;margin:0 0 12px;padding:9px 12px;border:1px solid #67513a;border-left:3px solid #d6a359;border-radius:4px;background:#262329;color:#eabc78;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.training-demo-notice[hidden]{display:none}
+#training-page-root{min-height:0;flex:1}
+.training-layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:14px;height:100%;min-height:0}
+.training-configuration,.training-active-panel,.training-console-panel{border:1px solid #303b51;border-radius:5px;background:#191e2d;min-width:0;overflow:hidden}
+.training-configuration{align-self:start}
+.training-panel-title{padding:10px 14px;background:#1d2434;border-bottom:1px solid #303b51;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px}
+.training-panel-title h2{font-size:14px;font-weight:500;margin:0}
+.training-panel-title small{font-size:11px;color:#91a5be}
+.training-configuration-body{padding:15px}
+.training-primary-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+.task-field{position:relative;display:flex;min-width:0;flex-direction:column;gap:4px;color:#91a5be;font-size:11px}
+.task-field>label{font-size:11px;line-height:1.6;color:#91a5be}
+.task-field input,.task-field select{width:100%;height:33px;min-width:0;padding:6px 9px;font-size:12px;background:#141927;border:1px solid #303b51;color:#d5e2f1;border-radius:4px}
+.task-field.wide{grid-column:1/-1}
+.training-weight-control{display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:6px;min-width:0}
+.training-weight-control select{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.training-weight-control>button{height:33px;padding:0;font-size:15px}
+.training-weight-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.training-weight-tags>span{padding:1px 5px;border:1px solid #344e65;border-radius:3px;background:#172a39;color:#9fc7df;font-size:9px;line-height:1.6;white-space:nowrap}
+.task-field.is-locked>label{display:flex;align-items:center;gap:6px}
+.training-parameter-lock{display:inline-flex;margin-left:auto;color:#6c8ba8;font-size:11px;line-height:1}
+.training-parameter-lock svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.task-field.is-locked input,.task-field.is-locked select{background:#171e2b;border-color:#354354;color:#b3c6db;opacity:1;cursor:default}
+.task-field.is-locked input:focus{border-color:#49617b}
+.task-field.is-disabled>label{color:#7b8fa9}
+.task-field.is-disabled input,.task-field.is-disabled select{opacity:.65}
+.task-field.is-error input,.task-field.is-error select{border-color:#e8778c;background:#2c1e2a}
+.task-field.is-warning input,.task-field.is-warning select{border-color:#d8a253;background:#29241d}
+.task-field-issue{font-size:11px;line-height:1.45}
+.task-field-issue.error{color:#ff9b9b}.task-field-issue.warning{color:#eabc78}
+.task-disabled-tip{position:absolute;z-index:20;left:0;bottom:calc(100% + 5px);display:none;width:max-content;max-width:310px;padding:8px 10px;border:1px solid #4d6380;border-radius:4px;background:#0d1421;color:#d9e8f7;font-size:11px;line-height:1.45;white-space:normal;box-shadow:0 6px 18px #0008;pointer-events:none}
+.task-field.is-disabled:hover .task-disabled-tip,.task-field.is-disabled:focus-within .task-disabled-tip,.task-field.is-disabled:focus .task-disabled-tip{display:block}
+.task-switch{height:33px;display:flex;align-items:center}
+.task-switch input{width:14px;height:14px;accent-color:#4ec3ff}
+.training-area .other-parameters{width:100%;display:flex;align-items:center;gap:8px;justify-content:space-between;padding:10px 13px;margin-top:18px;text-align:left;color:#4ec3ff;background:#192738;border:1px solid #3b506a;border-radius:4px;font-size:13px}
+.other-arrow{margin-left:auto;font-size:20px;line-height:1}
+.other-issues,.issue-summary{display:flex;align-items:center;gap:3px}
+.issue-count{height:18px;min-width:18px;padding:0 5px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font:10px/1 "Cascadia Code",Consolas,monospace}
+.issue-count.error{background:#7c3544;color:#ffe1e6}.issue-count.warning{background:#725126;color:#ffe5b6}
+.training-form-actions{padding:12px 14px;border-top:1px solid #303b51;display:flex}
+.training-area .run-button{flex:1;padding:7px 8px;background:#2477a6;border:1px solid #439bd0;border-radius:4px;color:#effaff;font-size:13px;line-height:1.6}
+.training-running{display:flex;min-width:0;min-height:0;height:100%;flex-direction:column;gap:14px}
+.training-active-panel{flex:none}
+.training-panel-title,.job-log-footer{flex:none}
+.training-job-picker{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;flex:0 1 760px;max-width:calc(100% - 110px)}
+.training-job-picker select{flex:1;max-width:none;min-width:0;width:100%;height:32px;font-size:11px;padding:3px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal}
+.training-job-picker select option{white-space:nowrap;overflow-wrap:normal}
+.training-job-picker .training-refresh{flex:none}
+.training-refresh{padding:2px 7px;font-size:14px}
+.job-overview{padding:15px}
+.job-overview-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.job-overview-top>div{display:flex;min-width:0;flex-direction:column}
+.job-overview-top h3{font-size:13px;line-height:1.6;margin:0;font-weight:600;overflow-wrap:anywhere}
+.training-run-source{display:inline-block;margin-right:7px;padding:0 5px;border:1px solid #3b4c63;border-radius:3px;color:#91a5be;font:10px/1.6 "Cascadia Code",Consolas,monospace;vertical-align:1px}
+.job-overview-top code{font:11px/1.6 "Cascadia Code",Consolas,monospace;color:#91a5be;overflow-wrap:anywhere}
+.status-pill{display:inline-block;font-size:11px;padding:2px 7px;border:1px solid #303b51;border-radius:3px;color:#91a5be}
+.status-pill.green{color:#78d9b2;border-color:#385c51}.status-pill.error{color:#ff9b9b;border-color:#784b54}.status-pill.stopped{color:#eabc78;border-color:#6c5633}
+.training-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:17px 0}
+.training-step{min-width:0;border-top:2px solid #303b51;padding-top:8px;color:#7b92ae;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.training-step.done{border-color:#5ba58b;color:#78d9b2}.training-step.now{border-color:#4ec3ff;color:#4ec3ff}
+.progress-row{display:flex;justify-content:space-between;gap:8px;margin:10px 0;font-size:12px}
+.progress-row>span:last-child{font-family:"Cascadia Code",Consolas,monospace}
+.training-area .job-progress{width:100%;height:7px;border:0;border-radius:4px;accent-color:#4ec3ff}
+.job-progress::-webkit-progress-bar{background:#27344b;border-radius:4px}.job-progress::-webkit-progress-value{background:#4ec3ff;border-radius:4px}
+.training-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:17px}
+.training-stat{padding:14px;border:1px solid #303b51;border-radius:4px;background:#161d2b;min-width:0}
+.training-stat label{font-size:11px;color:#91a5be}
+.training-stat strong{display:block;margin:7px 0 3px;font:600 25px/1.3 "Cascadia Code",Consolas,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.job-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:15px}
+.job-controls-spacer{flex:1}.job-controls button{padding:7px 13px;font-size:13px;line-height:1.6}
+.training-console-panel{display:flex;flex-direction:column;min-height:120px;flex:1}
+.job-console{padding:15px;background:#0d121d;min-height:0;overflow:auto;font:11px/1.95 "Cascadia Code",Consolas,monospace;overflow-wrap:anywhere;white-space:pre-wrap;margin:0;color:#b0c5dd;flex:1}
+.job-console span{display:block}.job-console i{font-style:normal;color:#627d9a;margin-right:10px}.job-console .console-error{color:#eabc78}
+.job-log-footer{padding:9px 14px;color:#91a5be;border-top:1px solid #303b51;font-size:11px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.job-log-footer label{display:flex;align-items:center;gap:6px}.job-log-footer input{width:14px;height:14px;accent-color:#4ec3ff}
+.job-log-footer button{padding:7px 13px;font-size:11px;background:transparent}
+.training-shell-error:empty{display:none}.training-shell-error,.training-job-error{color:#ff9b9b;font-size:12px;overflow-wrap:anywhere}
+.training-job-notice{margin-top:8px;color:#eabc78;font-size:11px}
+.training-service-error{color:#ff9b9b;border:1px solid #784b54;background:#2c1e2a;padding:12px}
+.training-parameter-dialog,.training-review-dialog{width:min(1100px,calc(100vw - 32px));max-height:90dvh;padding:0;background:#191f2d;color:#d5e2f1;border:1px solid #47596e;border-radius:7px;box-shadow:0 22px 90px #0009}
+.training-parameter-dialog{height:min(720px,90dvh)}
+.training-parameter-dialog[open],.training-review-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.training-parameter-dialog::backdrop,.training-review-dialog::backdrop{background:#080d16bb;backdrop-filter:blur(2px)}
+.training-dialog-head{flex:none;padding:18px 24px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #303b51;gap:10px}
+.training-dialog-head h2{font-size:19px;font-weight:500;margin:0}
+.training-dialog-head button[aria-label]{padding:1px 8px;background:transparent;font-size:23px;line-height:1.6}
+.training-dialog-head .row,.training-dialog-foot .row{display:flex;gap:10px;align-items:center}
+.training-group-tabs{display:flex;flex:none;gap:0;padding:0 18px;border-bottom:1px solid #303b51;overflow-x:auto}
+.training-group-tabs button{position:relative;flex:1 0 auto;min-width:100px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;padding:18px 18px 14px;color:#91a5be;font-size:13px;line-height:1.6}
+.training-group-tabs button.active{color:#4ec3ff;border-bottom-color:#4ec3ff;background:#1d2b3d}
+.training-group-tabs .tab-issues{position:absolute;right:7px;top:3px;display:flex;gap:2px}
+.training-group-panel{min-height:0;flex:1;overflow:auto;scrollbar-gutter:stable;padding:25px 24px 29px}
+.training-validation-summary{flex:none;min-height:0;max-height:148px;overflow:auto;padding:11px 24px;background:#241d29;border-bottom:1px solid #68404d;font-size:11px;scrollbar-gutter:stable}
+.training-validation-summary>strong{display:block;color:#ffb5bf;font-size:12px;font-weight:500;margin-bottom:5px}
+.training-validation-links{display:flex;flex-direction:column;gap:3px}
+.training-validation-links>button{display:grid;grid-template-columns:minmax(135px,.8fr) minmax(0,3fr);gap:12px;text-align:left;padding:5px 7px;background:#161c2a;border:1px solid #443442;border-radius:3px;color:#d5e2f1;font-size:11px;line-height:1.5}
+.training-validation-links>button span{min-width:0;overflow-wrap:anywhere}.training-validation-links>button span:first-child{color:#ff9b9b}.training-validation-links>button.warning span:first-child{color:#eabc78}
+.training-validation-links>button:hover,.training-validation-links>button:focus-visible{border-color:#4ec3ff;background:#1c2b3d;outline:none}
+.training-group-diagnostics:empty{display:none}.training-group-diagnostics{display:grid;gap:10px;margin-bottom:20px}
+.training-diagnostic{min-width:0;padding:12px 14px;border:1px solid #784b54;border-radius:4px;background:#251f2b;font-size:11px;line-height:1.6;overflow-wrap:anywhere}
+.training-diagnostic.warning{border-color:#705637;background:#29241d}.training-diagnostic:focus{outline:1px solid #4ec3ff;outline-offset:2px}
+.training-diagnostic.is-inline{padding:8px 10px;margin-top:3px}.training-diagnostic h3{font-size:12px;font-weight:500;margin:0 0 5px;color:#dce8f5}
+.training-diagnostic p{margin:0}.training-diagnostic .training-diagnostic-repair{margin-top:5px;color:#b9cada}.training-diagnostic-repair strong{display:block;font-weight:500;color:#b7e6ff}
+.training-diagnostic-values{display:grid;grid-template-columns:65px minmax(0,1fr);gap:3px 9px;margin:7px 0 0}.training-diagnostic-values dt{color:#91a5be}.training-diagnostic-values dd{min-width:0;margin:0;white-space:pre-wrap}
+.training-diagnostic code,.training-diagnostic pre{font:10px/1.6 "Cascadia Code",Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.training-diagnostic details{margin-top:7px}.training-diagnostic summary{cursor:pointer;color:#a7bfd6}.training-diagnostic pre{max-height:160px;overflow:auto;margin:5px 0 0;padding:7px;background:#101624;border-radius:3px}
+.training-diagnostic>button{margin-top:9px;padding:5px 9px;color:#b7e6ff;background:#1a3043;border-color:#3d6682;font-size:11px}
+@media(max-width:600px){.training-validation-summary{padding:9px 14px}.training-validation-links>button{grid-template-columns:1fr;gap:2px}}
+.training-full-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px}
+.training-full-form .wide{grid-column:1/-1}.training-full-form .task-field{gap:4px}
+.training-dialog-foot{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 24px;border-top:1px solid #303b51;background:#1b2332}
+.training-dialog-foot code{font:12px "Cascadia Code",Consolas,monospace;color:#91a5be;overflow-wrap:anywhere}
+.training-dialog-foot button{font-size:13px;padding:7px 13px;line-height:1.6}
+.training-dialog-foot .primary{background:#2477a6;border-color:#439bd0}
+.training-review-content{padding:19px 24px;overflow:auto;min-height:0;flex:1}
+.training-review-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.training-review-section{border:1px solid #303b51;border-radius:4px;background:#191e2d}
+.training-review-section h3,.training-command h3{margin:0;padding:10px 14px;border-bottom:1px solid #303b51;background:#1d2434;font-size:14px;font-weight:500}
+.training-meta{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px;padding:15px;margin:0;font-size:12px}
+.training-meta dt{color:#91a5be}.training-meta dd{margin:0;overflow-wrap:anywhere}
+.training-run-config{margin-top:12px}.training-run-config .training-meta{grid-template-columns:minmax(130px,1fr) minmax(0,3fr)}.training-run-config code{white-space:pre-wrap}
+.training-command{margin-top:14px;border:1px solid #303b51;background:#0d1420}
+.training-command>code{display:block;max-height:150px;overflow:auto;padding:13px;font:11px/1.8 "Cascadia Code",Consolas,monospace;overflow-wrap:anywhere;white-space:pre-wrap}
+@media(max-width:1200px){.training-layout{grid-template-columns:325px minmax(0,1fr)}.training-stats{gap:8px}.training-stat{padding:11px}.training-stat strong{font-size:22px}.training-job-picker{flex-basis:620px}}
+@media(max-width:850px){.training-area{height:auto;overflow:visible}.training-layout{grid-template-columns:1fr}.training-page-head{margin-bottom:12px}.training-running{min-height:0}.training-stats{grid-template-columns:1fr 1fr}.training-job-picker{flex-basis:calc(100% - 110px)}.training-group-tabs{padding:0 4px}.training-group-tabs button{min-width:76px;font-size:12px;padding:17px 10px 12px}.training-full-form,.training-review-columns{grid-template-columns:1fr}.training-full-form .wide{grid-column:auto}.training-dialog-head,.training-group-panel,.training-dialog-foot{padding:14px}.training-console-panel{min-height:290px}}
+
+
+@media(min-width:851px){.training-configuration{display:flex;flex-direction:column;align-self:stretch;height:100%;min-height:0}.training-configuration-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}}
+
+.training-gpu-field{grid-column:1/-1;margin:0;min-width:0;padding:7px 9px 9px;border:1px solid #303b51;border-radius:4px;background:#141b29}
+.training-gpu-field legend{padding:0 4px;color:#91a5be;font-size:11px}
+.training-gpu-toolbar{display:flex;align-items:center;justify-content:space-between;margin:-3px 0 6px;color:#91a5be;font-size:10px}
+.training-gpu-toolbar button{padding:0 5px;background:transparent;color:#91a5be;font-size:12px}
+.training-gpu-list{display:flex;flex-direction:column;gap:5px;max-height:174px;overflow:auto;overscroll-behavior:contain}
+.training-gpu-option{display:flex;align-items:center;gap:8px;padding:7px 8px;min-width:0;border:1px solid #303b51;border-radius:4px;cursor:pointer;background:#171f2e}
+.training-gpu-option.is-selected{border-color:#386482;background:#172b3d}
+.training-gpu-option input{width:14px;height:14px;margin:0;flex:none;accent-color:#4ec3ff}
+.training-gpu-option>span{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
+.training-gpu-option strong{font-size:11px;font-weight:500;color:#b7e6ff}
+.training-gpu-option span span{font-size:10px;color:#91a5be;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.training-gpu-option small{font:10px Consolas,monospace;color:#a9bdd3;white-space:nowrap}
+.training-gpu-empty{padding:7px;color:#91a5be;font-size:11px}
+.training-gpu-field.is-error{border-color:#784b54}
+.training-configuration>.training-panel-title{gap:7px}.training-configuration>.training-panel-title .training-cache-open{flex:none;width:auto;margin:0 0 0 auto;padding:4px 8px;text-align:center;color:#91c8e8;border-color:#35465c;background:transparent;font-size:11px;white-space:nowrap}
+.training-cache-dialog{width:min(1060px,calc(100vw - 28px));height:min(750px,90dvh);max-height:90dvh;padding:0;background:#191f2d;color:#d5e2f1;border:1px solid #47596e;border-radius:7px;box-shadow:0 22px 90px #0009}
+.training-cache-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.training-cache-dialog::backdrop{background:#080d16bb;backdrop-filter:blur(2px)}
+.training-cache-toolbar{flex:none;padding:9px 15px;border-bottom:1px solid #303b51;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#91a5be;font-size:11px}
+.training-cache-toolbar>div{display:flex;gap:7px}.training-cache-toolbar button{padding:4px 9px;font-size:11px;background:transparent}
+.training-cache-body{flex:1;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr)}
+.training-cache-list,.training-cache-detail{overflow:auto;min-height:0;overscroll-behavior:contain;scrollbar-gutter:stable}
+.training-cache-list{border-right:1px solid #303b51;background:#151c2a;overflow-x:hidden}
+.training-cache-row{display:flex;align-items:flex-start;gap:9px;padding:11px 12px;border-bottom:1px solid #303b51;border-left:2px solid transparent}
+.training-cache-row.is-active{background:#1a2a3b;border-left-color:#4ec3ff}
+.training-cache-row>input{flex:none;width:14px;height:14px;margin:3px 0 0;accent-color:#4ec3ff}
+.training-cache-row>button{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;padding:0!important;border:0!important;border-radius:0;background:transparent!important;text-align:left;color:#91a5be;font-size:11px}
+.training-cache-row strong{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:500;color:#b7e6ff}.training-cache-row>button{overflow:hidden}.training-cache-row span{font:10px Consolas,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}.training-cache-row small{font-size:10px}
+.training-cache-detail{padding:15px 18px}.training-cache-detail-head{display:flex;flex-direction:column;gap:3px;margin-bottom:15px}.training-cache-detail-head h3{margin:0;font-size:14px;font-weight:500}.training-cache-detail-head>span{font-size:11px;color:#91a5be}
+.training-cache-detail section{border:1px solid #303b51;border-radius:4px;overflow:hidden;margin-bottom:12px}.training-cache-detail h4{font-size:12px;font-weight:500;background:#1d2434;margin:0;padding:8px 11px;border-bottom:1px solid #303b51}
+.training-cache-kv{margin:0;display:grid;grid-template-columns:minmax(125px,.9fr) minmax(0,1.3fr);font-size:11px}.training-cache-kv dt,.training-cache-kv dd{min-width:0;margin:0;padding:7px 10px;overflow-wrap:anywhere;border-bottom:1px solid #2b3548}.training-cache-kv dt{color:#91a5be}.training-cache-kv dd{font:11px/1.6 Consolas,monospace}.training-cache-kv dt:last-of-type,.training-cache-kv dd:last-of-type{border-bottom:0}
+.training-cache-note{font-size:11px;color:#91a5be;line-height:1.6;margin:10px 0}.training-cache-empty{display:flex;align-items:center;justify-content:center;min-height:140px;padding:20px;font-size:12px;color:#91a5be}
+.training-cache-error{flex:none;max-height:76px;overflow:auto;margin:0;padding:9px 15px;border-top:1px solid #784b54;color:#ff9b9b;background:#2c1e2a;font-size:11px}
+.training-cache-delete{background:#30212a!important;color:#ffabb3!important;border-color:#74424e!important}
+.training-cache-confirm{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;color:#c6d5e6;font-size:12px}.training-cache-confirm>div{display:flex;gap:8px;flex:none}
+@media(max-width:700px){.training-cache-body{grid-template-columns:1fr;grid-template-rows:minmax(120px,.65fr) minmax(0,1.35fr)}.training-cache-list{border-right:0;border-bottom:1px solid #303b51}.training-cache-detail{padding:11px}.training-cache-dialog .training-dialog-head,.training-cache-dialog .training-dialog-foot{padding:12px 14px}.training-cache-kv{grid-template-columns:minmax(105px,.9fr) minmax(0,1.3fr)}.training-cache-confirm{align-items:flex-start;flex-direction:column}.training-cache-confirm>div{align-self:flex-end}.training-cache-toolbar{padding:8px 12px}}
+
+/* Keep contextual help beside the existing compact controls. */
+.training-parameters-entry{display:flex;align-items:center;gap:6px;margin-top:18px}
+.training-area .training-parameters-entry .other-parameters{flex:1;min-width:0;margin-top:0}
+.training-form-actions.ui-entry-group{align-items:center;gap:6px}
+.training-form-actions.ui-entry-group .run-button{flex:1;min-width:0}
+
+.training-dataset-status{margin:0 0 12px;padding:8px;border:1px solid #385c51;border-radius:4px;color:#78d9b2;background:#15272a;font-size:10px;line-height:1.6;overflow-wrap:anywhere}.training-dataset-status:empty{display:none}.training-dataset-status.is-incomplete{border-color:#67513a;color:#eabc78;background:#262329}
+
+.training-configuration-trigger,.training-configuration-close{display:none}
+.training-configuration-drawer{position:fixed;inset:0 auto 0 0;margin:0;width:min(88vw,390px);max-width:none;height:100dvh;max-height:100dvh;padding:0;border:0;border-right:1px solid #47596e;border-radius:0;background:#191e2d;color:#d5e2f1;box-shadow:18px 0 60px #0007}
+.training-configuration-drawer[open]{display:flex;animation:training-drawer-enter .18s ease-out}
+.training-configuration-drawer::backdrop{background:#080d16a8;backdrop-filter:blur(2px)}
+.training-configuration-drawer-body{display:flex;flex:1;min-width:0;min-height:0}
+.training-configuration-drawer .training-configuration{display:flex;flex-direction:column;width:100%;height:100%;min-height:0;align-self:stretch;border:0;border-radius:0}
+.training-configuration-drawer .training-panel-title{flex:none;flex-wrap:wrap;gap:6px;padding-top:max(10px,env(safe-area-inset-top))}
+.training-configuration-drawer .training-configuration-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.training-configuration-drawer .training-form-actions{flex:none;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+.training-configuration-drawer .training-configuration-close{display:grid;place-items:center;flex:none;width:30px;height:30px;margin-left:auto;padding:0;font-size:24px;line-height:1;background:transparent;border-color:transparent}
+@keyframes training-drawer-enter{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.training-configuration-drawer[open]{animation:none}}
+@media(max-width:850px){
+ .training-area{height:100%;min-height:0;overflow:hidden}
+ .training-page-head{flex-wrap:wrap;gap:8px}
+ #training-page-root{min-height:0;overflow:hidden}
+ .training-layout{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
+ .training-running{height:100%;min-height:0;overflow:auto;overscroll-behavior:contain;padding-bottom:8px}
+ .training-console-panel{flex:1 0 260px;min-height:260px}
+ .training-configuration-trigger{position:fixed;left:0;top:45dvh;z-index:70;display:grid;place-items:center;width:34px;height:52px;padding:7px;border:1px solid #439bd0;border-left:0;border-radius:0 8px 8px 0;background:#20394df2;color:#a8e8ff;box-shadow:3px 4px 14px #0006}
+ .training-configuration-trigger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+ .training-active-panel>.training-panel-title{flex-wrap:wrap}
+ .training-job-picker{max-width:100%;margin-left:auto}
+ .training-job-picker select{max-width:min(63vw,290px)}
+}
+
+@media(max-width:850px){.training-area .training-configuration-trigger{position:fixed;left:0;top:45dvh;z-index:70;display:grid;place-items:center;width:34px;height:48px;padding:6px;border-left:0;border-radius:0 8px 8px 0;border-color:#3d6482;background:#20394df2;color:#a8e8ff;box-shadow:0 5px 18px #0005}.training-area .training-configuration-trigger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}}

@@ -1,0 +1,4 @@
+epoch,step,test_fk_length_loss,test_fk_root_loss,test_loss,test_mle,test_target_loss
+0,0,0.0005422573885880411,0.00031272496562451124,0.0025539693888276815,0.05573151633143425,0.0016989853465929627
+avg_inference_time_ms,6.989129
+total_frames,76251

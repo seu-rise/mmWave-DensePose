@@ -1,0 +1,5 @@
+Apache ECharts
+
+The complete source bundle retains its ASF license header and embedded third-party notices.
+Original bundle: 4D-mmHPP/scripts/javascript/echarts.min.js
+License: Apache License, Version 2.0. See LICENSE-APACHE-2.0.txt.

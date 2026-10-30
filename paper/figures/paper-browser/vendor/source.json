@@ -1,0 +1,7 @@
+{
+  "file": "scripts/javascript/threejs/build/three.cjs",
+  "sha256": "284f4cdcf395356830e2ed2972b4fbec8eb7061bd920c54488c1ca7081c91641",
+  "revision": "183",
+  "license": "THREE-LICENSE.txt",
+  "format": "Unmodified CommonJS source wrapped for classic script loading"
+}

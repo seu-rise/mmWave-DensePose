@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "dataset_kind": "full_multimodal",
+  "release_format": "Original-format face-anonymized sequence PKLs with JSON manifests and original frozen index PKLs",
+  "source_policy": {
+    "sequence_source": "raw_face_anonymized/sequence_*.pkl",
+    "sequence_destination": "raw/sequence_*.pkl",
+    "preservation": "Byte-identical copy; no modality removal or image re-encoding",
+    "unmasked_fallback": false,
+    "subject_mapping_source": "raw/manifest.json",
+    "face_review": "Uses supplied face-anonymized source; exhaustive independent visual review is not asserted"
+  },
+  "sequence": {
+    "format": "pickle",
+    "keys": ["radar_frames", "keypoint_frames", "radar_timestamp", "kinect_timestamp", "color_frames", "depth_frames", "infrared_frames", "body_index_frames", "meta"],
+    "radar_frames": {"shape_per_frame": ["variable_points", 5], "columns": ["x", "y", "z", "velocity", "snr"]},
+    "keypoint_frames": {"shape": ["frames", 19, 3], "units": "meters", "coordinate_transform": "none"},
+    "timestamps": {"keys": ["radar_timestamp", "kinect_timestamp"], "units": "milliseconds", "preserved": true},
+    "image_frames": {
+      "keys": ["color_frames", "depth_frames", "infrared_frames", "body_index_frames"],
+      "container": "list of dictionaries",
+      "entry_keys": ["timestamp", "image_data"],
+      "timestamp_units": "milliseconds",
+      "image_data": "Original encoded JPEG bytes",
+      "precision_note": "Depth and infrared are existing encoded 8-bit images, not raw 16-bit sensor measurements"
+    },
+    "meta": "Original metadata preserved without rewriting"
+  },
+  "frozen_indexes": {
+    "paths": ["keypoint/", "keypoint_muti/"],
+    "count": 9,
+    "selection": "Explicit INDEXES mapping in mmwave_densepose/data/cache.py",
+    "preservation": "Original relative paths and byte-identical PKLs"
+  },
+  "completion_indexes": {
+    "paths": ["dense/"],
+    "count": 2,
+    "selection": "Explicit COMPLETION_INDEXES mapping in mmwave_densepose/data/completion_indexes.py",
+    "preservation": "Original relative paths and byte-identical PKLs; separate from the nine pose indexes",
+    "protocols": {"pcc_sequence_s42": "Entire sequences", "pcc_subject_s42": "Subject-independent"}
+  },
+  "completion_training_cache": {
+    "root": "cache/completion-v1/",
+    "release_member": false,
+    "model": "PCCCompletion",
+    "sequence_arrays": "Shared with cache/pose-v1/raw/; original images remain in full PKLs",
+    "supervision": "Online 16 radius-0.05m sphere samples per joint plus aligned valid radar points; default target has 384 points",
+    "prediction_points": 196
+  },
+  "training_cache": {
+    "dataset_kind": "training_cache",
+    "root": "cache/pose-v1/",
+    "release_member": false,
+    "source": "Installed full anonymized sequence PKLs and original frozen index PKLs",
+    "format": "Numeric NPZ with allow_pickle=false and UTF-8 JSON metadata; not standalone NPY files",
+    "sequence": {
+      "points": {"dtype": "float32", "shape": ["total_points", 5], "columns": ["x", "y", "z", "velocity", "snr"]},
+      "offsets": {"dtype": "int64", "shape": ["frames+1"], "description": "Frame f is points[offsets[f]:offsets[f+1]]"},
+      "joints": {"dtype": "float32", "shape": ["frames", 19, 3], "units": "meters"},
+      "images_and_timestamps": "Remain in full source PKLs, not duplicated into numeric training arrays"
+    },
+    "split": {
+      "arrays": ["train", "val", "test"],
+      "dtype": "int32",
+      "shape": ["samples", 3],
+      "columns": ["sequence_index", "start_inclusive", "end_exclusive"],
+      "sequence_index": "Position in split JSON sequence_ids; alias resolved by cache manifest.json",
+      "metadata": ["seed", "seq_len", "split_strategy", "split_num_samples", "feature_stats", "source_index_sha256", "index_sha256", "partial"]
+    },
+    "configuration_identity": "configs/<sha256>.json records point count, input channels, sequence length, seed, split and saved normalization metadata",
+    "normalization": "Imported training-only feature_stats; Doppler clipped to +/-clip_abs then divided by clip_abs; SNR clipped to [clip_min,clip_max] then mapped to [0,1]",
+    "sampling": "Original NumPy random-start greedy farthest-point sampling at runtime; zero padding; no newly frozen stochastic sampling policy",
+    "target": "joints[end_exclusive-1]"
+  },
+  "security": "Installer verifies hashes without unpickling; cache generation loads trusted dataset PKLs only",
+  "excluded_from_release": ["disposable training caches", "sensor connection software", "acquisition software", "calibration software", "internal absolute source paths"]
+}

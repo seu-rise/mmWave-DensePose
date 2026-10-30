@@ -1,0 +1,15 @@
+.paper-asset-transfer{min-width:0;padding:10px 11px;border:1px solid #34445a;border-radius:4px;background:#172231;color:#d5e2f1;font-size:11px;line-height:1.6}
+.paper-asset-summary{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.paper-asset-summary>span:first-child{font-size:11px;color:#a6bdd3}
+.paper-asset-state{flex:none;font-size:10px;color:#eabc78}.paper-asset-state.is-installed{color:#78d9b2}
+.paper-asset-message{margin:6px 0 0;color:#91a5be;font-size:11px;line-height:1.6;overflow-wrap:anywhere}.paper-asset-message.is-error{color:#ff9b9b}
+.paper-asset-progress{display:block;width:100%;height:4px;margin-top:9px;accent-color:#4ec3ff}
+.paper-asset-actions{display:flex;align-items:center;gap:8px;margin-top:8px;min-height:22px}.paper-asset-actions>span{margin-left:auto;color:#91a5be;font:10px Consolas,monospace;white-space:nowrap}
+.paper-asset-actions button{width:auto!important;min-height:25px;padding:3px 9px!important;border:1px solid #386482!important;border-radius:3px;background:#1a354b!important;color:#82d6ff!important;font-size:11px;line-height:1.5;cursor:pointer}
+.paper-asset-actions button:disabled{opacity:.5;cursor:default}.paper-asset-actions .paper-asset-refresh{padding:1px 7px!important;background:transparent!important;color:#91a5be!important;border-color:#34445a!important;font-size:13px}
+.paper-asset-transfer .paper-asset-actions:empty{display:none}
+.training-weight-download{margin-top:9px;min-width:0}.results-prediction-download{margin:0 0 16px;min-width:0}.results-prediction-download .paper-asset-transfer{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.7fr) auto;align-items:center;gap:6px 18px}
+.results-prediction-download .paper-asset-message,.results-prediction-download .paper-asset-actions{margin-top:0}.results-prediction-download .paper-asset-progress{grid-column:1/-1;margin-top:0;order:4}.results-prediction-download .paper-asset-actions{justify-content:flex-end}.results-prediction-download .paper-asset-actions>span{margin-left:0}
+.results-prediction-open{margin-left:auto!important}
+@media(max-width:850px){.results-prediction-download .paper-asset-transfer{grid-template-columns:1fr auto}.results-prediction-download .paper-asset-summary{grid-column:1/-1}.results-prediction-download .paper-asset-message{grid-column:1}.results-prediction-download .paper-asset-actions{grid-column:2}.results-prediction-download .paper-asset-progress{grid-column:1/-1}}
+@media(max-width:500px){.results-prediction-download .paper-asset-transfer{display:block}.results-prediction-download .paper-asset-message,.results-prediction-download .paper-asset-actions{margin-top:7px}.paper-asset-summary{gap:8px}}

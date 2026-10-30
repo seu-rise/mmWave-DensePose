@@ -1,0 +1,82 @@
+/* Native, accessible top-layer pickers, with no operating-system white popup. */
+select{color-scheme:dark}
+:root select:not([multiple]):is(:focus,:focus-visible){outline:none;box-shadow:none}
+select option,select optgroup{background-color:#1d2434;color:#d5e2f1}
+
+@supports (appearance:base-select){
+  select:not([multiple]):not([size]),select:not([multiple])[size="1"]{
+    appearance:base-select;
+    column-gap:8px;
+    padding-inline-end:9px;
+    align-items:center;
+    cursor:pointer;
+  }
+  select:not([multiple])::picker(select){
+    appearance:base-select;
+    box-sizing:border-box;
+    color-scheme:dark;
+    min-inline-size:anchor-size(width);
+    max-inline-size:calc(100dvw - 24px);
+    max-block-size:min(360px,48dvh);
+    margin-block:5px;
+    padding:5px;
+    border:1px solid #3b4b63;
+    border-radius:6px;
+    background:#1d2434;
+    color:#d5e2f1;
+    box-shadow:0 12px 32px #05091188;
+    overflow:auto;
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
+    scrollbar-color:#475b75 #1d2434;
+    font:12px/1.45 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;
+    transform-origin:top center;
+    opacity:0;
+    transform:translateY(-5px) scaleY(.97);
+    clip-path:inset(0 0 100% 0 round 6px);
+    transition:opacity 160ms ease,transform 180ms cubic-bezier(.2,.8,.2,1),clip-path 180ms cubic-bezier(.2,.8,.2,1),display 180ms allow-discrete,overlay 180ms allow-discrete;
+  }
+  select:not([multiple]):open::picker(select){
+    opacity:1;
+    transform:translateY(0) scaleY(1);
+    clip-path:inset(0 0 0 0 round 6px);
+  }
+  @starting-style{
+    select:not([multiple]):open::picker(select){
+      opacity:0;
+      transform:translateY(-5px) scaleY(.97);
+      clip-path:inset(0 0 100% 0 round 6px);
+    }
+  }
+  select:not([multiple])::picker-icon{
+    flex:none;
+    margin-inline-start:auto;
+    color:#91a5be;
+    font-size:11px;
+    transition:rotate 180ms ease;
+  }
+  select:not([multiple]):open::picker-icon{rotate:180deg}
+  select:not([multiple]) option{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-block-size:29px;
+    padding:6px 9px;
+    border:0;
+    border-radius:3px;
+    background:#1d2434;
+    color:#d5e2f1;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    cursor:pointer;
+  }
+  select:not([multiple]) option:is(:hover,:focus-visible){background:#29394e;outline:none}
+  select:not([multiple]) option:checked{background:#20384c;color:#d9f3ff}
+  select:not([multiple]) option:disabled{color:#6e8198;background:#1d2434;cursor:not-allowed}
+  select:not([multiple]) option::checkmark{order:1;margin-inline-start:auto;color:#4ec3ff}
+  .logs-panel .logs-chart-metric{padding-inline-end:5px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  select:not([multiple])::picker(select),select:not([multiple])::picker-icon{transition-duration:1ms}
+}

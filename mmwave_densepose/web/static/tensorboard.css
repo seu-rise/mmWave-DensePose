@@ -1,0 +1,6 @@
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#151925;color:#d7e5f3}
+body{margin:0;min-height:100dvh;display:grid;place-items:center}
+main{max-width:620px;padding:32px}
+h1{font-size:22px;font-weight:600}
+p{color:#a8bdd2;font-size:14px;line-height:1.6}
+button{background:#1e3549;border:1px solid #4ec3ff;border-radius:4px;color:#d7efff;padding:8px 16px;cursor:pointer}

@@ -1,0 +1,12 @@
+exclude mmwave_densepose/web/avatars/remy.glb
+prune .local
+prune .omx
+prune .codex
+prune .venv
+prune build
+prune data
+prune outputs
+prune mmwave_densepose/logs
+prune mmwave_densepose/checkpoints
+global-exclude __pycache__
+global-exclude *.py[cod]

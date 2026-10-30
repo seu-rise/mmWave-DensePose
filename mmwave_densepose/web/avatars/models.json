@@ -1,0 +1,217 @@
+{
+  "schema": "mmwave-densepose.avatar-model-registry.v1",
+  "default_model": "xbot",
+  "rig_profiles": {
+    "mixamo_xbot": {
+      "protocol": "avatar_rig/v1",
+      "root_bone": "mixamorig:Hips",
+      "alignment_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "alignment_order": "XYZ",
+      "unit_scale": 1.0,
+      "foot_bones": [
+        "mixamorig:LeftToeBase",
+        "mixamorig:RightToeBase"
+      ],
+      "bindings": [
+        [
+          "lower_spine",
+          "mixamorig:Spine",
+          "mixamorig:Spine1"
+        ],
+        [
+          "upper_spine",
+          "mixamorig:Spine1",
+          "mixamorig:Spine2"
+        ],
+        [
+          "upper_spine",
+          "mixamorig:Spine2",
+          "mixamorig:Neck"
+        ],
+        [
+          "neck",
+          "mixamorig:Neck",
+          "mixamorig:Head"
+        ],
+        [
+          "head",
+          "mixamorig:Head",
+          "mixamorig:HeadTop_End"
+        ],
+        [
+          "left_shoulder",
+          "mixamorig:LeftShoulder",
+          "mixamorig:LeftArm"
+        ],
+        [
+          "left_upper_arm",
+          "mixamorig:LeftArm",
+          "mixamorig:LeftForeArm"
+        ],
+        [
+          "left_lower_arm",
+          "mixamorig:LeftForeArm",
+          "mixamorig:LeftHand"
+        ],
+        [
+          "right_shoulder",
+          "mixamorig:RightShoulder",
+          "mixamorig:RightArm"
+        ],
+        [
+          "right_upper_arm",
+          "mixamorig:RightArm",
+          "mixamorig:RightForeArm"
+        ],
+        [
+          "right_lower_arm",
+          "mixamorig:RightForeArm",
+          "mixamorig:RightHand"
+        ],
+        [
+          "left_upper_leg",
+          "mixamorig:LeftUpLeg",
+          "mixamorig:LeftLeg"
+        ],
+        [
+          "left_lower_leg",
+          "mixamorig:LeftLeg",
+          "mixamorig:LeftFoot"
+        ],
+        [
+          "left_foot",
+          "mixamorig:LeftFoot",
+          "mixamorig:LeftToeBase"
+        ],
+        [
+          "right_upper_leg",
+          "mixamorig:RightUpLeg",
+          "mixamorig:RightLeg"
+        ],
+        [
+          "right_lower_leg",
+          "mixamorig:RightLeg",
+          "mixamorig:RightFoot"
+        ],
+        [
+          "right_foot",
+          "mixamorig:RightFoot",
+          "mixamorig:RightToeBase"
+        ]
+      ]
+    },
+    "mixamo_remy": {
+      "protocol": "avatar_rig/v1",
+      "root_bone": "mixamorig:Hips",
+      "alignment_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "alignment_order": "XYZ",
+      "unit_scale": 1.0,
+      "foot_bones": [
+        "mixamorig:LeftToeBase",
+        "mixamorig:RightToeBase"
+      ],
+      "bindings": [
+        [
+          "lower_spine",
+          "mixamorig:Spine",
+          "mixamorig:Spine1"
+        ],
+        [
+          "upper_spine",
+          "mixamorig:Spine1",
+          "mixamorig:Spine2"
+        ],
+        [
+          "upper_spine",
+          "mixamorig:Spine2",
+          "mixamorig:Neck"
+        ],
+        [
+          "neck",
+          "mixamorig:Neck",
+          "mixamorig:Head"
+        ],
+        [
+          "head",
+          "mixamorig:Head",
+          "mixamorig:HeadTop_End"
+        ],
+        [
+          "left_shoulder",
+          "mixamorig:LeftShoulder",
+          "mixamorig:LeftArm"
+        ],
+        [
+          "left_upper_arm",
+          "mixamorig:LeftArm",
+          "mixamorig:LeftForeArm"
+        ],
+        [
+          "left_lower_arm",
+          "mixamorig:LeftForeArm",
+          "mixamorig:LeftHand"
+        ],
+        [
+          "right_shoulder",
+          "mixamorig:RightShoulder",
+          "mixamorig:RightArm"
+        ],
+        [
+          "right_upper_arm",
+          "mixamorig:RightArm",
+          "mixamorig:RightForeArm"
+        ],
+        [
+          "right_lower_arm",
+          "mixamorig:RightForeArm",
+          "mixamorig:RightHand"
+        ],
+        [
+          "left_upper_leg",
+          "mixamorig:LeftUpLeg",
+          "mixamorig:LeftLeg"
+        ],
+        [
+          "left_lower_leg",
+          "mixamorig:LeftLeg",
+          "mixamorig:LeftFoot"
+        ],
+        [
+          "left_foot",
+          "mixamorig:LeftFoot",
+          "mixamorig:LeftToeBase"
+        ],
+        [
+          "right_upper_leg",
+          "mixamorig:RightUpLeg",
+          "mixamorig:RightLeg"
+        ],
+        [
+          "right_lower_leg",
+          "mixamorig:RightLeg",
+          "mixamorig:RightFoot"
+        ],
+        [
+          "right_foot",
+          "mixamorig:RightFoot",
+          "mixamorig:RightToeBase"
+        ]
+      ]
+    }
+  },
+  "models": {
+    "xbot": {
+      "label": "Xbot",
+      "asset": "xbot.glb",
+      "rig_profile": "mixamo_xbot"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "catalog_adapter_status": "implemented",
+  "tasks": [
+    {
+      "id": "train-pcc",
+      "title": "Train PCCCompletion",
+      "status": "implemented",
+      "entrypoint": "scripts/train.py",
+      "config": "paper/configs/main-pcc-dense.json",
+      "task": "completion"
+    },
+    {
+      "id": "download-dataset",
+      "title": "Download and install dataset",
+      "status": "implemented_awaiting_public_urls",
+      "entrypoint": "scripts/download_dataset.py"
+    },
+    {
+      "id": "train",
+      "title": "Train pose model",
+      "status": "implemented",
+      "entrypoint": "scripts/train.py"
+    },
+    {
+      "id": "validate",
+      "title": "Validate pose model",
+      "status": "implemented",
+      "entrypoint": "scripts/validate.py"
+    },
+    {
+      "id": "evaluate",
+      "title": "Evaluate pose model",
+      "status": "implemented",
+      "entrypoint": "scripts/evaluate.py"
+    },
+    {
+      "id": "infer",
+      "title": "Export labeled-split predictions",
+      "status": "implemented_labeled_split_only",
+      "entrypoint": "scripts/infer.py"
+    },
+    {
+      "id": "paper",
+      "title": "Reproduce paper tables",
+      "status": "implemented_pose_evaluation",
+      "entrypoint": "paper/run.py"
+    },
+    {
+      "id": "web-gui",
+      "title": "Research Workbench",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "module": "mmwave_densepose.web.server"
+    },
+    {
+      "id": "view-dataset",
+      "title": "Dataset Browser",
+      "status": "implemented_web_tab",
+      "entrypoint": "app.py",
+      "web_tab": "dataset"
+    },
+    {
+      "id": "web-training-testing",
+      "title": "Training & Testing",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "web_tab": "training"
+    },
+    {
+      "id": "web-training-logs",
+      "title": "Training Logs",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "web_tab": "logs"
+    },
+    {
+      "id": "view-results",
+      "title": "Test Results",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "web_tab": "results"
+    },
+    {
+      "id": "compare-results",
+      "title": "Test Comparison",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "web_tab": "results-compare"
+    },
+    {
+      "id": "view-paper-results",
+      "title": "Official results",
+      "status": "implemented",
+      "entrypoint": "app.py",
+      "web_tab": "paper"
+    }
+  ]
+}

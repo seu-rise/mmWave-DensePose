@@ -1,147 +1,193 @@
-# mmWave-DensePose: mmWave Radar Dense Point Clouds for Human Pose Estimation
+# mmWave-DensePose
 
-[![Project Status](https://img.shields.io/badge/status-release%20in%20preparation-orange)](#repository-status)
-[![Code](https://img.shields.io/badge/code-coming%20soon-lightgrey)](#repository-status)
-[![Dataset](https://img.shields.io/badge/dataset-coming%20soon-lightgrey)](#dataset)
-[![Project Page](https://img.shields.io/badge/project-page-blue)](https://seu-rise.github.io/mmWave-DensePose/)
-[![License](https://img.shields.io/badge/license-MIT-green)](#license)
+Official code, dataset and pretrained models for
+[**Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method**](https://www.sciencedirect.com/science/article/pii/S2095809926005606),
+**Engineering, 2026**.
 
-## Live Demo
+Jiang Liu, Yan Huang, Yanjun Zhang, Chengchang Tian, Zhen Yang, Kaihang Zheng,
+Rui Zhou, Hui Zhang, Jixin Chen and Wei Hong.
 
-**Project page and interactive dataset samples:**  
-https://seu-rise.github.io/mmWave-DensePose/
+[Project page](https://seu-rise.github.io/mmWave-DensePose/) ·
+[Paper](https://doi.org/10.1016/j.eng.2026.10.001) ·
+[Dataset and pretrained assets](https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10) ·
+[Documentation](docs/guides/README.md) · [Citation](#citation)
 
-![mmWave-DensePose first figure](assets/images/scenario.png)
+mmWave-DensePose combines a dense point-cloud radar prototype, a synchronized
+multimodal dataset and **PAST-Net**, a Part-Aware Spatio-Temporal Network for
+radar-only 3D human pose estimation. PAST-Net achieves **4.08 cm mean localization
+error** on the paper benchmark using radar points as its only input.
 
-This is the official repository for the paper:
+![mmWave-DensePose sensing scenario](docs/assets/images/scenario.svg)
 
-**Human Pose Estimation of Millimeter-Wave Radar: Prototype, Dataset, and Method**
+## Quick start
 
-The repository will provide the code, dataset information, benchmark protocol, and pretrained resources for **mmWave-DensePose** and **PAST-Net** after cleanup and release preparation.
+Use [uv](https://docs.astral.sh/uv/) from the repository root. Python and package
+versions are pinned in `.python-version`, `pyproject.toml` and `uv.lock`.
 
-## Abstract
+Start the English web workbench to browse Dataset, Training & Testing, Results
+and Official results:
 
-Three-dimensional human pose estimation (3D-HPE) is important for human-centered sensing, but vision-based solutions are limited by privacy concerns, illumination changes, and occlusion. Millimeter-wave (mmWave) radar provides a privacy-preserving alternative, yet existing radar point clouds are often sparse and incomplete, and existing radar 3D-HPE datasets remain limited in subject scale, frame volume, and motion diversity. This paper presents a mmWave radar prototype for dense point-cloud sensing, a large-scale mmWave radar dense HPE (mmWave-DensePose) dataset, and a Part-Aware Spatio-Temporal Network (PAST-Net) for radar-only 3D-HPE. Specifically, we design a four-chip cascaded mmWave radar system to generate dense human-related point clouds with its azimuth and elevation resolution being 1.30° and 2.24°, respectively. And the constructed dataset contains 101 subjects, 19 designed motions, large amounts of free motions, and 570,124 valid synchronized frames. Each valid frame contains 164 valid subject-related radar points on average, exceeding the  representative released datasets and providing clearer body-region cues for radar-based 3D-HPE.  The proposed method uses only mmWave radar point clouds as input and Kinect V2 skeletons as ground-truth annotations. Then PAST-Net reorganizes frame-level point-cloud features into skeleton-aware part-token representations and models their temporal evolution through part-wise self-attention, assisting to compensate for weak and incomplete observations in local body regions. Experiments on the proposed benchmark show that PAST-Net achieves an average Mean Localization Error (MLE) of 4.08 cm, reducing the error by 22.14% compared with the other state-of-the-art (SOTA) baseline. Ablation results further confirm the contributions of the proposed modules, including skeleton-aware spatial modeling, part-wise temporal modeling, and radar-specific point attributes. These results demonstrate that the designed mmWave radar prototype and the proposed method provide an effective sensing basis for privacy-preserving and fine-grained 3D-HPE.
+```bash
+uv sync --locked
+uv run --locked python app.py --data-root data/mmwave_densepose --trust-pickle --open-browser
+```
 
-## Repository Status
+Open the complete URL printed by the server, including `#token=...`. Enable
+`--trust-pickle` only for trusted dataset and prediction files. Existing official
+logs, tables and figures can be viewed before downloading the large assets;
+Dataset playback and saved-prediction views use installed data.
 
-Code, dataset instructions, and pretrained resources are being prepared and will be released soon.
+For local or SSH access, see the [web workbench guide](docs/guides/web-gui.md).
 
-- [ ] Code release
-- [ ] Dataset release instructions
-- [ ] Training and evaluation scripts
-- [ ] Pretrained checkpoints
-- [ ] Data preprocessing tools
-- [ ] Benchmark configuration files
-- [ ] Citation file
+## Dataset and pretrained assets
 
-The code and dataset will be uploaded after they are organized and reviewed.
-
-## Overview
-
-mmWave-DensePose is a dense millimeter-wave radar point-cloud benchmark for radar-only three-dimensional human pose estimation. The public release focuses on two main components:
-
-1. A large-scale radar point-cloud human pose dataset.
-2. PAST-Net, a Part-Aware Spatio-Temporal Network for 3D human pose estimation.
-
-Each synchronized frame contains a 5D radar point cloud and a 19-keypoint skeleton annotation. PAST-Net uses temporal radar point-cloud windows to learn structured part-token representations and regress the target-frame 3D human pose.
-
-## Highlights
-
-- **Large-scale dataset**  
-  101 subjects, 141 continuous sequences, and 570,124 valid synchronized frames.
-
-- **Rich motion coverage**  
-  19 predefined motions and additional free-motion sequences.
-
-- **Radar-only 3D-HPE benchmark**  
-  The model uses only mmWave radar point clouds as input. Kinect V2 skeletons are used as ground-truth annotations.
-
-- **5D radar point representation**  
-  Each radar point contains spatial coordinates, Doppler information, and signal-to-noise ratio.
-
-- **Part-aware spatio-temporal modeling**  
-  PAST-Net reorganizes frame-level radar features into skeleton-aware part-token representations and models their temporal evolution across consecutive frames.
-
-## Dataset
-
-The mmWave-DensePose dataset is constructed from synchronized radar and Kinect V2 recordings.
-
-| Item | Description |
-|---|---|
-| Dataset name | mmWave-DensePose |
-| Sensor input | Dense mmWave radar point cloud |
-| Annotation source | Kinect V2 skeleton |
-| Subjects | 101 |
-| Motions | 19 predefined motions + free motion |
-| Continuous sequences | 141 |
+| Dataset property | Value |
+| --- | --- |
+| Subjects / continuous sequences | 101 / 141 |
+| Motion coverage | 19 designed motions and free motion |
 | Valid synchronized frames | 570,124 |
-| Radar point attributes | x, y, z, Doppler, SNR |
-| Skeleton annotation | 19 3D keypoints |
-| Mean valid radar points per frame | 164 |
+| Radar attributes | XYZ, Doppler and SNR |
+| Pose annotations | 19 Kinect V2 joints |
+| Synchronized reference modalities | Anonymized color, depth, infrared, body index and timestamps |
 
-The dataset release will include the data format description, download instructions, preprocessing scripts, and benchmark split information.
+The dataset, model weights and saved prediction packages are published on
+[ScienceDB](https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10).
+Install the dataset into its managed location:
 
-## Method
+```bash
+uv run --locked python scripts/download_dataset.py
+```
 
-PAST-Net is a **Part-Aware Spatio-Temporal Network** for dense radar point-cloud 3D human pose estimation.
+The installer verifies package checksums and places files under
+`data/mmwave_densepose/`. Training creates numeric caches and split indexes
+automatically from the model, split strategy, seed and preprocessing settings.
+See [dataset installation](docs/guides/dataset.md) for storage requirements,
+package selection, verification and repair.
 
-The method follows a many-to-one temporal prediction setting:
+Large dataset files, checkpoints and prediction PKLs are distributed separately
+from Git. Curated official logs, experiment configurations and paper figures and
+tables are included in the checkout. Use the
+[official asset installer](docs/guides/paper-assets.md) to install weights and
+optional prediction PKLs at the registered paths.
 
-1. A temporal window of radar point clouds is used as input.
-2. A frame-level point-cloud encoder extracts global radar features.
-3. Skeleton-aware spatial modeling converts frame features into structured part-token representations.
-4. Part-wise temporal modeling captures the temporal evolution of each part token.
-5. Global and part-level features are fused to regress the 19 3D keypoints of the target frame.
+## Train and test from the command line
 
-## Benchmark
+Select a compute profile first:
 
-The benchmark supports both single-frame and multi-frame radar-based 3D human pose estimation.
+```bash
+uv sync --locked --extra cu118
+```
 
-The current experimental setting uses:
+Keep `--extra cu118` on subsequent `uv run` commands. For CPU execution, use
+`--extra cpu` and `--device cpu`. See [environment setup](docs/guides/environment.md)
+for supported platforms. Multiline commands below use Bash continuations; join
+the lines without `\` when pasting into PowerShell.
 
-- A five-frame temporal input window.
-- The last frame as the target frame.
-- Mean Localization Error (MLE) as the evaluation metric.
-- Radar point clouds as the only network input.
-- Kinect V2 skeletons as ground-truth annotations.
+### Train PAST-Net
 
-## Main Result
+This command supplies the model, data protocol and optimization parameters
+explicitly, without a configuration file:
 
-PAST-Net achieves the best average MLE among the reproduced and adapted baselines on the mmWave-DensePose benchmark.
+```bash
+uv run --locked --extra cu118 python scripts/train.py \
+  --model PASTNet --data-root data/mmwave_densepose \
+  --split-strategy sequence_chunk --seed 42 --partition 0.8 0.1 0.1 \
+  --split-chunk-size 200 --max-timestamp-gap-ms 300 --min-valid-points 50 \
+  --num-points 300 --input-dim 5 --seq-len 5 --num-joints 19 --ablation full \
+  --epochs 200 --batch-size 128 --learning-rate 0.0005 --weight-decay 0.00001 \
+  --optimizer adam --scheduler-name cosine --scheduler-eta-min 0.000001 \
+  --num-workers 0 --device cuda
+```
 
-| Method | Average MLE |
-|---|---:|
-| PAST-Net | 4.08 cm |
+The terminal prints the allocated run directory and best checkpoint path.
+Checkpoints are selected using validation metrics.
 
-The full per-joint comparison and ablation results will be provided with the paper materials and evaluation scripts.
+### Test an official checkpoint
 
-## Real-Time Application Scenario
+Download the prepared PAST-Net weight, then evaluate it with explicit parameters:
 
-The following real-world deployment video shows real-time pose estimation for actions and subjects that are not included in the dataset. The experiment was recorded under strong illumination conditions and runs on an entry-level NVIDIA T400 GPU.
+```bash
+uv run --locked --extra cu118 python scripts/download_paper_assets.py --asset main-pastnet
+uv run --locked --extra cu118 python scripts/evaluate.py \
+  --model PASTNet --checkpoint paper/experiments/main-pastnet/checkpoints/best.ckpt \
+  --data-root data/mmwave_densepose --split-strategy sequence_chunk \
+  --seed 42 --partition 0.8 0.1 0.1 --split-chunk-size 200 \
+  --max-timestamp-gap-ms 300 --min-valid-points 50 \
+  --num-points 300 --input-dim 5 --seq-len 5 --num-joints 19 --ablation full \
+  --batch-size 128 --num-workers 0 --device cuda --visual
+```
 
-<p align="center">
-  <a href="docs/assets/video/scene.mp4">
-    <img src="docs/assets/images/scene-poster.jpg" alt="Preview of the real-time application scenario video" width="100%">
-  </a>
-</p>
+For your own trained model, replace `--checkpoint` and use the same input,
+preprocessing, split and model-variant parameters as that training run.
+`--visual` exports `test_results.pkl` for frame playback in Results.
 
-GitHub does not reliably inline-preview repository-hosted MP4 files in README pages. Click the preview image above to open or download the video directly.
+- [Training and evaluation](docs/guides/training.md): explicit train/test/validate/predict commands, multi-GPU training and PCC dependencies.
+- [Complete CLI reference](docs/guides/cli-reference.md): every argument, default, allowed value and task-specific behavior.
+- [Official results](docs/guides/official-results.md): paper experiment mapping, table commands and recorded protocol details.
 
-## License
+`--config` remains optional. The prepared paper configurations live in
+`paper/configs/`; explicit CLI arguments override supplied configuration values.
 
-This repository is released under the **MIT License**.
+## Repository layout and outputs
 
-Dataset access instructions and terms for pretrained resources will be provided with the release materials.
+| Path | Contents |
+| --- | --- |
+| `app.py` | Browser workbench entry point |
+| `scripts/` | Dataset/asset downloads and train, evaluate, validate and infer entry points |
+| `mmwave_densepose/models/` | Model implementations using CamelCase identifiers |
+| `mmwave_densepose/data/` | Dataset processing and automatic caches |
+| `mmwave_densepose/engine/` | Training, evaluation and run artifacts |
+| `mmwave_densepose/web/` | Browser interface and local/demo service |
+| `paper/` | Official configurations, asset manifests, reference tables, figures and table runner |
+| `dataset/` | Published dataset package manifest and installation metadata |
+| `data/mmwave_densepose/` | Installed dataset and generated caches |
+| `example/` | Standalone environment and model-interface examples |
+| `docs/guides/` | User documentation |
 
-Please do not redistribute any unreleased code, data, or checkpoint files.
+Your training and evaluation runs save to:
 
-## Contact
+```text
+mmwave_densepose/checkpoints/<Model>/<run-id>/best.ckpt
+mmwave_densepose/logs/train/<Model>/<run-id>/
+mmwave_densepose/logs/test/<Model>/<training-run-id>/<test-id>/
+configs/runs/<Model>/<action>-<config-id>.yaml
+```
 
-For questions about the paper, code, or dataset release, please contact the authors or open an issue after the repository is public.
+Each run records its resolved configuration. Official weights are installed
+under `paper/experiments/<asset-id>/checkpoints/`; official logs carry an
+`_official` directory suffix and remain distinct from your runs in the GUI.
+The [training guide](docs/guides/training.md#saved-files) details validation logs,
+prediction exports and metric units.
 
-Corresponding authors and contact information will be updated after publication.
+## Real-time application example
 
-## Acknowledgement
+The recorded application runs on an NVIDIA T400 under strong illumination.
+Acquisition, calibration and live sensor applications are outside this release.
 
-This project is based on synchronized radar point-cloud data, Kinect V2 skeleton annotation, and radar-only 3D human pose estimation. We thank the contributors and participants involved in the data collection and research development.
+[![Real-time example](docs/assets/images/scene-poster.jpg)](docs/assets/video/scene.mp4)
+
+## License and resource terms
+
+A repository license file and dataset/pretrained-resource usage terms have not
+yet been supplied. Third-party notices accompany their respective dependencies.
+
+## Citation
+
+If you use the dataset, code, pretrained models or results, please cite:
+
+Liu J, Huang Y, Zhang Y, Tian C, Yang Z, Zheng K, Zhou R, Zhang H, Chen J, Hong W.
+**Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method.**
+*Engineering*. 2026. [doi:10.1016/j.eng.2026.10.001](https://doi.org/10.1016/j.eng.2026.10.001).
+
+```bibtex
+@article{liu2026mmwavedensepose,
+  author  = {Liu, Jiang and Huang, Yan and Zhang, Yanjun and Tian, Chengchang and
+             Yang, Zhen and Zheng, Kaihang and Zhou, Rui and Zhang, Hui and
+             Chen, Jixin and Hong, Wei},
+  title   = {{Human Pose Estimation Using Millimeter-Wave Radar: Prototype, Dataset, and Method}},
+  journal = {Engineering},
+  year    = {2026},
+  doi     = {10.1016/j.eng.2026.10.001},
+  url     = {https://www.sciencedirect.com/science/article/pii/S2095809926005606}
+}
+```

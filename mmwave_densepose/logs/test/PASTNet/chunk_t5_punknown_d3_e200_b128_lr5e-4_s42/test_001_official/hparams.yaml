@@ -1,0 +1,8 @@
+learning_rate: 0.0005
+many_to_many: false
+max_epochs: 200
+optimizer_name: adam
+sequence_loss_weight: 1.0
+target_loss_weight: 1.0
+temporal_loss_weight: 0.0
+weight_decay: 1.0e-05

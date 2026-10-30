@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>mmWave-DensePose</title>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=dark-1">
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/workbench.css">
+  <link rel="stylesheet" href="/ui-help.css">
+  <link rel="stylesheet" href="/select.css">
+  <link id="workbench-loading-css" rel="stylesheet" href="/loading.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <!-- Legacy PKL Color needs the source viewer's R/B display swap. -->
+  <svg class="display-filters" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs><filter id="dataset-color-rb-swap" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%"><feColorMatrix type="matrix" values="0 0 1 0 0  0 1 0 0 0  1 0 0 0 0  0 0 0 1 0"/></filter></defs>
+  </svg>
+  <header class="workbench-header">
+    <div class="workbench-brand"><img class="software-logo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%3E%0A%20%20%3Ctitle%3EmmWave-DensePose%3C%2Ftitle%3E%0A%20%20%3Cg%20stroke%3D%22%234EC3FF%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M46%208.9a27%2027%200%201%200%209.1%209.1%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M42.3%2017.2a18%2018%200%201%200%204.5%204.5%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20stroke%3D%22%23D9ECFF%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M32%2025v15M24.5%2029h15M24.5%2029l-4%208-2%206M39.5%2029l4%208%202%206M26.5%2040h11M26.5%2040l-3%208M37.5%2040l3%208%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20fill%3D%22%23D9ECFF%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2220.5%22%20r%3D%223.8%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2224.5%22%20cy%3D%2229%22%20r%3D%222.2%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2239.5%22%20cy%3D%2229%22%20r%3D%222.2%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2220.5%22%20cy%3D%2237%22%20r%3D%222%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2243.5%22%20cy%3D%2237%22%20r%3D%222%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2218.5%22%20cy%3D%2243%22%20r%3D%222%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2245.5%22%20cy%3D%2243%22%20r%3D%222%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2226.5%22%20cy%3D%2240%22%20r%3D%222.2%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2237.5%22%20cy%3D%2240%22%20r%3D%222.2%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2223.5%22%20cy%3D%2248%22%20r%3D%222.2%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2240.5%22%20cy%3D%2248%22%20r%3D%222.2%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cpath%20d%3D%22M32%2034%2053%2013%22%20stroke%3D%22%234EC3FF%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2234%22%20r%3D%222.6%22%20fill%3D%22%234EC3FF%22%2F%3E%0A%3C%2Fsvg%3E" alt="mmWave software logo" width="34" height="34"><span>mmWave-DensePose</span></div>
+    <nav class="tabs" role="tablist" aria-label="Workbench tools">
+      <button role="tab" id="tab-dataset" aria-controls="panel-dataset" aria-selected="true" tabindex="0">Dataset</button>
+      <button role="tab" id="tab-training" aria-controls="panel-workbench" aria-selected="false" tabindex="-1">Training &amp; Testing</button>
+      <button role="tab" id="tab-results" aria-controls="panel-workbench" aria-selected="false" tabindex="-1">Results</button>
+      <button role="tab" id="tab-paper" aria-controls="panel-workbench" aria-selected="false" tabindex="-1">Official results</button>
+    </nav>
+    <div class="connection"><span id="connection-light" class="session-light"></span><span id="connection-label">Connecting</span></div>
+  </header>
+  <main>
+    <section id="panel-dataset" role="tabpanel" aria-labelledby="tab-dataset">
+      <div class="dataset-page-heading"><div><div class="eyebrow">01 / DATASET</div><h1>Dataset</h1></div><div class="row"> <button id="dataset-overview" type="button">Overview</button><button id="dataset-verify" class="primary" type="button" disabled aria-busy="true">Dataset</button></div></div>
+      <div id="dataset-installation-status" class="dataset-installation-status" role="status" hidden></div>
+      <div class="file-toolbar">
+        <label for="sequence-select">Sequence</label>
+        <select id="sequence-select"><option value="">Choose a sequence</option></select>
+        <button id="previous-file" aria-label="Previous sequence" title="Previous sequence" disabled>←</button>
+        <button id="next-file" aria-label="Next sequence" title="Next sequence" disabled>→</button>
+        <button id="refresh-files" aria-label="Refresh files" title="Refresh files">↻</button>
+        <span class="subject-label">Subject</span><strong id="subject-id">—</strong>
+      </div>
+      <div id="error-box" role="alert" hidden><span id="error-text"></span><button id="reconnect">Reconnect</button></div>
+      <div id="loading-box" hidden><div><span id="loading-message">Loading sequence</span><button id="cancel-load">Cancel</button></div><progress id="load-progress" max="100" value="0" aria-label="Sequence loading progress"></progress></div>
+      <div class="workspace-grid">
+        <section class="panel spatial-panel" aria-labelledby="spatial-title">
+          <div class="panel-heading"><h2 id="spatial-title">Point cloud</h2><span class="units">XYZ · m</span></div>
+          <div id="scene" class="scene"><div id="scene-empty" class="scene-empty"><h3>Select a sequence</h3><p></p></div></div>
+          <div class="view-tools">
+            <label>Color <select id="color-mode"><option value="solid">Default</option><option value="doppler">Doppler</option><option value="snr">SNR</option></select></label>
+            <label>Size <input id="point-size" aria-label="Point size" type="range" min="0.3" max="4" step="0.1" value="1"><output id="point-size-value" for="point-size">1.0×</output></label>
+            <button id="reset-view">Reset</button><button id="fit-view" disabled>Fit</button>
+          </div>
+          <div class="layers"><label class="source-switch"><span>Radar</span><input id="show-radar" type="checkbox" role="switch" checked></label><label class="source-switch"><span>Skeleton</span><input id="show-skeleton" type="checkbox" role="switch" checked></label><label class="source-switch"><span>Boundary</span><input id="show-bounds" type="checkbox" role="switch" checked></label><div class="doppler-range"><label>Doppler <input id="doppler-min" aria-label="Doppler minimum" type="number" step="1" value="-150" disabled></label><span>–</span><input id="doppler-max" aria-label="Doppler maximum" type="number" step="1" value="150" disabled></div></div>
+          <div id="color-legend" class="color-legend" hidden><span id="legend-min">−150</span><div id="legend-gradient"></div><span id="legend-max">150</span><span id="color-note"></span></div>
+        </section>
+        <section class="panel image-panel" aria-label="Images">
+          <div class="panel-heading"><h2>Images</h2></div>
+          <div class="image-observations" id="image-observations">
+            <figure class="image-tile color-tile" data-modality="color_frames"><figcaption><span>RGB</span><span class="image-timestamp">—</span></figcaption><div class="image-surface"><img alt="Color frame" hidden><span class="image-placeholder">No image</span></div></figure>
+            <div class="aux-images">
+              <figure class="image-tile" data-modality="depth_frames"><figcaption><span>Depth</span><span class="image-timestamp">—</span></figcaption><div class="image-surface"><img alt="Depth frame" hidden><span class="image-placeholder">No image</span></div></figure>
+              <figure class="image-tile" data-modality="infrared_frames"><figcaption><span>Infrared</span><span class="image-timestamp">—</span></figcaption><div class="image-surface"><img alt="Infrared frame" hidden><span class="image-placeholder">No image</span></div></figure>
+              <figure class="image-tile" data-modality="body_index_frames"><figcaption><span>Body index</span><span class="image-timestamp">—</span></figcaption><div class="image-surface"><img alt="Body index frame" hidden><span class="image-placeholder">No image</span></div></figure>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section class="timeline panel" aria-label="Frame playback">
+        <div class="timeline-top"><div class="transport"><button id="first-frame" aria-label="First frame" disabled>⇤</button><button id="previous-frame" aria-label="Previous frame" disabled>←</button><button id="play" class="primary" aria-label="Play" aria-pressed="false" disabled>▶</button><button id="next-frame" aria-label="Next frame" disabled>→</button><button id="last-frame" aria-label="Last frame" disabled>⇥</button></div><input id="frame-slider" aria-label="Frame timeline" type="range" min="0" max="0" value="0" disabled><div class="frame-entry"><label for="frame-index">Frame</label><input id="frame-index" type="number" min="0" max="0" value="0" disabled><span id="frame-count">/ —</span></div><span class="fps-entry"><output id="fps" aria-label="Playback">6.5 fps</output></span></div>
+        <div class="frame-readouts"><span id="point-count">— points</span><span id="joint-count">— joints</span><span id="radar-time">Radar —</span><span id="kinect-time">Kinect —</span><span id="frame-message" role="status"></span></div>
+      </section>
+    </section>
+    <section id="panel-workbench" class="workbench-panel" role="tabpanel" aria-labelledby="tab-training" hidden><div id="workbench-content"></div></section>
+  </main>
+  <dialog id="dataset-dialog" class="dataset-dialog" aria-labelledby="dataset-dialog-title"></dialog>
+</body>
+</html>
