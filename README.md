@@ -7,10 +7,16 @@ Official code, dataset and pretrained models for
 Jiang Liu, Yan Huang, Yanjun Zhang, Chengchang Tian, Zhen Yang, Kaihang Zheng,
 Rui Zhou, Hui Zhang, Jixin Chen and Wei Hong.
 
-[Project page](https://seu-rise.github.io/mmWave-DensePose/) ·
-[Paper](https://doi.org/10.1016/j.eng.2026.10.001) ·
-[Dataset and pretrained assets](https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10) ·
-[Documentation](docs/guides/README.md) · [Citation](#citation)
+[![Paper](https://img.shields.io/badge/Paper-Engineering%202026-b31b1b?style=flat-square)](https://doi.org/10.1016/j.eng.2026.10.001)
+[![Project Page](https://img.shields.io/badge/Project-Page-2563eb?style=flat-square&logo=github)](https://seu-rise.github.io/mmWave-DensePose/)
+[![Dataset](https://img.shields.io/badge/Dataset-ScienceDB-168a73?style=flat-square)](https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10)
+[![Pretrained Models](https://img.shields.io/badge/Models-Pretrained-7356a6?style=flat-square)](docs/guides/paper-assets.md)
+[![Documentation](https://img.shields.io/badge/Docs-User%20Guide-0e7490?style=flat-square)](docs/guides/README.md)
+[![MIT License](https://img.shields.io/badge/License-MIT-3b8c6e?style=flat-square)](LICENSE)
+
+[Quick Start](#quick-start) · [Dataset](#dataset-and-pretrained-assets) ·
+[Train & Test](#train-and-test-from-the-command-line) ·
+[CLI Reference](docs/guides/cli-reference.md) · [Citation](#citation)
 
 mmWave-DensePose combines a dense point-cloud radar prototype, a synchronized
 multimodal dataset and **PAST-Net**, a Part-Aware Spatio-Temporal Network for
@@ -166,10 +172,12 @@ Acquisition, calibration and live sensor applications are outside this release.
 
 [![Real-time example](docs/assets/images/scene-poster.jpg)](docs/assets/video/scene.mp4)
 
-## License and resource terms
+## License
 
-A repository license file and dataset/pretrained-resource usage terms have not
-yet been supplied. Third-party notices accompany their respective dependencies.
+The code is released under the [MIT License](LICENSE).
+For dataset and pretrained-model usage terms, refer to the
+[ScienceDB release](https://www.scidb.cn/detail?dataSetId=96bb16b514eb4f69b79293d230666c10).
+Third-party components retain their respective licenses and notices.
 
 ## Citation
 
