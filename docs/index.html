@@ -975,7 +975,7 @@
     </section>
 
     <section id="samples" class="page-shell section" aria-labelledby="samples-title">
-      <div class="section-head"><div><p class="eyebrow">03 / Interactive samples</p><h2 id="samples-title">Explore the motion</h2></div><p>Synchronized radar points, skeletons and images from each motion in mmWave-DensePose.</p></div>
+      <div class="section-head"><div><p class="eyebrow">03 / Interactive samples</p><h2 id="samples-title">Explore the motion</h2></div><p>This interactive viewer presents selected examples of free-motion sequences, with synchronized radar point clouds, skeletons and images.</p></div>
       <div class="visualizer" data-viewer>
         <div class="visualizer-toolbar">
           <div class="toolbar-controls">
@@ -1114,32 +1114,33 @@
     <section id="application" class="page-shell section" aria-labelledby="application-title">
       <div class="section-head"><div><p class="eyebrow">06 / Application</p><h2 id="application-title">Real-time radar pose estimation</h2></div><p>Deployment on an NVIDIA T400 GPU tracks human motion in real time, including unseen subjects and motions, occlusion and strong illumination.</p></div>
       <figure class="application-video">
-        <video controls muted loop playsinline preload="metadata" poster="assets/images/scene-poster.jpg" aria-label="Real-time mmWave-DensePose application scenario">
+        <video controls muted loop playsinline preload="metadata" poster="assets/images/scene-poster.jpg" aria-label="Supplementary video 4: real-time pose estimation of an unseen subject in an unobstructed environment">
           <source src="assets/video/scene.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <figcaption>Supplementary video 4. Real-time 3D human pose estimation of a previously unseen subject performing free movements in an unobstructed environment. The demonstration illustrates the ability of the proposed method to generalize to subjects not included in the training dataset.</figcaption>
       </figure>
       <div class="application-examples" aria-label="Additional application examples">
         <figure class="application-video">
-          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene1-poster.jpg" aria-label="Application example 1">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene1-poster.jpg" aria-label="Supplementary video 1: real-time pose estimation during free movements under fabric occlusion">
             <source src="assets/video/scene1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption>Example 1</figcaption>
+          <figcaption>Supplementary video 1. Real-time 3D human pose estimation during free movements under fabric occlusion. The optical sensing method fails to capture the human pose due to complete visual obstruction, whereas the proposed millimeter-wave radar system continues to estimate the pose.</figcaption>
         </figure>
         <figure class="application-video">
-          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene2-poster.jpg" aria-label="Application example 2">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene2-poster.jpg" aria-label="Supplementary video 2: real-time pose estimation during free movements under fabric and cardboard occlusion">
             <source src="assets/video/scene2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption>Example 2</figcaption>
+          <figcaption>Supplementary video 2. Real-time 3D human pose estimation during free movements under combined fabric and thick cardboard occlusion. Despite the failure of optical sensing under complete visual obstruction, the proposed millimeter-wave radar system maintains pose estimation, demonstrating its ability to operate through nonmetallic obstacles.</figcaption>
         </figure>
         <figure class="application-video">
-          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene3-poster.jpg" aria-label="Application example 3">
+          <video controls muted loop playsinline preload="metadata" poster="assets/images/scene3-poster.jpg" aria-label="Supplementary video 3: real-time pose estimation of an unseen sitting motion under fabric occlusion">
             <source src="assets/video/scene3.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption>Example 3</figcaption>
+          <figcaption>Supplementary video 3. Real-time 3D human pose estimation of a previously unseen sitting motion under fabric occlusion. Although sitting is not included in the training dataset, the proposed method successfully estimates the human pose, illustrating its generalization to an unseen motion.</figcaption>
         </figure>
       </div>
     </section>
