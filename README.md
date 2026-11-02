@@ -47,6 +47,11 @@ For local or SSH access, see the [web workbench guide](docs/guides/web-gui.md).
 
 ## Dataset and pretrained assets
 
+Explore the dataset on **GitHub Pages**: view
+[dataset statistics](https://seu-rise.github.io/mmWave-DensePose/#dataset) and
+[interactive motion samples](https://seu-rise.github.io/mmWave-DensePose/#samples)
+with synchronized radar points, skeletons and images before downloading.
+
 | Dataset property | Value |
 | --- | --- |
 | Subjects / continuous sequences | 101 / 141 |
@@ -86,53 +91,57 @@ uv sync --locked --extra cu118
 
 Keep `--extra cu118` on subsequent `uv run` commands. For CPU execution, use
 `--extra cpu` and `--device cpu`. See [environment setup](docs/guides/environment.md)
-for supported platforms. Multiline commands below use Bash continuations; join
-the lines without `\` when pasting into PowerShell.
+for supported platforms. The examples below omit parameters that match the
+script defaults; the device is selected automatically.
 
 ### Train PAST-Net
 
-This command supplies the model, data protocol and optimization parameters
-explicitly, without a configuration file:
+Use the model's default settings:
 
 ```bash
-uv run --locked --extra cu118 python scripts/train.py \
-  --model PASTNet --data-root data/mmwave_densepose \
-  --split-strategy sequence_chunk --seed 42 --partition 0.8 0.1 0.1 \
-  --split-chunk-size 200 --max-timestamp-gap-ms 300 --min-valid-points 50 \
-  --num-points 300 --input-dim 5 --seq-len 5 --num-joints 19 --ablation full \
-  --epochs 200 --batch-size 128 --learning-rate 0.0005 --weight-decay 0.00001 \
-  --optimizer adam --scheduler-name cosine --scheduler-eta-min 0.000001 \
-  --num-workers 0 --device cuda
+uv run --locked --extra cu118 python scripts/train.py --model PASTNet
 ```
 
-The terminal prints the allocated run directory and best checkpoint path.
-Checkpoints are selected using validation metrics.
+Or use the prepared paper configuration:
+
+```bash
+uv run --locked --extra cu118 python scripts/train.py --config paper/configs/main-pastnet.json
+```
+
+Both commands train from scratch. The terminal prints the allocated run
+directory and best checkpoint path, selected using validation metrics.
 
 ### Test an official checkpoint
 
-Download the prepared PAST-Net weight, then evaluate it with explicit parameters:
+Download the prepared PAST-Net weight:
 
 ```bash
 uv run --locked --extra cu118 python scripts/download_paper_assets.py --asset main-pastnet
-uv run --locked --extra cu118 python scripts/evaluate.py \
-  --model PASTNet --checkpoint paper/experiments/main-pastnet/checkpoints/best.ckpt \
-  --data-root data/mmwave_densepose --split-strategy sequence_chunk \
-  --seed 42 --partition 0.8 0.1 0.1 --split-chunk-size 200 \
-  --max-timestamp-gap-ms 300 --min-valid-points 50 \
-  --num-points 300 --input-dim 5 --seq-len 5 --num-joints 19 --ablation full \
-  --batch-size 128 --num-workers 0 --device cuda --visual
+```
+
+Select the model and checkpoint explicitly, using defaults for the remaining
+settings:
+
+```bash
+uv run --locked --extra cu118 python scripts/evaluate.py --model PASTNet --checkpoint paper/experiments/main-pastnet/checkpoints/best.ckpt --visual
+```
+
+Or load the model, checkpoint and data settings from the paper configuration:
+
+```bash
+uv run --locked --extra cu118 python scripts/evaluate.py --config paper/configs/main-pastnet.json --visual
 ```
 
 For your own trained model, replace `--checkpoint` and use the same input,
 preprocessing, split and model-variant parameters as that training run.
 `--visual` exports `test_results.pkl` for frame playback in Results.
 
-- [Training and evaluation](docs/guides/training.md): explicit train/test/validate/predict commands, multi-GPU training and PCC dependencies.
+- [Full-parameter examples](docs/guides/training.md): explicit train/test/validate/predict commands, multi-GPU training and PCC dependencies.
 - [Complete CLI reference](docs/guides/cli-reference.md): every argument, default, allowed value and task-specific behavior.
 - [Official results](docs/guides/official-results.md): paper experiment mapping, table commands and recorded protocol details.
 
-`--config` remains optional. The prepared paper configurations live in
-`paper/configs/`; explicit CLI arguments override supplied configuration values.
+The prepared paper configurations live in [`paper/configs/`](paper/configs/).
+Explicit CLI arguments override supplied configuration values.
 
 ## Repository layout and outputs
 
